@@ -17,7 +17,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ClusterSeeder::class,
             PositionSeeder::class,
-            LecturerSeeder::class
+            LecturerSeeder::class,
+            ClusterSCCSeeder::class,
+            SubjectSeeder::class,
+            SubjectLecturerSeeder::class
         ]);
     }
 }

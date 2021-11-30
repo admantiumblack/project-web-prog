@@ -23,7 +23,7 @@ class SubjectSeeder extends Seeder
                     'id' => $faker->unique()
                             ->regexify('[A-Z]{2}[0-9]{3}'),
                     'cluster_id' => $cluster->id,
-                    'period' => $faker->regexify('2[1-2]{2}'),
+                    'period' => $faker->regexify('2[1-2]{1}1'),
                     'subject' => $faker->unique()->sentence(3)
                 ]);
             }
