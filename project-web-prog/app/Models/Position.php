@@ -5,7 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Positions extends Model
+class Position extends Model
 {
     use HasFactory;
+    public function lecturers(){
+        return $this->hasMany(Lecturer::class, 'id', 'position_id');
+    }
 }
