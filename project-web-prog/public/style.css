@@ -1,0 +1,18 @@
+body {
+    /* padding: 0;
+    margin: 0; */
+    font-family: "Open Sans", sans-serif;
+    /* font-size: 1.525rem; */
+    font-weight: 400;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+}
+
+.c-page-region {
+    padding: 20px;
+}
+
+.c-card-content {
+    padding: 10px 15px;
+}
