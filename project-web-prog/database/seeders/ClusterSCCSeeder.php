@@ -25,7 +25,7 @@ class ClusterSCCSeeder extends Seeder
                         ->randomElement($clusters)->id,
                 'lecturer_id' => $faker->unique()
                         ->randomElement($lecturers)->id,
-                'period' => '221'
+                'date_appointed' => date("Y-m-d")
             ]);
         }
         // echo $clusters;

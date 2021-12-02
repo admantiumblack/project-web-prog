@@ -14,9 +14,10 @@ class CreateSubjectsTable extends Migration
     public function up()
     {
         Schema::create('subjects', function (Blueprint $table) {
-            $table->string('id', 10);
-            $table->string('period', 3);
-            $table->foreignId('cluster_id');
+            $table->string('id', 15);
+            $table->foreignId('cluster_id')->references('id')
+                    ->on('clusters')->onDelete('cascade')
+                    ->onUpdate('cascade');
             $table->string('subject', 100);
         });
     }
