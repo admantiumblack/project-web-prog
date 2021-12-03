@@ -4,20 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Http\Traits\HasCompositePrimaryKey;
-use Awobaz\Compoships\Compoships;
 
 class SubjectLecturer extends Model
 {
     use HasFactory;
-    use HasCompositePrimaryKey;
-    use Compoships;
     public $incrementing = false;
-    protected $primaryKey = ['subject_id', 'period'];
+    protected $primaryKey = 'id';
 
     public function subject(){
         return $this->belongsTo(Subject::class, 
-                ['subject_id', 'period'], ['id', 'period']);
+                'subject_id', 'id');
     }
 
     public function lecturer(){
