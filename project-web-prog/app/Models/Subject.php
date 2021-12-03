@@ -20,4 +20,7 @@ class Subject extends Model
             'id', 'subject_id');
     }
     
+    public function forms(){
+        return $this->hasMany(Form::class, 'id', 'subject_id');
+    }
 }
