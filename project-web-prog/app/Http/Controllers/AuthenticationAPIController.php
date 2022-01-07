@@ -40,9 +40,6 @@ class AuthenticationAPIController extends Controller
     }
 
     public function logout(Request $request){
-        if(!$request->hasCookie('user_auth')){
-            return redirect()->route('home');
-        }
         $cookie = Cookie::forget('user_auth');
         return redirect()->route('home')->withCookie($cookie);
     }
