@@ -4,8 +4,8 @@
 
 @section('content')
 
-    <div class="row row-cols-1">
-        <div class="col">
+    <div class="row row-cols-1 row-cols-lg-2">
+        <div class="col-lg-9">
             <div class="mb-1">Forms</div>
             <div class="card">
                 <div class="card-body">
@@ -22,7 +22,7 @@
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col-lg-3">
             <div class="mb-1">Complaint Ticket</div>
             <div class="card">
                 <button type="button" class="card-body btn btn-danger text-white" id="ticket-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
