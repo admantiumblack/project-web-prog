@@ -42,40 +42,6 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Create Forms</a>
                         </li>
-
-                        {{-- <div class="btn-group dropend mt-3">
-                            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                View Result
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" type="button">Forms</button></li>
-                                <li><button class="dropdown-item" type="button">Feedback Tickets</button></li>
-                            </ul>
-                        </div> --}}
-                </div>
-            </div>
-            {{-- <div class="container-fluid">
-            <a class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-                aria-controls="offcanvasScrolling" data--bs-dismiss="offcanvas" aria-controls="offcanvasNavbar"><img
-                    src="https://bm5cdn.azureedge.net/asset/images/logo.png" alt="Binus University">
-            </a>
-            <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
-                id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-header">
-                    <img src="https://bm5cdn.azureedge.net/asset/images/logo.png" alt="Binus University">
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Create Feedback Ticket</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Create Forms</a>
-                        </li>
                         <div class="btn-group dropend mt-3">
                             <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
                                 aria-expanded="false">
@@ -86,10 +52,18 @@
                                 <li><button class="dropdown-item" type="button">Feedback Tickets</button></li>
                             </ul>
                         </div>
-                    </ul>
+                        <div class="btn-group dropend mt-3">
+                            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Manage
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><button class="dropdown-item" type="button">Lecturer</button></li>
+                                <li><button class="dropdown-item" type="button">Courses</button></li>
+                            </ul>
+                        </div>
                 </div>
             </div>
-        </div> --}}
     </nav>
     <hr class="my-0" />
     @yield('content')
