@@ -7,7 +7,7 @@ use App\Models\Form;
 use App\Models\SubjectLecturer;
 use App\Models\ClusterScc;
 use Illuminate\Support\Str;
-use File;
+use Illuminate\Support\Facades\File;
 
 class FormAPIController extends Controller
 {

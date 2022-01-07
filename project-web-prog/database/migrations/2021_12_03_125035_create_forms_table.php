@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+use Illuminate\Support\Facades\File;
 class CreateFormsTable extends Migration
 {
     /**
@@ -13,6 +13,10 @@ class CreateFormsTable extends Migration
      */
     public function up()
     {
+        $path = public_path('storage/form_results');
+        if(file_exists($path)){
+            File::deleteDirectory($path);
+        }
         Schema::create('forms', function (Blueprint $table) {
             $table->string('subject_id', 15)->nullable()
                     ->references('id')

@@ -29,6 +29,6 @@ Route::get('/auth/logout',
 
 
 // form data
-Route::post('/api/form/insert', 
+Route::post('/form/insert', 
     [FormAPIController::class, 'insertAnswer'])->name('api.form.insert')
     ->middleware('validateLoggedIn');

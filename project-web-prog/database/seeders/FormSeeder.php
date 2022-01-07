@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
 use Illuminate\Support\Str;
-use File;
+use Illuminate\Support\Facades\File;
 // use Log;
 
 class FormSeeder extends Seeder
