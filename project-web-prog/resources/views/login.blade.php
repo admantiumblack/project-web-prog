@@ -24,10 +24,6 @@
                         name="password" placeholder="Password" value="{{ old('password') }}" aria-label="Password"
                         required autocomplete="password">
                 </div>
-                <div class="mt-3 form-check">
-                    <input type="checkbox" class="form-check-input" value="1" id="rememberMe" name="rememberMe">
-                    <label class="form-check-label" for="rememberMe">Remember me</label>
-                </div>
                 @forelse ($errors->all() as $error)
                     <div class="text-danger mt-2"><i class="fas fa-times"></i> {{ ucfirst($error) }}</div>
                 @empty
