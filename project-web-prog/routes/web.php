@@ -16,11 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/form', [HomeController::class, 'viewForm']);
+// Route::get('/form', [HomeController::class, 'viewForm']);
 
-Route::get('/{id}', [HomeController::class, 'viewHome']);
+Route::get('/', [HomeController::class, 'viewHome']);
 
-Route::get('/login', [AuthenticationController::class, 'viewLogin'])->name('login')->middleware('ValidateGuest');
+Route::get('/login', [AuthenticationController::class, 'viewLogin'])->name('login')
+->middleware(['validateGuest']);
 
 Route::get('/form', [FormController::class, 'viewForm'])->name('form')->middleware('validateLoggedIn');
 
