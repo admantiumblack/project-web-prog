@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Lecturer;
+use Illuminate\Support\Facades\Cookie;
 
 class AuthenticationAPIController extends Controller
 {
@@ -18,7 +19,7 @@ class AuthenticationAPIController extends Controller
                 // ->get()[0];
                 // ->where('password', Hash::make($request->password))
                 ->with(['position', 'clusterScc'])->first();
-        error_log($user->password);
+        error_log($user->position->position);
         error_log(Hash::make($request->password));
         if(!Hash::check($request->password, $user->password)){
             return redirect()->back()
@@ -29,12 +30,11 @@ class AuthenticationAPIController extends Controller
             ])->withInput($request->input());
         }
 
-        $currUser = $user[0];
-
-        $role = $currUser->position->position;
-        $id = $currUser->id;
-        $name = $currUser->name;
-        if($currUser->clusterScc !== null){
+        $role = $user->position->position;
+        $id = $user->id;
+        $name = $user->name;
+        if($user->clusterScc !== null){
+            error_log('enter');
             $role = 'SCC';
         }
         $userAuth = $id.'_'.$role.'_'.$name;
