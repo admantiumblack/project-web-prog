@@ -3,17 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthenticationController extends Controller
 {
     //
-    public function viewRegister(){
-
-        return view('register');
-    }
 
     public function viewLogin(){
-
-        return view('login');
+        if(Auth::user()==null){
+            return view('login');
+        }
+        return redirect()->back();
     }
 }
