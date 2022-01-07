@@ -18,6 +18,7 @@ class CreateFormsTable extends Migration
             File::deleteDirectory($path);
         }
         Schema::create('forms', function (Blueprint $table) {
+            $table->String('id', 11);
             $table->string('subject_id', 15)->nullable()
                     ->references('id')
                     ->on('subjects')->onDelete('set null')
