@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
             ClusterSCCSeeder::class,
             SubjectSeeder::class,
             SubjectLecturerSeeder::class,
-            FormSeeder::class
+            FormSeeder::class,
+            ComplaintSeeder::class
         ]);
     }
 }
