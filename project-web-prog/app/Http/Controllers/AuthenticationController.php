@@ -10,6 +10,7 @@ class AuthenticationController extends Controller
     //
 
     public function viewLogin(){
+        
         return view('login');
     }
 }
