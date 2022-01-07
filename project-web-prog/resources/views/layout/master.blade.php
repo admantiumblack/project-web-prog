@@ -29,12 +29,14 @@
             <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
                 aria-labelledby="offcanvasWithBothOptionsLabel">
                 <div class="offcanvas-header">
-                    <img src="https://bm5cdn.azureedge.net/asset/images/logo.png" alt="Binus University">
+                    <button type="button" class="btn btn-outline-none" data-bs-dismiss="offcanvas" aria-label="Close">
+                        <img src="https://bm5cdn.azureedge.net/asset/images/logo.png" alt="Binus University">
+                    </button>
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav flex-grow-1 pe-3">
                         <li class="nav-item mx-auto">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
                         </li>
                         <li class="nav-item mx-auto">
                             <a class="nav-link active" aria-current="page" href="#">Create Feedback Ticket</a>
@@ -63,7 +65,7 @@
                             </ul>
                         </div>
                         <li class="nav-item mt-1 mx-auto">
-                            <a class="nav-link active" aria-current="page" href="{{route('api.logout')}}">Logout</a>
+                            <a class="nav-link active" aria-current="page" href="{{ route('api.logout') }}">Logout</a>
                         </li>
                 </div>
             </div>

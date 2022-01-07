@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="row row-cols-1 row-cols-lg-2">
+    <div class="row row-cols-1 row-cols-lg-2 p-3 m-2">
         <div class="col-lg-9">
             <div class="mb-1">Forms</div>
             <div class="card">
@@ -46,6 +46,19 @@
                                                 <label for="complaintTitle">Title:</label>
                                                 <input type="text" class="form-control" placeholder="Insert title here"
                                                     name="title" id="complaintTitle" />
+                                            </div>
+                                            <label for="selectCourses">Select Courses:</label>
+                                            <div>
+                                                <select class="container custom-select custom-select-lg p-3 mt-0">
+                                                    <option selected>No Course Selected
+                                                    </option>
+                                                    {{-- @forelse ($courses as $course)
+                                                        <option selected>$('select[name=selValue]').val(1)</option>
+                                                        <option value="1">One</option>
+                                                    @empty
+    
+                                                    @endforelse --}}
+                                                </select>
                                             </div>
                                             <div>
                                                 <label for="complaintMessage">Message:</label>
