@@ -19,12 +19,15 @@ class FormAPIController extends Controller
 
         $request->validate([
             'period' => 'required|string|min:3|max:3',
-            'answer' => 'required|array'
+            'answer' => 'required|array',
+            'lecturer_name' => 'required',
+            'subject_id' => 'required',
+            'lecturer_id' => 'required'
         ]);
 
-        $subject = $request->answer[2];
+        $subject = $request->subject_id;
         $period = $request->period;
-        $lecturerId = $request->answer[0];
+        $lecturerId = $request->lecturer_id;
         $id = $subject.$period.$lecturerId;
         $subjectLecturer = SubjectLecturer::with('subject.forms')
                 ->where('id', $id)
@@ -70,7 +73,10 @@ class FormAPIController extends Controller
 
         $request->validate([
             'period' => 'required|min:3|max:3',
-            'deadline' => 'date|required|date_format:Y-m-d H:i:s|after:'.date('Y-m-d H:i:s', time() + (24 * 60 * 60))
+            'deadline' => 
+            'date|required|date_format:Y-m-d H:i:s|after:'.
+            date('Y-m-d H:i:s', time() + (24 * 60 * 60)).'|before_or_equal:'.
+            date('Y-m-d H:i:s', time() + (7 * 24 * 60 * 60 + 1))
         ]);
 
         $sccId = explode('_', $request->cookie('user_auth'))[0];

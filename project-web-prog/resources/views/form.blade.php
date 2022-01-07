@@ -20,6 +20,10 @@
         </div>
         <div class="container border p-1 d-flex justify-content-center">
             <form>
+                <input type="hidden" name="lecturer_name">
+                <input type="hidden" name="lecturer_id">
+                <input type="hidden" name="subject_id">
+                <input type="hidden" name="period">
                 <div class="mb-3">
                     <br>
                     <p>1. Apakah Bpk/Ibu Dosen sudah memiliki Minimal 1 Paper Scopus di Tahun ini?</p>
