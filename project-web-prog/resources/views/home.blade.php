@@ -47,6 +47,19 @@
                                                 <input type="text" class="form-control" placeholder="Insert title here"
                                                     name="title" id="complaintTitle" />
                                             </div>
+                                            <label for="selectCourses">Select Courses:</label>
+                                            <div>
+                                                <select class="container custom-select custom-select-lg p-3 mt-0">
+                                                    <option selected>No Course Selected
+                                                    </option>
+                                                    {{-- @forelse ($courses as $course)
+                                                        <option selected>$('select[name=selValue]').val(1)</option>
+                                                        <option value="1">One</option>
+                                                    @empty
+    
+                                                    @endforelse --}}
+                                                </select>
+                                            </div>
                                             <div>
                                                 <label for="complaintMessage">Message:</label>
                                                 <textarea class="form-control" placeholder="Insert message here"
