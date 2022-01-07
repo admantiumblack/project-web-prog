@@ -12,13 +12,13 @@
                     <div class="list-group">
                         @forelse($forms as $form)
                             <a class="list-group-item list-group-item-action" href="/form">
-                                <h6 class="h5">{{$form->subject}}</h5>
-                                Deadline: {{$form->deadline}}
+                                <h6 class="h5">{{ $form->subject }}</h5>
+                                    Deadline: {{ $form->deadline }}
                             </a>
                         @empty
                             No forms
                         @endforelse
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -28,7 +28,8 @@
                 <div class="col m-0 mb-2">
                     <div class="mb-1">Complaint Ticket</div>
                     <div class="card p-0">
-                        <button type="button" class="card-body btn btn-danger text-white" id="ticket-btn" data-bs-toggle="modal" data-bs-target="#ticketModal">
+                        <button type="button" class="card-body btn btn-danger text-white" id="ticket-btn"
+                            data-bs-toggle="modal" data-bs-target="#ticketModal">
                             New complaint ticket
                         </button>
                         <div class="modal fade" id="ticketModal" tabindex="-1">
@@ -43,15 +44,18 @@
                                         <div class="modal-body row gy-2">
                                             <div>
                                                 <label for="complaintTitle">Title:</label>
-                                                <input type="text" class="form-control" placeholder="Insert title here" name="title" id="complaintTitle" />
+                                                <input type="text" class="form-control" placeholder="Insert title here"
+                                                    name="title" id="complaintTitle" />
                                             </div>
                                             <div>
                                                 <label for="complaintMessage">Message:</label>
-                                                <textarea class="form-control" placeholder="Insert message here" name="title" id="complaintTitle" rows="8"></textarea>
+                                                <textarea class="form-control" placeholder="Insert message here"
+                                                    name="title" id="complaintTitle" rows="8"></textarea>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
                                             <button type="submit" class="btn btn-primary">Save changes</button>
                                         </div>
                                     </form>
@@ -64,7 +68,8 @@
                 <div class="col m-0 mb-2">
                     <div class="mb-1">Create Form</div>
                     <div class="card p-0">
-                        <button type="button" class="card-body btn btn-primary text-white" id="ticket-btn" data-bs-toggle="modal" data-bs-target="#formcreateModal">
+                        <button type="button" class="card-body btn btn-primary text-white" id="ticket-btn"
+                            data-bs-toggle="modal" data-bs-target="#formcreateModal">
                             New review form
                         </button>
                         <div class="modal fade" id="formcreateModal" tabindex="-1">
@@ -81,7 +86,8 @@
                                         <div class="modal-body row gy-2">
                                             <div>
                                                 <label for="complaintMessage">Period:</label>
-                                                <input type="text" class="form-control" name="period" placeholder="Insert period here">
+                                                <input type="text" class="form-control" name="period"
+                                                    placeholder="Insert period here">
                                             </div>
                                             <div>
                                                 <label for="formDeadline">Deadline:</label>
@@ -89,7 +95,8 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
                                             <button type="submit" class="btn btn-primary">Save changes</button>
                                         </div>
                                     </form>
