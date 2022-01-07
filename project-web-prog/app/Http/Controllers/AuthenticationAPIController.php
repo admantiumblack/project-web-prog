@@ -15,11 +15,18 @@ class AuthenticationAPIController extends Controller
         ]);
 
         $user = Lecturer::where('email', $request->email)
-                ->where('password', Hash::make($request->password))
-                ->with(['position', 'clusterScc'])->get();
-        if(count($user) != 1){
+                // ->get()[0];
+                // ->where('password', Hash::make($request->password))
+                ->with(['position', 'clusterScc'])->first();
+        error_log($user->password);
+        error_log(Hash::make($request->password));
+        if(!Hash::check($request->password, $user->password)){
             return redirect()->back()
-            ->withErrors($validator)->withInput($request->input());
+            ->withErrors([
+                'errors' => [
+                    'user not found'
+                ]
+            ])->withInput($request->input());
         }
 
         $currUser = $user[0];

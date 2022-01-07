@@ -1,49 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout.master')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=
-    , initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login to App Peer Review</title>
-    <link rel="icon" type="image/png" href="https://bm5cdn.azureedge.net/newdefault/images/favicon.ico">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('style.css') }}">
-</head>
+@section('content')
 
-<body>
-    <div class="cotainer row justify-content-center">
-        <div class="col" style="margin: 0% 30%">
-            <div class="card">
-                <h3 class="card-header text-center">Login To TIE-UPS</h3>
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login.entry') }}">
-                        @csrf
-                        <div class="form-group mb-3">
-                            <input type="text" placeholder="Email" id="email" class="form-control" name="email"
-                                required autofocus>
-                            @if ($errors->has('email'))
-                                <span class="text-danger">{{ $errors->first('email') }}</span>
-                            @endif
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <input type="password" placeholder="Password" id="password" class="form-control"
-                                name="password" required>
-                            @if ($errors->has('password'))
-                                <span class="text-danger">{{ $errors->first('password') }}</span>
-                            @endif
-                        </div>
-                        <div class="d-grid">
-                            <button type="submit" class="btn">Sign In</button>
-                        </div>
-                    </form>
+    <div class="position-absolute card top-50 start-50 translate-middle c-card-350">
+        <div class="card-body p-4">
+            <h2 class="card-title">Login</h2>
+            {{-- {{ $errors }} --}}
+            <form class="mt-4" action="{{ route('api.login') }}" method="POST">
+                @csrf
+                <div class="input-group">
+                    <span class="input-group-text c-addon-42"><i class="far fa-envelope"></i></span>
+                    <input type="text" class="form-control {{ $errors->has('email')? 'is-invalid':'' }}" name="email" placeholder="Email" value="{{ old('email') }}" aria-label="Email" required autofocus autocomplete="email">
                 </div>
-            </div>
+                <div class="input-group mt-3">
+                    <span class="input-group-text c-addon-42"><i class="fas fa-lock"></i></span>
+                    <input type="password" class="form-control {{ $errors->has('password')? 'is-invalid':'' }}" name="password" placeholder="Password" value="{{ old('password') }}" aria-label="Password" required autocomplete="password">
+                </div>
+                <div class="mt-3 form-check">
+                    <input type="checkbox" class="form-check-input" value="1" id="rememberMe" name="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                </div>
+                @forelse ($errors->all() as $error)
+                    <div class="text-danger mt-2"><i class="fas fa-times"></i> {{ucfirst($error)}}</div>
+                @empty                    
+                @endforelse
+                <button type="submit" class="btn btn-primary mt-3 w-100"><i class="fas fa-sign-in-alt"></i> Login</button>
+            </form>
+
+            
         </div>
     </div>
-</body>
 
-</html>
+@endsection

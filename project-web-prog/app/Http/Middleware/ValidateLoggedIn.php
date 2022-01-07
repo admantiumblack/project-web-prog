@@ -17,7 +17,7 @@ class ValidateLoggedIn
     public function handle(Request $request, Closure $next)
     {  
         if(!$request->hasCookie('user_auth')){
-            return redirect()->back();
+            return redirect()->route('login');
         }
         
         return $next($request);

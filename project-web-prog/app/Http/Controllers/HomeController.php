@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function viewHome($id){
+    public function viewHome(Request $request){
         
         // TO-DO JSON STUFF
-        
+        $id = explode('_', $request->cookie('user_auth'))[0];
         $forms = DB::table('forms')
         ->join('subject_lecturers', 'forms.subject_id', '=', 'subject_lecturers.subject_id')
         ->join('subjects', 'forms.subject_id', '=', 'subjects.id')
