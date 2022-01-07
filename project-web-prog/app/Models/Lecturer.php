@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Lecturer extends Model
 {
     use HasFactory;
-
+    public $incrementing = false;
     public function position(){
         return $this->belongsTo(Position::class, 'position_id', 'id');
     }
