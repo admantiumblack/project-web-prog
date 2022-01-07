@@ -33,6 +33,7 @@ class FormSeeder extends Seeder
                 $filepath = $path.'/'.$filename;
                 File::copy($template, $filepath);
                 DB::table('forms')->insert([
+                    'id' => '221'.$subject->id,
                     'subject_id' => $subject->id,
                     'period' => '221',
                     'deadline' =>$faker->

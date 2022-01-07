@@ -61,7 +61,7 @@
                 <br>
                 <div class="mb-3">
                     <p>5. Masukan terhadap Content secara general</p>
-                    <textarea name="Ans_5" id="message" style="height: 150px; width: 500px" onclick="this.value=''">Enter text here...</textarea>
+                    <textarea name="Ans_5" id="message" style="height: 150px; width: 500px; resize:none" onclick="this.value=''">Enter text here...</textarea>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -74,7 +74,7 @@
                 <br>
                 <div class="mb-3">
                     <p>7. Masukan terhadap materi dalam Textbook</p>
-                    <textarea name="Ans_7" id="message" style="height: 150px; width: 500px" onclick="this.value=''">Enter text here...</textarea>
+                    <textarea name="Ans_7" id="message" style="height: 150px; width: 500px; resize:none" onclick="this.value=''">Enter text here...</textarea>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -87,7 +87,7 @@
                 <br>
                 <div class="mb-3">
                     <p>9.Masukan terhadap presentasi dan supporting material?</p>
-                    <textarea name="Ans_9" id="message" style="height: 150px; width: 500px" onclick="this.value=''">Enter text here...</textarea>
+                    <textarea name="Ans_9" id="message" style="height: 150px; width: 500px; resize:none" onclick="this.value=''">Enter text here...</textarea>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -100,7 +100,7 @@
                 <br>
                 <div class="mb-3">
                     <p>11.Masukan terhadap presentasi dan supporting material?</p>
-                    <textarea name="Ans_11" id="message" style="height: 150px; width: 500px" onclick="this.value=''">Enter text here...</textarea>
+                    <textarea name="Ans_11" id="message" style="height: 150px; width: 500px; resize:none" onclick="this.value=''">Enter text here...</textarea>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -113,7 +113,7 @@
                 <br>
                 <div class="mb-3">
                     <p>13.Masukan terhadap Classroom management di kelas?</p>
-                    <textarea name="Ans_13" id="message" style="height: 150px; width: 500px" onclick="this.value=''">Enter text here...</textarea>
+                    <textarea name="Ans_13" id="message" style="height: 150px; width: 500px; resize:none" onclick="this.value=''">Enter text here...</textarea>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -126,7 +126,7 @@
                 <br>
                 <div class="mb-3">
                     <p>15.Masukan terhadap Learning Methodology sekarang?</p>
-                    <textarea name="Ans_15" id="message" style="height: 150px; width: 500px" onclick="this.value=''">Enter text here...</textarea>
+                    <textarea name="Ans_15" id="message" style="height: 150px; width: 500px; resize:none" onclick="this.value=''">Enter text here...</textarea>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -139,7 +139,7 @@
                 <br>
                 <div class="mb-3">
                     <p>17.Masukan terhadap Other Language?(Ex. English)</p>
-                    <textarea name="Ans_17" id="message" style="height: 150px; width: 500px" onclick="this.value=''">Enter text here...</textarea>
+                    <textarea name="Ans_17" id="message" style="height: 150px; width: 500px; resize:none" onclick="this.value=''">Enter text here...</textarea>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -152,7 +152,7 @@
                 <br>
                 <div class="mb-3">
                     <p>19.Masukan terhadap Individual Assignment/Project/Quiz/Presentation</p>
-                    <textarea name="Ans_19" id="message" style="height: 150px; width: 500px" onclick="this.value=''">Enter text here...</textarea>
+                    <textarea name="Ans_19" id="message" style="height: 150px; width: 500px; resize:none" onclick="this.value=''">Enter text here...</textarea>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -165,7 +165,7 @@
                 <br>
                 <div class="mb-3">
                     <p>21.Masukan terhadap Midterm Exams</p>
-                    <textarea name="Ans_21" id="message" style="height: 150px; width: 500px" onclick="this.value=''">Enter text here...</textarea>
+                    <textarea name="Ans_21" id="message" style="height: 150px; width: 500px; resize:none" onclick="this.value=''">Enter text here...</textarea>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -178,7 +178,7 @@
                 <br>
                 <div class="mb-3">
                     <p>23.Masukan terhadap Final Exams</p>
-                    <textarea name="Ans_23" id="message" style="height: 150px; width: 500px" onclick="this.value=''">Enter text here...</textarea>
+                    <textarea name="Ans_23" id="message" style="height: 150px; width: 500px; resize:none" onclick="this.value=''">Enter text here...</textarea>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -191,7 +191,7 @@
                 <br>
                 <div class="mb-3">
                     <p>25.Masukan terhadap Final Exams</p>
-                    <textarea name="Ans_25" id="message" style="height: 150px; width: 500px" onclick="this.value=''">Enter text here...</textarea>
+                    <textarea name="Ans_25" id="message" style="height: 150px; width: 500px; resize:none" onclick="this.value=''">Enter text here...</textarea>
                 </div>
                 <br>
                 <div class="d-grid gap-2 col-6 mx-auto">

@@ -9,9 +9,8 @@ use App\Http\Traits\HasCompositePrimaryKey;
 class Form extends Model
 {
     use HasFactory;
-    use HasCompositePrimaryKey;
     public $incrementing = false;
-    protected $primaryKey = ['subject_id', 'period'];
+    protected $primaryKey = 'id';
 
     public function subject(){
         return $this->belongsTo(Subject::class, 'subject_id', 'id');
