@@ -22,6 +22,7 @@ class CreateSubjectLecturersTable extends Migration
                     ->on('subjects')->onDelete('cascade')
                     ->onUpdate('cascade');
             $table->string('period', 3);
+            $table->boolean('has_filled_form')->default(false);
         });
     }
 
