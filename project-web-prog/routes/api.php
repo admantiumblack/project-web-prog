@@ -30,4 +30,4 @@ Route::get('/auth/logout',
 // form data
 Route::post('/api/form/insert', 
     [FormAPIController::class, 'insertAnswer'])->name('api.form.insert')
-    ->middleware(['validateLecturer', 'validateSCC', 'validateDean']);
+    ->middleware('validateLoggedIn');

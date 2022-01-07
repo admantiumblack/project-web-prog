@@ -44,18 +44,6 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
-        'validateDean' =>[
-            'validateLoggedIn',
-            \App\Http\Middleware\ValidateDean::class
-        ],
-        'validateLecturer' =>[
-            'validateLoggedIn',
-            \App\Http\Middleware\ValidateLecturer::class
-        ],
-        'validateSCC' =>[
-            'validateLoggedIn',
-            \App\Http\Middleware\ValidateSCC::class
-        ]
     ];
 
     /**
@@ -76,6 +64,9 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'validateLoggedIn' => \App\Http\Middleware\ValidateLoggedIn::class,
-        'validateGuest' => \App\Http\Middleware\ValidateGuest::class
+        'validateGuest' => \App\Http\Middleware\ValidateGuest::class,
+        'validateDean' => \App\Http\Middleware\ValidateDean::class,
+        'validateLecturer'=> \App\Http\Middleware\ValidateLecturer::class,
+        'validateSCC' => \App\Http\Middleware\ValidateSCC::class
     ];
 }

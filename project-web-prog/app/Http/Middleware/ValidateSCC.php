@@ -16,6 +16,9 @@ class ValidateSCC
      */
     public function handle(Request $request, Closure $next)
     {
+        if(!$request->hasCookie('user_auth')){
+            return redirect()->back();
+        }
         $role = explode('_', $request->cookie('user_auth'))[1];
         if(!strcmp('SCC', $role)){
             return redirect()->back();
