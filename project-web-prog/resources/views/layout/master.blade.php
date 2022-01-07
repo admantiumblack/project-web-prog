@@ -33,17 +33,17 @@
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav flex-grow-1 pe-3">
-                        <li class="nav-item">
+                        <li class="nav-item mx-auto">
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item mx-auto">
                             <a class="nav-link active" aria-current="page" href="#">Create Feedback Ticket</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item mx-auto">
                             <a class="nav-link active" aria-current="page" href="#">Create Forms</a>
                         </li>
-                        <div class="btn-group dropend mt-3">
-                            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                        <div class="btn-group dropright mt-1">
+                            <button type="button" class="btn dropright-toggle" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 View Result
                             </button>
@@ -52,8 +52,8 @@
                                 <li><button class="dropdown-item" type="button">Feedback Tickets</button></li>
                             </ul>
                         </div>
-                        <div class="btn-group dropend mt-3">
-                            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                        <div class="btn-group dropright mt-1">
+                            <button type="button" class="btn dropdright-toggle" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 Manage
                             </button>
@@ -62,6 +62,9 @@
                                 <li><button class="dropdown-item" type="button">Courses</button></li>
                             </ul>
                         </div>
+                        <li class="nav-item mt-1 mx-auto">
+                            <a class="nav-link active" aria-current="page" href="#">Logout</a>
+                        </li>
                 </div>
             </div>
     </nav>
