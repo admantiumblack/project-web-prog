@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationAPIController;
+use App\Http\Controllers\FormAPIController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/auth/login', [AuthenticationAPIController::class, 'login'])->name('api.login');
 Route::get('/auth/logout', [AuthenticationAPIController::class, 'logout'])->name('api.logout');
+Route::post('/api/form/insert', [FormAPIController::class, 'insertAnswer'])->name('api.form.insert');
