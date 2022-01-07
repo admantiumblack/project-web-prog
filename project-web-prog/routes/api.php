@@ -19,6 +19,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/auth/login', [AuthenticationAPIController::class, 'login'])->name('api.login');
-Route::get('/auth/logout', [AuthenticationAPIController::class, 'logout'])->name('api.logout');
-Route::post('/api/form/insert', [FormAPIController::class, 'insertAnswer'])->name('api.form.insert');
+Route::post('/auth/login', 
+    [AuthenticationAPIController::class, 'login'])->name('api.login')
+    ->middleware('validateGuest');
+
+Route::get('/auth/logout', 
+    [AuthenticationAPIController::class, 'logout'])->name('api.logout')
+    ->middleware('validateLoggedIn');
+
+// form data
+Route::post('/api/form/insert', 
+    [FormAPIController::class, 'insertAnswer'])->name('api.form.insert')
+    ->middleware('validateLoggedIn');

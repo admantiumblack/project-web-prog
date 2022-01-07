@@ -9,10 +9,6 @@ use App\Models\Lecturer;
 class AuthenticationAPIController extends Controller
 {
     public function login(Request $request){
-        if($request->hasCookie('user_auth')){
-            return redirect()->back();
-        }
-
         $request->validate([
             'email' => 'required',
             'password' => 'required'
@@ -44,9 +40,6 @@ class AuthenticationAPIController extends Controller
     }
 
     public function logout(Request $request){
-        if(!$request->hasCookie('user_auth')){
-            return redirect()->route('home');
-        }
         $cookie = Cookie::forget('user_auth');
         return redirect()->route('home')->withCookie($cookie);
     }
