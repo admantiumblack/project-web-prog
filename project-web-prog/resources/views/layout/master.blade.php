@@ -10,11 +10,11 @@
 </head>
 <body>
 
-    <div class="c-page-region">
+    <div class="p-3">
         <h3>@yield('title')</h3>
     </div>
     <hr class="my-0" />
-    <div class="c-page-region">
+    <div class="p-3">
         @yield('content')
     </div>
 
