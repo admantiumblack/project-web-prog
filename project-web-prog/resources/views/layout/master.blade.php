@@ -63,7 +63,7 @@
                             </ul>
                         </div>
                         <li class="nav-item mt-1 mx-auto">
-                            <a class="nav-link active" aria-current="page" href="#">Logout</a>
+                            <a class="nav-link active" aria-current="page" href="{{route('api.logout')}}">Logout</a>
                         </li>
                 </div>
             </div>
