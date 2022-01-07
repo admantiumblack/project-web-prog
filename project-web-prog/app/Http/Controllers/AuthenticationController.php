@@ -10,9 +10,6 @@ class AuthenticationController extends Controller
     //
 
     public function viewLogin(){
-        if(Auth::user()==null){
-            return view('login');
-        }
-        return redirect()->back();
+        return view('login');
     }
 }
