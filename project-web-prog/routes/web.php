@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,5 +18,4 @@ Route::get('/form', [HomeController::class, 'viewForm']);
 
 Route::get('/{id}', [HomeController::class, 'viewHome']);
 
-Route::get('/', [AuthenticationController::class, 'viewLogin']);
 // Route::get('/', [HomeController::class, 'viewHome']);
