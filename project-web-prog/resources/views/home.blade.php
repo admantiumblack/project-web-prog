@@ -29,18 +29,23 @@
                     New complaint ticket
                 </button>
                 <div class="modal fade" id="exampleModal" tabindex="-1">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                             </div>
-                            <div class="modal-body">
-                                SAMPLE TEXT FOR BODY
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
+                            <form action="" method="POST">
+                            {{-- <form action="API URL" method="POST"> --}}
+                                @csrf
+                                <div class="modal-body">
+                                    <label for="complaintTitle">Title</label>
+                                    <input type="text" class="form-control" placeholder="Sample text" name="title" id="complaintTitle" />
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     </div>

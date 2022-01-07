@@ -20,6 +20,7 @@ class CreateFormsTable extends Migration
                     ->onUpdate('cascade');
             $table->datetime('deadline');
             $table->string('period', 3);
+            $table->text('result_path');
         });
     }
 
