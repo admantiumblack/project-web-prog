@@ -28,6 +28,7 @@ class NotificationEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('email.template')->
+        subject('form reminder');
     }
 }
