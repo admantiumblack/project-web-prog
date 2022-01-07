@@ -6,7 +6,7 @@
 
     <div class="row row-cols-1 row-cols-lg-2 p-3 m-2">
         <div class="col-lg-9">
-            <div class="mb-1">Forms</div>
+            <div class="px-2 mb-3"><h1>Active Forms</h1></div>
             <div class="card">
                 <div class="card-body">
                     <div class="list-group">

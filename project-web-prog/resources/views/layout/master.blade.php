@@ -39,38 +39,43 @@
                             <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
                         </li>
                         <li class="nav-item mx-auto">
-                            <a class="nav-link active" aria-current="page" href="#">Create Feedback Ticket</a>
+                            <a class="nav-link active" aria-current="page" href="#">View All Form</a>
                         </li>
                         <li class="nav-item mx-auto">
-                            <a class="nav-link active" aria-current="page" href="#">Create Forms</a>
+                            <a class="nav-link active" aria-current="page" href="#">View All Feedback Ticket</a>
                         </li>
-                        <div class="btn-group dropright mt-1">
+                        <li class="nav-item mx-auto">
+                            <a class="nav-link active" aria-current="page" href="#">Manage Lecturers</a>
+                        </li>
+                        <li class="nav-item mx-auto">
+                            <a class="nav-link active" aria-current="page" href="#">Manage Courses</a>
+                        </li>
+                        {{-- <div class="btn-group dropright mt-1 mx-auto">
                             <button type="button" class="btn dropright-toggle" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                View Result
+                                View All
                             </button>
                             <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" type="button">Forms</button></li>
-                                <li><button class="dropdown-item" type="button">Feedback Tickets</button></li>
+                                <li><a href="#" class="dropdown-item" role="button">Form<a></li>
+                                <li><a href="#" class="dropdown-item" role="button">Feedback Ticket<a></li>
                             </ul>
                         </div>
-                        <div class="btn-group dropright mt-1">
+                        <div class="btn-group dropright mt-1 mx-auto">
                             <button type="button" class="btn dropdright-toggle" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 Manage
                             </button>
                             <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" type="button">Lecturer</button></li>
-                                <li><button class="dropdown-item" type="button">Courses</button></li>
+                                <li><a href="#" class="dropdown-item" role="button">Lecturers<a></li>
+                                <li><a href="#" class="dropdown-item" role="button">Courses<a></li>
                             </ul>
-                        </div>
+                        </div> --}}
                         <li class="nav-item mt-1 mx-auto">
                             <a class="nav-link active" aria-current="page" href="{{ route('api.logout') }}">Logout</a>
                         </li>
                 </div>
             </div>
     </nav>
-    <hr class="my-0" />
     @yield('content')
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
