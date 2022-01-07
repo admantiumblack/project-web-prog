@@ -14,8 +14,13 @@ class CreateSubjectLecturersTable extends Migration
     public function up()
     {
         Schema::create('subject_lecturers', function (Blueprint $table) {
-            $table->string('subject_id', 10);
-            $table->string('lecturer_id', 10);
+            $table->string('id', 15);
+            $table->string('subject_id', 15)->references('id')
+                    ->on('subjects')->onDelete('cascade')
+                    ->onUpdate('cascade');
+            $table->string('lecturer_id', 10)->references('id')
+                    ->on('subjects')->onDelete('cascade')
+                    ->onUpdate('cascade');
             $table->string('period', 3);
         });
     }

@@ -12,7 +12,7 @@ class ClusterScc extends Model
     use HasCompositePrimaryKey;
     protected $table = 'cluster_sccs';
     public $incrementing = false;
-    protected $primaryKey = ['cluster_id', 'lecturer_id', 'period'];
+    protected $primaryKey = ['cluster_id', 'lecturer_id'];
 
     public function lecturer(){
         return $this->belongsTo(Lecturer::class, 'lecturer_id', 'id');

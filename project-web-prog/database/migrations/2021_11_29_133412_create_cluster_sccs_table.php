@@ -14,9 +14,13 @@ class CreateClusterSccsTable extends Migration
     public function up()
     {
         Schema::create('cluster_sccs', function (Blueprint $table) {
-            $table->foreignId('cluster_id');
-            $table->string('lecturer_id', 10);
-            $table->string('period', 3);
+            $table->date('date_appointed');
+            $table->foreignId('cluster_id')->references('id')
+                    ->on('clusters')->onDelete('cascade')
+                    ->onUpdate('cascade');
+            $table->string('lecturer_id', 10)->references('id')
+                    ->on('lecturers')->onDelete('cascade')
+                    ->onUpdate('cascade');
         });
     }
 

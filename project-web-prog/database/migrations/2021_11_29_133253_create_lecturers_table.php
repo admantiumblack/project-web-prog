@@ -19,7 +19,10 @@ class CreateLecturersTable extends Migration
             $table->string('password', 64);
             $table->string('phone_number', 20);
             $table->string('email', 100);
-            $table->foreignId('position_id');
+            $table->foreignId('position_id')->nullable();
+            $table->foreign('position_id')->references('id')
+                    ->on('positions')->onDelete('set null')
+                    ->onUpdate('cascade');
         });
     }
 
