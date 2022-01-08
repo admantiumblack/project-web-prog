@@ -27,9 +27,19 @@ class HomeController extends Controller
                             ->get();
         // dump($forms);
         
+        $formsfilled = DB::table('forms')
+        ->join('subject_lecturers', 'forms.subject_id', '=', 'subject_lecturers.subject_id')
+        ->join('subjects', 'forms.subject_id', '=', 'subjects.id')
+        ->select('forms.*', 'subjects.subject', 'subject_lecturers.lecturer_id', 'subject_lecturers.period as lecture_period')
+        ->where('subject_lecturers.lecturer_id', '=', $id)
+        ->where('subject_lecturers.has_filled_form','=',1)
+        ->whereRaw('forms.period = subject_lecturers.period')
+        ->get();
+
         return view('home', [
             'forms' => $forms,
-            'lecturerSubjects' => $subjectLecturers
+            'lecturerSubjects' => $subjectLecturers,
+            'formsfilled' => $formsfilled
         ]);
     }
     
