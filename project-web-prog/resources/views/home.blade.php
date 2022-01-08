@@ -13,7 +13,7 @@
                         @forelse($forms as $form)
                         {{-- Validasi Deadline --}}
                             @if (date('Y-m-d H:i:s', time()) <= $form->deadline)
-                            <a class="list-group-item list-group-item-action" href="/form/{{$form->id}}">
+                            <a class="list-group-item list-group-item-action" href="{{ route('form', ['id'=>$form->id]) }}">
                                 <h6 class="h5">{{ $form->subject }}</h5>
                                     Deadline: {{ $form->deadline }}
                                     Period: {{$form->period}}
