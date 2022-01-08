@@ -16,12 +16,16 @@ class FormAPIController extends Controller
         if(!$request->hasCookie('user_auth')){
             return redirect()->back();
         }
-
-        $request->validate([
+        $rules = [
             'period' => 'required|string|min:3|max:3',
             'answer' => 'required|array',
             'subject_id' => 'required',
-        ]);
+        ];
+        for($i = 1; $i <= 24; $i++){
+            $rules['Ans_'.$i] = 'required';
+        }
+        
+        $request->validate($rules);
 
         $subject = $request->subject_id;
         $period = $request->period;
@@ -54,12 +58,16 @@ class FormAPIController extends Controller
         $answers[] = '"'.$lecturerId.'"';
         $answers[] = '"'.$lecturerName.'"';
         for($i = 1; $i <= 24; $i++){
-            $answers[] = $request['Ans_'.$id];
+            $answers[] = $request['Ans_'.$i];
         }
         $answerString = implode(',', $answers);
         $file = fopen($form_path, 'a');
         fwrite($file, $answerString.'\n');
         fclose($file);
+
+        $subjectLecturer->has_filled_form = true;
+        $subjectLecturer->save();
+
         // change route
         return redirect()->back();
     }
