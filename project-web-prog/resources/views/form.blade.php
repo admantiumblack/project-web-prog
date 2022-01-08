@@ -50,7 +50,7 @@
                     <input type="radio" class="form-check-input" name="Ans_1" id="Sudah1" value="Sudah">
                     <label for="Sudah1" class="form-check-label">Sudah</label><br>
                     <input type="radio" class="form-check-input" name="Ans_1" id="Other1" value="">
-                    <textarea for="Other1" style="height: 26px; width: 184px; resize:none;" name="other_reason" type="text" placeholder="Other"></textarea><br>
+                    <textarea for="Other1" style="height: 26px; width: 184px; resize:none;" name="other_reason" type="text" placeholder="Other" value=""></textarea><br>
 
                 </div>
                 <br>
@@ -61,7 +61,7 @@
                     <input type="radio" class="form-check-input" name="Ans_2" id="Sudah2" value="Sudah">
                     <label for="Sudah2" class="form-check-label">Sudah</label><br>
                     <input type="radio" class="form-check-input" name="Ans_2" id="Other2" value="">
-                    <textarea for="Other2" style="height: 26px; width: 184px; resize:none;" name="other_reason" type="text" placeholder="Other"></textarea><br>
+                    <textarea for="Other2" style="height: 26px; width: 184px; resize:none;" name="other_reason" type="text" placeholder="Other" value=""></textarea><br>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -71,7 +71,7 @@
                     <input type="radio" class="form-check-input" name="Ans_3" id="Sudah3" value="Sudah">
                     <label for="Sudah3" class="form-check-label">Sudah</label><br>
                     <input type="radio" class="form-check-input" name="Ans_3" id="Other3" value="">
-                    <textarea for="Other3" style="height: 26px; width: 184px; resize:none;" name="other_reason" type="text" placeholder="Other"></textarea><br>
+                    <textarea for="Other3" style="height: 26px; width: 184px; resize:none;" name="other_reason" type="text" placeholder="Other" value=""></textarea><br>
                 </div>
                 <br>
                 <div class="mb-3">
