@@ -33,8 +33,8 @@ class AuthenticationAPIController extends Controller
         $role = $user->position->position;
         $id = $user->id;
         $name = $user->name;
+        error_log($user);
         if($user->clusterScc !== null){
-            error_log('enter');
             $role = 'SCC';
         }
         $userAuth = $id.'_'.$role.'_'.$name;

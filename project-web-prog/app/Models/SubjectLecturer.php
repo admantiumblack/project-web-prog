@@ -13,12 +13,11 @@ class SubjectLecturer extends Model
     public $timestamps = false;
 
     public function subject(){
-        return $this->belongsTo(Subject::class, 
-                'subject_id', 'id');
+        return $this->belongsTo(Subject::class);
     }
 
     public function lecturer(){
-        return $this->belongsTo(Lecturer::class, 'lecturer_id', 'id');
+        return $this->belongsTo(Lecturer::class);
     }
 
 

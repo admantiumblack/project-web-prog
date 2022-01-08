@@ -14,10 +14,10 @@ class ClusterScc extends Model
     protected $primaryKey = 'id';
     public $timestamps = false;
     public function lecturer(){
-        return $this->belongsTo(Lecturer::class, 'lecturer_id', 'id');
+        return $this->belongsTo(Lecturer::class);
     }
 
     public function cluster(){
-        return $this->belongsTo(Cluster::class, 'cluster_id', 'id');
+        return $this->belongsTo(Cluster::class);
     }
 }

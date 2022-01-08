@@ -10,6 +10,6 @@ class Position extends Model
     use HasFactory;
     public $timestamps = false;
     public function lecturers(){
-        return $this->hasMany(Lecturer::class, 'id', 'position_id');
+        return $this->hasMany(Lecturer::class);
     }
 }

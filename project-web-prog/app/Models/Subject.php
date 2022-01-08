@@ -12,15 +12,14 @@ class Subject extends Model
     protected $primaryKey = 'id';
     public $timestamps = false;
     public function cluster(){
-        return $this->belongsTo(Cluster::class, 'cluster_id', 'id');
+        return $this->belongsTo(Cluster::class);
     }
 
     public function subjectLecturers(){
-        return $this->hasMany(SubjectLecturers::class, 
-            'id', 'subject_id');
+        return $this->hasMany(SubjectLecturers::class);
     }
     
     public function forms(){
-        return $this->hasMany(Form::class, 'id', 'subject_id');
+        return $this->hasMany(Form::class);
     }
 }

@@ -11,15 +11,15 @@ class Lecturer extends Model
     public $incrementing = false;
     public $timestamps = false;
     public function position(){
-        return $this->belongsTo(Position::class, 'position_id', 'id');
+        return $this->belongsTo(Position::class);
     }
 
     public function clusterScc(){
-        return $this->hasOne(ClusterScc::class, 'id', 'lecturer_id');
+        return $this->hasOne(ClusterScc::class);
     }
 
     public function subjectLecturers(){
-        return $this->hasMany(SubjectLecturer::class, 'id', 'lecturer_id');
+        return $this->hasMany(SubjectLecturer::class);
     }
 
 }

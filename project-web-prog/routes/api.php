@@ -32,3 +32,7 @@ Route::get('/auth/logout',
 Route::post('/form/insert', 
     [FormAPIController::class, 'insertAnswer'])->name('api.form.insert')
     ->middleware('validateLoggedIn');
+
+    Route::post('/form/create', 
+    [FormAPIController::class, 'createForm'])->name('api.form.insert')
+    ->middleware('validateSCC');

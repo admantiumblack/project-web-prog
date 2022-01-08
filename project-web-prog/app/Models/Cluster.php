@@ -10,11 +10,11 @@ class Cluster extends Model
     use HasFactory;
     public $timestamps = false;
     public function clusterSccs(){
-        return $this->hasMany(ClusterScc::class, 'id', 'cluster_id');
+        return $this->hasMany(ClusterScc::class);
     }
 
     public function subjects(){
-        return $this->hasMany(Subjects::class, 'id', 'cluster_id');
+        return $this->hasMany(Subjects::class);
     }
 
 }

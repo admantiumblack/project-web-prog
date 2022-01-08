@@ -23,7 +23,7 @@ class FormAPIController extends Controller
         }
         // error_log(implode('-', $rules));
         // error_log(implode('-', $request->input()));
-        // $request->validate($rules);
+        $request->validate($rules);
         error_log('rule success');
         $subject = $request->subject_id;
         $period = $request->period;
@@ -66,11 +66,11 @@ class FormAPIController extends Controller
         $answers[] = '"'.$lecturerId.'"';
         $answers[] = '"'.$lecturerName.'"';
         for($i = 1; $i <= 25; $i++){
-            $answers[] = $request['Ans_'.$i];
+            $answers[] = '"'.$request['Ans_'.$i].'"';
         }
         $answerString = implode(',', $answers);
         $file = fopen($form_path, 'a');
-        fwrite($file, $answerString.'\n');
+        fwrite($file, $answerString."\n");
         fclose($file);
 
         $subjectLecturer = SubjectLecturer::find($id);
