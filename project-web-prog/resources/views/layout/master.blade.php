@@ -35,10 +35,13 @@
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav flex-grow-1 pe-3">
+                        @if (Cookie::get('user_auth') !== null)
+                            
                         <li class="nav-item mx-auto">
                             {{-- Semua --}}
                             <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
                         </li>
+                        @if (strcmp(explode('_', Cookie::get('user_auth'))[1], 'SCC'))
                         <li class="nav-item mx-auto">
                             {{-- SCC --}}
                             <a class="nav-link active" aria-current="page" href="#">View All Form</a>
@@ -47,20 +50,25 @@
                             {{-- SCC --}}
                             <a class="nav-link active" aria-current="page" href="#">View All Feedback Ticket</a>
                         </li>
-                        <li class="nav-item mx-auto">
-                            {{-- Kajur / Admin --}}
-                            <a class="nav-link active" aria-current="page" href="#">Manage Lecturers</a>
-                        </li>
-                        <li class="nav-item mx-auto">
-                            {{-- Kajur / Admin --}}
-                            <a class="nav-link active" aria-current="page" href="#">Manage Courses</a>
-                        </li>
+                        @endif
+
+                            @if (strcmp(explode('_', Cookie::get('user_auth'))[1], 'Dean'))
+                            <li class="nav-item mx-auto">
+                                {{-- Kajur / Admin --}}
+                                <a class="nav-link active" aria-current="page" href="#">Manage Lecturers</a>
+                            </li>
+                            <li class="nav-item mx-auto">
+                                {{-- Kajur / Admin --}}
+                                <a class="nav-link active" aria-current="page" href="#">Manage Courses</a>
+                            </li>
+                            @endif
                         <li class="nav-item mt-1 mx-auto">
                             {{-- Semua --}}
                             <a class="nav-link active" aria-current="page" href="{{ route('api.logout') }}">Logout</a>
                         </li>
+                        @endif
+                    </div>
                 </div>
-            </div>
     </nav>
     @yield('content')
 
