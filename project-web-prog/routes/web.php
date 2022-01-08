@@ -24,7 +24,7 @@ Route::get('/', [HomeController::class, 'viewHome'])
 Route::get('/login', [AuthenticationController::class, 'viewLogin'])->name('login')
 ->middleware(['validateGuest']);
 
-Route::get('/form/{id}', [FormController::class, 'viewForm'])
-->name('form')->middleware('validateLoggedIn');
+
+Route::get('/form/{id}', [FormController::class, 'viewInputForm'])->name('form')->middleware('validateLoggedIn');
 
 // Route::get('/', [HomeController::class, 'viewHome']);
