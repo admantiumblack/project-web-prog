@@ -12,7 +12,7 @@
         <form action="" method="POST" id="searchLecture">
             @csrf
             <div class="modal-body row m-0 gy-2">
-                <label for="selectCourses">Select Period:</label>
+                <label for="selectPeriod">Select Period:</label>
                 <div>
                     <select class="form-select">
                         @forelse (Query Period)
@@ -23,7 +23,7 @@
                         @endforelse
                     </select>
                 </div>
-                <label for="selectCourses">Select Rumpunan:</label>
+                <label for="selectRumpunan">Select Rumpunan:</label>
                 <div>
                     <select class="form-select">
                         @forelse (Query Rumpunan)
