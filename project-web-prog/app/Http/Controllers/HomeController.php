@@ -16,6 +16,7 @@ class HomeController extends Controller
         ->join('subjects', 'forms.subject_id', '=', 'subjects.id')
         ->select('forms.*', 'subjects.subject', 'subject_lecturers.lecturer_id', 'subject_lecturers.period as lecture_period')
         ->where('subject_lecturers.lecturer_id', '=', $id)
+        ->where('subject_lecturers.has_filled_form','=',0)
         ->where('forms.deadline', '>', date('Y-m-d H:i:s', time()))
         ->get();
 
