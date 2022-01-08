@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\SubjectLecturer;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,11 +16,17 @@ class HomeController extends Controller
         ->join('subjects', 'forms.subject_id', '=', 'subjects.id')
         ->select('forms.*', 'subjects.subject', 'subject_lecturers.lecturer_id')
         ->where('subject_lecturers.lecturer_id', '=', $id)
+        ->where('forms.period', '=', 'subject_lecturers.period')
         ->get();
-        
+
+        $subjectLecturers = SubjectLecturer::where('lecturer_id', $id)
+                            ->with('subject')->get();
         // dump($forms);
         
-        return view('home')->with('forms', $forms);
+        return view('home', [
+            'forms' => $forms,
+            'lecturerSubjects' => $subjectLecturers
+        ]);
     }
     
 }
