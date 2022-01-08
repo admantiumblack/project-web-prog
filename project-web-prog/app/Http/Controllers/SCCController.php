@@ -8,10 +8,10 @@ class SCCController extends Controller
 {
     //
     public function viewAllForm(){
-        return view('viewAllForm');
+        return view('view.formresult');
     }
 
     public function viewAllFeedback(){
-        return view('viewAllFeedback');
+        return view('view.feedbackticket');
     }
 }
