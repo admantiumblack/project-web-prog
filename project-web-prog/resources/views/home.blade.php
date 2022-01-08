@@ -6,22 +6,64 @@
 
     <div class="row row-cols-1 row-cols-lg-2 p-3 m-2">
         <div class="col-lg-9">
-            <div class="px-2 mb-3"><h1>Active Forms</h1></div>
+            <div class="px-2 mb-3"><h1>Forms</h1></div>
             <div class="card">
                 <div class="card-body">
-                    <div class="list-group">
-                        @forelse($forms as $form)
-                        {{-- Validasi Deadline --}}
-                            @if (date('Y-m-d H:i:s', time()) <= $form->deadline)
-                            <a class="list-group-item list-group-item-action" href="{{ route('form', ['id'=>$form->id]) }}">
-                                <h6 class="h5">{{ $form->subject }}</h5>
-                                    Deadline: {{ $form->deadline }}
-                                    Period: {{$form->period}}
-                            </a>
-                            @endif
-                        @empty
-                            No forms
-                        @endforelse
+                    <nav>
+                        <div class="nav nav-pills nav-fill mb-3" id="nav-tab" role="tablist">
+                          <button class="nav-link active" id="nav-pending-tab" data-bs-toggle="tab" data-bs-target="#nav-active" type="button" role="tab" aria-controls="nav-active" aria-selected="true">Active</button>
+                          <button class="nav-link" id="nav-done-tab" data-bs-toggle="tab" data-bs-target="#nav-done" type="button" role="tab" aria-controls="nav-done" aria-selected="false">Done</button>
+                          {{-- <button class="nav-link" id="nav-archived-tab" data-bs-toggle="tab" data-bs-target="#nav-archived" type="button" role="tab" aria-controls="nav-archived" aria-selected="false">Archived</button> --}}
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-active" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <div class="list-group">
+                                @forelse($forms as $form)
+                                {{-- Validasi Deadline --}}
+                                    @if (date('Y-m-d H:i:s', time()) <= $form->deadline)
+                                    <a class="list-group-item list-group-item-action {{ $form->has_filled_form ? 'disabled' : '' }}" href="{{ route('form', ['id'=>$form->id]) }}">
+                                        <h6 class="h5">{{ $form->subject }}</h5>
+                                            Deadline: {{ $form->deadline }}
+                                            Period: {{$form->period}}
+                                    </a>
+                                    @endif
+                                @empty
+                                    No forms
+                                @endforelse
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-done" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <div class="list-group">
+                                @forelse($forms as $form)
+                                {{-- Validasi Deadline --}}
+                                    @if (date('Y-m-d H:i:s', time()) > $form->deadline)
+                                    <a class="list-group-item list-group-item-action disabled" href="{{ route('form', ['id'=>$form->id]) }}">
+                                        <h6 class="h5">{{ $form->subject }}</h5>
+                                            Deadline: {{ $form->deadline }}
+                                            Period: {{$form->period}}
+                                    </a>
+                                    @endif
+                                @empty
+                                    No forms
+                                @endforelse
+                            </div>
+                        </div>
+                        {{-- <div class="tab-pane fade" id="nav-archived" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            <div class="list-group">
+                                @forelse($forms as $form)
+                                    @if (period not current periodnow)
+                                    <a class="list-group-item list-group-item-action" href="{{ route('form', ['id'=>$form->id]) }}">
+                                        <h6 class="h5">{{ $form->subject }}</h5>
+                                            Deadline: {{ $form->deadline }}
+                                            Period: {{$form->period}}
+                                    </a>
+                                    @endif
+                                @empty
+                                    No forms
+                                @endforelse
+                            </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
