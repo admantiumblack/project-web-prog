@@ -24,7 +24,7 @@
                     <input type="radio" class="form-check-input" name="Ans_1" id="Sudah1" value="Sudah">
                     <label for="Sudah1" class="form-check-label">Sudah</label><br>
                     <input type="radio" class="form-check-input" name="Ans_1" value="">
-                    <input type="text" name="other_reason" placeholder="Other" /><br>
+                    <input type="text" name="other_reason" placeholder="Other" value=""/><br>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -34,7 +34,7 @@
                     <input type="radio" class="form-check-input" name="Ans_2" id="Sudah2" value="Sudah">
                     <label for="Sudah2" class="form-check-label">Sudah</label><br>
                     <input type="radio" class="form-check-input" name="Ans_2" value="">
-                    <input type="text" name="other_reason" placeholder="Other" /><br>
+                    <input type="text" name="other_reason" placeholder="Other" value=""/><br>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -44,7 +44,7 @@
                     <input type="radio" class="form-check-input" name="Ans_3" id="Sudah3" value="Sudah">
                     <label for="Sudah3" class="form-check-label">Sudah</label><br>
                     <input type="radio" class="form-check-input" name="Ans_3" value="">
-                    <input type="text" name="other_reason" placeholder="Other" /><br>
+                    <input type="text" name="other_reason" placeholder="Other" value=""/><br>
                 </div>
                 <br>
                 <div class="mb-3">
