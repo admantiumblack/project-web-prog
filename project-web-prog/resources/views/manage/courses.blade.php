@@ -48,7 +48,38 @@
             </div>
         </form>
     </div>
-    <div class ="table">
-        <!--  -->
+    <div class="card-body">
+        <table class="table align-middle">
+            <thead>
+                <tr>
+                    <th class="col-2">CheckBox</th>
+                    <th class="col-3">Nama Dosen</th>
+                    <th class="col-3">Kode Dosen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="" value="">
+                    </td>
+                    <td>Sean Oswald Ramli</td>
+                    <td>D6900</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="" value="">
+                    </td>
+                    <td>Roland</td>
+                    <td>D0001</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="" value="">
+                    </td>
+                    <td>Samuel Yang</td>
+                    <td>D0420</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 @endsection
