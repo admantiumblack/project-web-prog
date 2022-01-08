@@ -30,7 +30,9 @@ class FormAPIController extends Controller
         $id = $subject.$period.$lecturerId;
         $subjectLecturer = SubjectLecturer::with('subject.forms')
                 ->where('id', $id)
-                ->whereRelation('forms', 'period', '=', $period)->first();
+                ->whereRelation('forms', 'period', '=', $period)
+                ->whereRelation('forms', 'deadline', '>', date('Y-m-d H:i:s', time()))
+                ->first();
         if($subjectLecturer->subject->forms === null){
             return redirect()->back()->withErrors([
                 'errors' => [
