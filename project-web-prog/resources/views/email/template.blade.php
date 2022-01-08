@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{$title}}</title>
+    <title>{{$details['title']}}</title>
 </head>
 <body>
-    <h1>{{ $header }}</h1>
-    <p>{{ $body }}</p>
+    <h1>{{ $details['header'] }}</h1>
+    <p>{{ $details['content'] }}</p>
    
     <p>Thank you</p>
 </body>

@@ -16,9 +16,9 @@ class NotificationEmail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($details)
     {
-        //
+        $this->details = $details;
     }
 
     /**
@@ -28,7 +28,7 @@ class NotificationEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('email.template')->
-        subject('form reminder');
+        return $this->subject('form reminder')
+                ->view('email.template', ['details' => $this->details]);
     }
 }

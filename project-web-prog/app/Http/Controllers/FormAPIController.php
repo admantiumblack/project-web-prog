@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Form;
 use App\Models\SubjectLecturer;
+use App\Models\Subject;
 use App\Models\ClusterScc;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use App\Jobs\SendReminderEmail;
 
 class FormAPIController extends Controller
 {
@@ -85,27 +87,34 @@ class FormAPIController extends Controller
 
     public function createForm(Request $request){
 
+        error_log($request->deadline);
+
         $request->validate([
             'period' => 'required|min:3|max:3',
             'deadline' => 
-            'date|required|date_format:Y-m-d H:i:s|after:'.
-            date('Y-m-d H:i:s', time() + (24 * 60 * 60)).'|before_or_equal:'.
-            date('Y-m-d H:i:s', time() + (7 * 24 * 60 * 60 + 1))
+            'date|required|date_format:Y-m-d|after:'.
+            date('Y-m-d', time()).'|before_or_equal:'.
+            date('Y-m-d', time() + (7 * 24 * 60 * 60 + 1))
         ]);
 
         $sccId = explode('_', $request->cookie('user_auth'))[0];
         
-        $scc = ClusterScc::where('lecturer_id', $sccId)
-                ->with('cluster.subjects.forms')
-                ->whereRelation('forms', 'period', '=', $request->period)
-                ->first();
-
-        $nForms = 0;
-        foreach($request->cluster->subjects as $subject){
-            foreach($subject->forms as $form){
-                $nForms++;
-            }
-        }
+        // $scc = ClusterScc::where('lecturer_id', $sccId)
+        //         ->with('cluster.subjects.forms')
+        //         ->whereRelation('forms', 'period', '=', $request->period)
+        //         ->first();
+        $id = ClusterScc::where('lecturer_id', $sccId)->first()->cluster_id;
+        $nForms = Subject::where('subjects.cluster_id', $id)
+                ->join('forms', 'forms.subject_id', '=', 'subjects.id')
+                ->where('forms.period', $request->period)
+                ->count();
+        error_log($nForms);
+        // $nForms = 0;
+        // foreach($request->cluster->subjects as $subject){
+        //     foreach($subject->forms as $form){
+        //         $nForms++;
+        //     }
+        // }
 
         if($nForms > 0){
             return redirect()->back()->withErrors([
@@ -115,7 +124,7 @@ class FormAPIController extends Controller
 
         // $clusterScc = ClusterScc::where('lecturer_id', $sccId)
         //         ->with('cluster.subjects')->get();
-        $subjects = $scc->cluster->subjects;
+        $subjects = Subject::where('subjects.cluster_id', $id)->get();
 
         $path = public_path('storage/form_results');
         $template = storage_path('template.csv');
@@ -128,19 +137,30 @@ class FormAPIController extends Controller
             $filepath = $path.'/'.$filename;
             File::copy($template, $filepath);
             $form = new Form();
+            $form->id = $request->period.$subject->id;
             $form->subject_id = $subject->id;
-            $form->deadline = $request->deadline;
+            $form->deadline = $request->deadline.' 00:00:00';
             $form->period = $request->period;
             $form->result_path = 'storage/form_results/'.$filename;
             $form->save();
         }
-        $this->sendEmail($request, $scc, $request->period);
+        $this->sendEmail($request, $id, $request->period, $request->deadline.' 00:00:00');
 
 
         return redirect()->route('home');
     }
 
-    private function sendEmail(Request $request, $clusterId, $period){
+    private function sendEmail(Request $request, $clusterId, $period, $deadline){
+
+        $lecturerContents = Subject::where('subjects.cluster_id', $clusterId)
+                    ->join('subject_lecturers', 'subject_lecturers.subject_id', '=', 'subjects.id')
+                    ->join('lecturers', 'lecturers.id', '=', 'subject_lecturers.lecturer_id')
+                    ->where('subject_lecturers.period', $period)
+                    ->select('lecturers.email', 'subjects.subject', 
+                    'subject_lecturers.period', 'lecturers.name',
+                    'subjects.subject')
+                    ->get();
+        SendReminderEmail::dispatch($lecturerContents);
 
     }
 
