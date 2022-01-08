@@ -94,7 +94,7 @@
                                         <h5 class="modal-title" id="exampleModalLabel">New form</h5>
                                     </div>
                                     {{-- <form action="API URL" method="POST"> --}}
-                                    <form action="" method="POST" id="formcreateForm">
+                                    <form action="{{route('api.form.create')}}" method="POST" id="formcreateForm">
                                         @csrf
                                         <div class="modal-body row m-0 g-2">
                                             {{-- <input type="hidden" value="SCC ID HERE"> --}}

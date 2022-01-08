@@ -17,7 +17,7 @@ class ValidateGuest
     public function handle(Request $request, Closure $next)
     {
         if($request->hasCookie('user_auth')){
-            return redirect()->back();
+            return redirect()->route('home');
         }
         return $next($request);
     }

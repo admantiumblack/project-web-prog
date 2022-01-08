@@ -20,7 +20,7 @@ class ValidateDean
             return redirect()->route('login');
         }
         $role = explode('_', $request->cookie('user_auth'))[1];
-        if(!strcmp('Dean', $role)){
+        if(strcmp('Dean', $role) != 0){
             return redirect()->back();
         }
         return $next($request);

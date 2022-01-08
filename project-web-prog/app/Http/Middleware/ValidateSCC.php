@@ -20,7 +20,7 @@ class ValidateSCC
             return redirect()->route('login');
         }
         $role = explode('_', $request->cookie('user_auth'))[1];
-        if(!strcmp('SCC', $role)){
+        if(strcmp('SCC', $role) != 0){
             return redirect()->back();
         }
         return $next($request);
