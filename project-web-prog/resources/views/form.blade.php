@@ -1,3 +1,29 @@
+{{--  function validation() {
+         var btnRadioO = document.getElementsByName("(name)");
+         var isbtnRadioChecked = false;;
+         for(i=0; i < btnRadioO.length; i++){
+            if(btnRadioO[i].checked){
+                isbtnRadioChecked = true;
+                }
+            }
+            if(!isbtnRadioChecked) {
+                errMsgO.innerHTML = "Please select all the answers";
+            } else {
+                errMsgO.innerHTML = "";
+            }
+        }
+
+        function openSessionPopup (session) {
+         window.open(session, 'window', 'width=500,height=500,scrollbars=yes,status=no');
+        }
+
+        function myClickHandler(){
+            if(validation()){
+                showSessionPopup();
+            }
+        }
+--}}
+
 @extends('layout.master')
 
 @section('title', 'Review Form')
@@ -23,8 +49,9 @@
                     <label for="Belum1" class="form-check-label">Belum</label><br>
                     <input type="radio" class="form-check-input" name="Ans_1" id="Sudah1" value="Sudah">
                     <label for="Sudah1" class="form-check-label">Sudah</label><br>
-                    <input type="radio" class="form-check-input" name="Ans_1" value="">
-                    <input type="text" name="other_reason" placeholder="Other" value=""/><br>
+                    <input type="radio" class="form-check-input" name="Ans_1" id="Other1" value="">
+                    <textarea for="Other1" style="height: 26px; width: 184px; resize:none;" name="other_reason" type="text" placeholder="Other"></textarea><br>
+
                 </div>
                 <br>
                 <div class="mb-3">
@@ -33,8 +60,8 @@
                     <label for="Belum2" class="form-check-label">Belum</label><br>
                     <input type="radio" class="form-check-input" name="Ans_2" id="Sudah2" value="Sudah">
                     <label for="Sudah2" class="form-check-label">Sudah</label><br>
-                    <input type="radio" class="form-check-input" name="Ans_2" value="">
-                    <input type="text" name="other_reason" placeholder="Other" value=""/><br>
+                    <input type="radio" class="form-check-input" name="Ans_2" id="Other2" value="">
+                    <textarea for="Other2" style="height: 26px; width: 184px; resize:none;" name="other_reason" type="text" placeholder="Other"></textarea><br>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -43,8 +70,8 @@
                     <label for="Belum3" class="form-check-label">Belum</label><br>
                     <input type="radio" class="form-check-input" name="Ans_3" id="Sudah3" value="Sudah">
                     <label for="Sudah3" class="form-check-label">Sudah</label><br>
-                    <input type="radio" class="form-check-input" name="Ans_3" value="">
-                    <input type="text" name="other_reason" placeholder="Other" value=""/><br>
+                    <input type="radio" class="form-check-input" name="Ans_3" id="Other3" value="">
+                    <textarea for="Other3" style="height: 26px; width: 184px; resize:none;" name="other_reason" type="text" placeholder="Other"></textarea><br>
                 </div>
                 <br>
                 <div class="mb-3">
