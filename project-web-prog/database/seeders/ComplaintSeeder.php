@@ -20,7 +20,6 @@ class ComplaintSeeder extends Seeder
         for($i = 0; $i < 10; $i++){
             $choice = $faker->unique()->randomElement($lecturerSubjects);
             DB::table('complaints')->insert([
-                'lecturer_id' => $choice->lecturer_id,
                 'subject_id' => $choice->subject_id,
                 'title' => $faker->sentence($nbWords = 4, $variableNbWords = true),
                 'content' => $faker->text($maxNbChars = 200)

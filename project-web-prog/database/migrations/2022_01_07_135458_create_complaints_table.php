@@ -15,8 +15,6 @@ class CreateComplaintsTable extends Migration
     {
         Schema::create('complaints', function (Blueprint $table) {
             $table->id();
-            $table->string('lecturer_id', 10)->nullable()->references('id')
-            ->on('lecturers')->onDelete('set null')->onUpdate('cascade');
             $table->string('subject_id', 15)->nullable()->references('id')
             ->on('subjects')->onDelete('set null')->onUpdate('cascade');
             $table->longText('content');
