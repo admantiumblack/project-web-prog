@@ -12,7 +12,7 @@ class ClusterScc extends Model
     protected $table = 'cluster_sccs';
     public $incrementing = false;
     protected $primaryKey = 'id';
-
+    public $timestamps = false;
     public function lecturer(){
         return $this->belongsTo(Lecturer::class, 'lecturer_id', 'id');
     }

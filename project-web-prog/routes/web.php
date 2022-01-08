@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SCCController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,9 @@ Route::get('/', [HomeController::class, 'viewHome'])
 Route::get('/login', [AuthenticationController::class, 'viewLogin'])->name('login')
 ->middleware(['validateGuest']);
 
+Route::get('/viewallform', [SCCController::class, 'viewAllForm'])->name('viewAllForm')->middleware('validateSCC');
+
+Route::get('/viewallfeedback', [SCCController::class, 'viewAllFeedback'])->name('viewAllFeed')->middleware('validateSCC');
 
 Route::get('/form/{id}', [FormController::class, 'viewInputForm'])->name('form')->middleware('validateLoggedIn');
 

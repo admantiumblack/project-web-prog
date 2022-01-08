@@ -13,9 +13,6 @@ class FormAPIController extends Controller
 {
     public function insertAnswer(Request $request){
         
-        if(!$request->hasCookie('user_auth')){
-            return redirect()->back();
-        }
         $rules = [
             'period' => 'required|string|min:3|max:3',
             'answer' => 'required|array',
@@ -24,21 +21,28 @@ class FormAPIController extends Controller
         for($i = 1; $i <= 25; $i++){
             $rules['Ans_'.$i] = 'required';
         }
-        error_log(implode('-', $rules));
-        error_log(implode('-', $request->input()));
-        $request->validate($rules);
+        // error_log(implode('-', $rules));
+        // error_log(implode('-', $request->input()));
+        // $request->validate($rules);
         error_log('rule success');
         $subject = $request->subject_id;
         $period = $request->period;
-        $lecturerId = explode($request->cookie('user_auth'))[0];
-        $lecturerName = explode($request->cookie('user_auth'))[2];
+        $lecturerId = explode('_', $request->cookie('user_auth'))[0];
+        $lecturerName = explode('_', $request->cookie('user_auth'))[2];
         $id = $subject.$period.$lecturerId;
-        $subjectLecturer = SubjectLecturer::with('subject.forms')
-                ->where('id', $id)
-                ->whereRelation('forms', 'period', '=', $period)
-                ->whereRelation('forms', 'deadline', '>', date('Y-m-d H:i:s', time()))
-                ->first();
-        if($subjectLecturer->subject->forms === null){
+        $subjectLecturer = SubjectLecturer::where('subject_lecturers.id', $id)
+                ->join('subjects', 'subjects.id', '=', 'subject_lecturers.subject_id')
+                ->join('forms', 'forms.subject_id', '=', 'subjects.id')
+                // ->whereRelation('subject.forms', 'period', '=', $period)
+                ->where('forms.deadline', '>', date('Y-m-d H:i:s', time()))
+                ->select('forms.*', 'subjects.id',
+                     'subject_lecturers.has_filled_form',
+                      'subject_lecturers.period as lecture_period')
+                ->whereRaw('forms.period = subject_lecturers.period')
+                ->get();
+
+        error_log(count($subjectLecturer));
+        if(count($subjectLecturer) != 1){
             error_log('form error');
             return redirect()->back()->withErrors([
                 'errors' => [
@@ -46,6 +50,7 @@ class FormAPIController extends Controller
                 ]
             ])->withInput($request->input());
         }
+        $subjectLecturer = $subjectLecturer[0];
         if($subjectLecturer->has_filled_form){
             error_log('form has been filled');
             return redirect()->back()->withErrors([
@@ -55,7 +60,7 @@ class FormAPIController extends Controller
             ])->withInput($request->input());
         }
 
-        $form_path = $subjectLecturer->subject->forms[0]->result_path;
+        $form_path = $subjectLecturer->result_path;
         $public_path = public_path($form_path);
         $answers = [];
         $answers[] = '"'.$lecturerId.'"';
@@ -67,6 +72,8 @@ class FormAPIController extends Controller
         $file = fopen($form_path, 'a');
         fwrite($file, $answerString.'\n');
         fclose($file);
+
+        $subjectLecturer = SubjectLecturer::find($id);
 
         $subjectLecturer->has_filled_form = true;
         $subjectLecturer->save();

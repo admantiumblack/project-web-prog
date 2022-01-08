@@ -13,7 +13,7 @@
                         @forelse($forms as $form)
                         {{-- Validasi Deadline --}}
                             @if (date('Y-m-d H:i:s', time()) <= $form->deadline)
-                            <a class="list-group-item list-group-item-action" href="/form/{{$form->id}}">
+                            <a class="list-group-item list-group-item-action" href="{{ route('form', ['id'=>$form->id]) }}">
                                 <h6 class="h5">{{ $form->subject }}</h5>
                                     Deadline: {{ $form->deadline }}
                                     Period: {{$form->period}}
@@ -42,10 +42,10 @@
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Complaint Ticket</h5>
                                     </div>
-                                    <div class="modal-body row m-0 gy-2">
-                                        {{-- <form action="API URL" method="POST"> --}}
-                                        <form action="" method="POST" id="complaintForm">
-                                            @csrf
+                                    {{-- <form action="API URL" method="POST"> --}}
+                                    <form action="" method="POST" id="complaintForm">
+                                        @csrf
+                                        <div class="modal-body row m-0 gy-2">
                                             <div>
                                                 <label for="complaintTitle">Title:</label>
                                                 <input type="text" class="form-control" placeholder="Insert title here"
@@ -53,7 +53,7 @@
                                             </div>
                                             <label for="selectCourses">Select Courses:</label>
                                             <div>
-                                                <select class="container custom-select custom-select-lg p-3 mt-0">
+                                                <select class="form-select">
                                                     @forelse ($lecturerSubjects as $lecturerSubject)
                                                     <option selected value="{{$lecturerSubject->subject->id}}">{{$lecturerSubject->subject->id}} - {{$lecturerSubject->subject->subject}}</option>
                                                     @empty
@@ -67,8 +67,8 @@
                                                 <textarea class="form-control" placeholder="Insert message here"
                                                     name="title" id="complaintTitle" rows="8" style="resize: none;"></textarea>
                                             </div>
-                                        </form>
-                                    </div>
+                                        </div>
+                                    </form>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary" form="complaintForm">Save changes</button>
@@ -78,7 +78,8 @@
                         </div>
                     </div>
                 </div>
-
+                @if (strcmp(explode('_', Cookie::get('user_auth'))[1], 'SCC') == 0)
+                    
                 <div class="col m-0 mb-2">
                     <div class="mb-1">Create Form</div>
                     <div class="card p-0">
@@ -92,10 +93,10 @@
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">New form</h5>
                                     </div>
-                                    <div class="modal-body row m-0 gy-2">
-                                        {{-- <form action="API URL" method="POST"> --}}
-                                        <form action="" method="POST" id="formcreateForm">
-                                            @csrf
+                                    {{-- <form action="API URL" method="POST"> --}}
+                                    <form action="" method="POST" id="formcreateForm">
+                                        @csrf
+                                        <div class="modal-body row m-0 g-2">
                                             {{-- <input type="hidden" value="SCC ID HERE"> --}}
                                             <input type="hidden" value="">
                                             <div>
@@ -107,8 +108,8 @@
                                                 <label for="formDeadline">Deadline:</label>
                                                 <input type="date" class="form-control" name="deadline">
                                             </div>
-                                        </form>
-                                    </div>
+                                        </div>
+                                    </form>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary" form="formcreateForm">Save changes</button>
@@ -118,6 +119,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
     </div>
