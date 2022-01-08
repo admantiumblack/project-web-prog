@@ -18,7 +18,7 @@ class CreateLecturersTable extends Migration
             $table->string('name', 100);
             $table->string('password', 100);
             $table->string('phone_number', 20);
-            $table->string('email', 100);
+            $table->string('email', 100)->unique();
             $table->foreignId('position_id')->nullable();
             $table->foreign('position_id')->references('id')
                     ->on('positions')->onDelete('set null')
