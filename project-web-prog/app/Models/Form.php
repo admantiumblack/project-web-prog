@@ -11,7 +11,7 @@ class Form extends Model
     use HasFactory;
     public $incrementing = false;
     protected $primaryKey = 'id';
-
+    public $timestamps = false;
     public function subject(){
         return $this->belongsTo(Subject::class, 'subject_id', 'id');
     }

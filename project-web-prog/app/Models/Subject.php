@@ -10,7 +10,7 @@ class Subject extends Model
     use HasFactory;
     public $incrementing = false;
     protected $primaryKey = 'id';
-
+    public $timestamps = false;
     public function cluster(){
         return $this->belongsTo(Cluster::class, 'cluster_id', 'id');
     }

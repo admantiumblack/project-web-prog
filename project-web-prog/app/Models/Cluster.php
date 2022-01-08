@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Cluster extends Model
 {
     use HasFactory;
-    
+    public $timestamps = false;
     public function clusterSccs(){
         return $this->hasMany(ClusterScc::class, 'id', 'cluster_id');
     }

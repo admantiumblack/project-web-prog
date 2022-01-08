@@ -9,6 +9,7 @@ class Lecturer extends Model
 {
     use HasFactory;
     public $incrementing = false;
+    public $timestamps = false;
     public function position(){
         return $this->belongsTo(Position::class, 'position_id', 'id');
     }

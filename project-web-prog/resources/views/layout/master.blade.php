@@ -41,7 +41,7 @@
                             {{-- Semua --}}
                             <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
                         </li>
-                        @if (strcmp(explode('_', Cookie::get('user_auth'))[1], 'SCC'))
+                        @if (strcmp(explode('_', Cookie::get('user_auth'))[1], 'SCC') == 0)
                         <li class="nav-item mx-auto">
                             {{-- SCC --}}
                             <a class="nav-link active" aria-current="page" href="{{ route('viewAllForm') }}">View All Form</a>
@@ -52,7 +52,7 @@
                         </li>
                         @endif
 
-                            @if (strcmp(explode('_', Cookie::get('user_auth'))[1], 'Dean'))
+                            @if (strcmp(explode('_', Cookie::get('user_auth'))[1], 'Dean') == 0)
                             <li class="nav-item mx-auto">
                                 {{-- Kajur / Admin --}}
                                 <a class="nav-link active" aria-current="page" href="#">Manage Lecturers</a>

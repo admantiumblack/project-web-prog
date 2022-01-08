@@ -78,7 +78,8 @@
                         </div>
                     </div>
                 </div>
-
+                @if (strcmp(explode('_', Cookie::get('user_auth'))[1], 'SCC') == 0)
+                    
                 <div class="col m-0 mb-2">
                     <div class="mb-1">Create Form</div>
                     <div class="card p-0">
@@ -118,6 +119,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
     </div>
