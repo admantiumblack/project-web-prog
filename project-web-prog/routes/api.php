@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationAPIController;
 use App\Http\Controllers\FormAPIController;
+use App\Http\Controllers\ComplaintAPIController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -36,3 +37,7 @@ Route::post('/form/insert',
 Route::post('/form/create', 
     [FormAPIController::class, 'createForm'])->name('api.form.create')
     ->middleware('validateSCC');
+
+Route::post('/complaint', 
+    [ComplaintAPIController::class, 'insertNewComplaint'])
+    ->name('api.complaint.insert')->middleware('validateLoggedIn');

@@ -43,7 +43,7 @@
                                         <h5 class="modal-title" id="exampleModalLabel">Complaint Ticket</h5>
                                     </div>
                                     {{-- <form action="API URL" method="POST"> --}}
-                                    <form action="" method="POST" id="complaintForm">
+                                    <form action="{{route('api.complaint.insert')}}" method="POST" id="complaintForm">
                                         @csrf
                                         <div class="modal-body row m-0 gy-2">
                                             <div>
@@ -53,7 +53,7 @@
                                             </div>
                                             <label for="selectCourses">Select Courses:</label>
                                             <div>
-                                                <select class="form-select">
+                                                <select class="form-select" name="subject_id">
                                                     @forelse ($lecturerSubjects as $lecturerSubject)
                                                     <option selected value="{{$lecturerSubject->subject->id}}">{{$lecturerSubject->subject->id}} - {{$lecturerSubject->subject->subject}}</option>
                                                     @empty
@@ -65,7 +65,7 @@
                                             <div>
                                                 <label for="complaintMessage">Message:</label>
                                                 <textarea class="form-control" placeholder="Insert message here"
-                                                    name="title" id="complaintTitle" rows="8" style="resize: none;"></textarea>
+                                                    name="content" id="complaintTitle" rows="8" style="resize: none;"></textarea>
                                             </div>
                                         </div>
                                     </form>
