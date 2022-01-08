@@ -36,41 +36,27 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav flex-grow-1 pe-3">
                         <li class="nav-item mx-auto">
+                            {{-- Semua --}}
                             <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
                         </li>
                         <li class="nav-item mx-auto">
+                            {{-- SCC --}}
                             <a class="nav-link active" aria-current="page" href="#">View All Form</a>
                         </li>
                         <li class="nav-item mx-auto">
+                            {{-- SCC --}}
                             <a class="nav-link active" aria-current="page" href="#">View All Feedback Ticket</a>
                         </li>
                         <li class="nav-item mx-auto">
+                            {{-- Kajur / Admin --}}
                             <a class="nav-link active" aria-current="page" href="#">Manage Lecturers</a>
                         </li>
                         <li class="nav-item mx-auto">
+                            {{-- Kajur / Admin --}}
                             <a class="nav-link active" aria-current="page" href="#">Manage Courses</a>
                         </li>
-                        {{-- <div class="btn-group dropright mt-1 mx-auto">
-                            <button type="button" class="btn dropright-toggle" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                View All
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#" class="dropdown-item" role="button">Form<a></li>
-                                <li><a href="#" class="dropdown-item" role="button">Feedback Ticket<a></li>
-                            </ul>
-                        </div>
-                        <div class="btn-group dropright mt-1 mx-auto">
-                            <button type="button" class="btn dropdright-toggle" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Manage
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#" class="dropdown-item" role="button">Lecturers<a></li>
-                                <li><a href="#" class="dropdown-item" role="button">Courses<a></li>
-                            </ul>
-                        </div> --}}
                         <li class="nav-item mt-1 mx-auto">
+                            {{-- Semua --}}
                             <a class="nav-link active" aria-current="page" href="{{ route('api.logout') }}">Logout</a>
                         </li>
                 </div>
