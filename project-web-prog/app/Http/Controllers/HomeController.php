@@ -30,8 +30,7 @@ class HomeController extends Controller
 
         return view('home', [
             'forms' => $forms,
-            'lecturerSubjects' => $subjectLecturers,
-            'formsfilled' => $formsfilled
+            'lecturerSubjects' => $subjectLecturers
         ]);
     }
     
