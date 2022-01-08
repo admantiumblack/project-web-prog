@@ -50,14 +50,12 @@
                                             <label for="selectCourses">Select Courses:</label>
                                             <div>
                                                 <select class="container custom-select custom-select-lg p-3 mt-0">
-                                                    <option selected>No Course Selected
-                                                    </option>
-                                                    {{-- @forelse ($courses as $course)
-                                                        <option selected>$('select[name=selValue]').val(1)</option>
-                                                        <option value="1">One</option>
+                                                    @forelse ($lecturerSubjects as $lecturerSubject)
+                                                    <option selected value="{{{{$lecturerSubject->subject->id}}}}">{{$lecturerSubject->subject->id}} - {{$lecturerSubject->subject->subject}}</option>
                                                     @empty
-    
-                                                    @endforelse --}}
+                                                    <option selected>No Course Available
+                                                    </option>
+                                                    @endforelse
                                                 </select>
                                             </div>
                                             <div>
