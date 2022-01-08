@@ -43,35 +43,36 @@
                                         <h5 class="modal-title" id="exampleModalLabel">Complaint Ticket</h5>
                                     </div>
                                     <div class="modal-body row m-0 gy-2">
-                                            {{-- <form action="API URL" method="POST"> --}}
-                                            <form action="" method="POST" id="complaintForm">
-                                                @csrf
-                                                <div>
-                                                    <label for="complaintTitle">Title:</label>
-                                                    <input type="text" class="form-control" placeholder="Insert title here"
-                                                        name="title" id="complaintTitle" />
-                                                </div>
-                                                <label for="selectCourses">Select Courses:</label>
-                                                <div>
-                                                    <select class="form-select">
-                                                        @forelse ($lecturerSubjects as $lecturerSubject)
-                                                        <option selected value="{{$lecturerSubject->subject->id}}">{{$lecturerSubject->subject->id}} - {{$lecturerSubject->subject->subject}}</option>
-                                                        @empty
-                                                        <option selected>No Course Available
-                                                        </option>
-                                                        @endforelse
-                                                    </select>
-                                                </div>
-                                                <div>
-                                                    <label for="complaintMessage">Message:</label>
-                                                    <textarea class="form-control" placeholder="Insert message here" name="title" id="complaintTitle" rows="8" style="resize: none;"></textarea>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary" form="complaintForm">Save changes</button>
-                                        </div>
+                                        {{-- <form action="API URL" method="POST"> --}}
+                                        <form action="" method="POST" id="complaintForm">
+                                            @csrf
+                                            <div>
+                                                <label for="complaintTitle">Title:</label>
+                                                <input type="text" class="form-control" placeholder="Insert title here"
+                                                    name="title" id="complaintTitle" />
+                                            </div>
+                                            <label for="selectCourses">Select Courses:</label>
+                                            <div>
+                                                <select class="container custom-select custom-select-lg p-3 mt-0">
+                                                    @forelse ($lecturerSubjects as $lecturerSubject)
+                                                    <option selected value="{{$lecturerSubject->subject->id}}">{{$lecturerSubject->subject->id}} - {{$lecturerSubject->subject->subject}}</option>
+                                                    @empty
+                                                    <option selected>No Course Available
+                                                    </option>
+                                                    @endforelse
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label for="complaintMessage">Message:</label>
+                                                <textarea class="form-control" placeholder="Insert message here"
+                                                    name="title" id="complaintTitle" rows="8" style="resize: none;"></textarea>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary" form="complaintForm">Save changes</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -91,28 +92,27 @@
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">New form</h5>
                                     </div>
-                                    <input type="hidden" value="">
                                     <div class="modal-body row m-0 gy-2">
-                                            {{-- <form action="API URL" method="POST"> --}}
-                                            <form action="" method="POST" id="formcreateForm">
-                                                @csrf
-                                                {{-- <input type="hidden" value="SCC ID HERE"> --}}
-                                                <div>
-                                                    <label for="complaintMessage">Period:</label>
-                                                    <input type="text" class="form-control" name="period"
-                                                        placeholder="Insert period here">
-                                                </div>
-                                                <div>
-                                                    <label for="formDeadline">Deadline:</label>
-                                                    <input type="date" class="form-control" name="deadline">
-                                                </div>
-                                                
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary" form="formcreateForm">Save changes</button>
-                                        </div>
+                                        {{-- <form action="API URL" method="POST"> --}}
+                                        <form action="" method="POST" id="formcreateForm">
+                                            @csrf
+                                            {{-- <input type="hidden" value="SCC ID HERE"> --}}
+                                            <input type="hidden" value="">
+                                            <div>
+                                                <label for="complaintMessage">Period:</label>
+                                                <input type="text" class="form-control" name="period"
+                                                    placeholder="Insert period here (example: 221)">
+                                            </div>
+                                            <div>
+                                                <label for="formDeadline">Deadline:</label>
+                                                <input type="date" class="form-control" name="deadline">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary" form="formcreateForm">Save changes</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -12,38 +12,39 @@
             <br>
         </div>
         <div class="card-body bg-white d-flex justify-content-center">
-            <form class="border border-dark px-5">
+            <form class="border border-dark px-5" method="POST" action="{{route('api.form.insert')}}">
+                @csrf
                 <input type="hidden" name="subject_id" value="{{ $datalec->subject_id }}">
                 <input type="hidden" name="period" value="{{ $datalec->period }}">
                 <div class="mb-3">
                     <br>
                     <p>1. Apakah Bpk/Ibu Dosen sudah memiliki Minimal 1 Paper Scopus di Tahun ini?</p>
-                    <input type="radio" class="form-check-input" name="Ans_1" id="Belum1" value="Belum1" required>
+                    <input type="radio" class="form-check-input" name="Ans_1" id="Belum1" value="Belum" required>
                     <label for="Belum1" class="form-check-label">Belum</label><br>
-                    <input type="radio" class="form-check-input" name="Ans_1" id="Sudah1" value="Sudah1">
+                    <input type="radio" class="form-check-input" name="Ans_1" id="Sudah1" value="Sudah">
                     <label for="Sudah1" class="form-check-label">Sudah</label><br>
                     <input type="radio" class="form-check-input" name="Ans_1" value="">
-                    <input type="text" name="other_reason" placeholder="Other" /><br>
+                    <input type="text" name="other_reason" placeholder="Other" value=""/><br>
                 </div>
                 <br>
                 <div class="mb-3">
                     <p>2. Apakah Bpk/Ibu sudah melakukan Pengabdian Pada Masyarakat Minimal 1 kali di Semester ini?</p>
-                    <input type="radio" class="form-check-input" name="Ans_2" id="Belum2" value="Belum1" required>
+                    <input type="radio" class="form-check-input" name="Ans_2" id="Belum2" value="Belum" required>
                     <label for="Belum2" class="form-check-label">Belum</label><br>
-                    <input type="radio" class="form-check-input" name="Ans_2" id="Sudah2" value="Sudah1">
+                    <input type="radio" class="form-check-input" name="Ans_2" id="Sudah2" value="Sudah">
                     <label for="Sudah2" class="form-check-label">Sudah</label><br>
                     <input type="radio" class="form-check-input" name="Ans_2" value="">
-                    <input type="text" name="other_reason" placeholder="Other" /><br>
+                    <input type="text" name="other_reason" placeholder="Other" value=""/><br>
                 </div>
                 <br>
                 <div class="mb-3">
                     <p>3. Apakah Bpk/Ibu sudah mengikuti Pengembangan Diri Minimal 1 kali di Semester ini?</p>
-                    <input type="radio" class="form-check-input" name="Ans_3" id="Belum3" value="Belum1" required>
+                    <input type="radio" class="form-check-input" name="Ans_3" id="Belum3" value="Belum" required>
                     <label for="Belum3" class="form-check-label">Belum</label><br>
-                    <input type="radio" class="form-check-input" name="Ans_3" id="Sudah3" value="Sudah1">
+                    <input type="radio" class="form-check-input" name="Ans_3" id="Sudah3" value="Sudah">
                     <label for="Sudah3" class="form-check-label">Sudah</label><br>
                     <input type="radio" class="form-check-input" name="Ans_3" value="">
-                    <input type="text" name="other_reason" placeholder="Other" /><br>
+                    <input type="text" name="other_reason" placeholder="Other" value=""/><br>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -201,16 +202,16 @@
                 </div>
                 <br>
                 <div class="mb-3">
-                    <button type="button" class="btn btn-primary p-2" style="width:100%">Submit</button>
+                    <button type="submit" class="btn btn-primary p-2" style="width:100%">Submit</button>
                 </div>
             </form>
         </div>
     </div>
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             $('#Other1').click(function() {
                 $('#UnitPrice2').trigger('click');
             });
         });
-    </script>
+    </script> --}}
 @endsection

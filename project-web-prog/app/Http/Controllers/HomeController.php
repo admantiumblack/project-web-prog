@@ -18,17 +18,13 @@ class HomeController extends Controller
         ->where('subject_lecturers.lecturer_id', '=', $id)
         ->where('subject_lecturers.has_filled_form','=',0)
         ->where('forms.deadline', '>', date('Y-m-d H:i:s', time()))
+        ->whereRaw('forms.period = subject_lecturers.period')
         ->get();
 
-        $newForms = [];
-        foreach($forms as $form){
-            if($form->lecture_period == $form->period){
-                $newForms[] = $form;
-            }
-        }
-
         $subjectLecturers = SubjectLecturer::where('lecturer_id', $id)
-                            ->with('subject')->get();
+                            ->with('subject')
+                            ->whereRaw('subject_lecturers.period = (select MAX(period) from subject_lecturers where lecturer_id = "'.$id.'")')
+                            ->get();
         // dump($forms);
         
         return view('home', [
