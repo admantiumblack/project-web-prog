@@ -14,10 +14,11 @@ class HomeController extends Controller
         $forms = DB::table('forms')
         ->join('subject_lecturers', 'forms.subject_id', '=', 'subject_lecturers.subject_id')
         ->join('subjects', 'forms.subject_id', '=', 'subjects.id')
-        ->select('forms.*', 'subjects.subject', 'subject_lecturers.lecturer_id', 'subject_lecturers.period as lecture_period')
+        ->select('forms.*', 'subjects.subject', 'subject_lecturers.lecturer_id', 'subject_lecturers.period as lecture_period', 'subject_lecturers.has_Filled_form as has_filled_form')
         ->where('subject_lecturers.lecturer_id', '=', $id)
-        ->where('subject_lecturers.has_filled_form','=',0)
-        ->where('forms.deadline', '>', date('Y-m-d H:i:s', time()))
+        // Validation done by front-end
+        // ->where('subject_lecturers.has_filled_form','=',0)
+        // ->where('forms.deadline', '>', date('Y-m-d H:i:s', time()))
         ->whereRaw('forms.period = subject_lecturers.period')
         ->get();
 
@@ -26,15 +27,6 @@ class HomeController extends Controller
                             ->whereRaw('subject_lecturers.period = (select MAX(period) from subject_lecturers where lecturer_id = "'.$id.'")')
                             ->get();
         // dump($forms);
-        
-        $formsfilled = DB::table('forms')
-        ->join('subject_lecturers', 'forms.subject_id', '=', 'subject_lecturers.subject_id')
-        ->join('subjects', 'forms.subject_id', '=', 'subjects.id')
-        ->select('forms.*', 'subjects.subject', 'subject_lecturers.lecturer_id', 'subject_lecturers.period as lecture_period')
-        ->where('subject_lecturers.lecturer_id', '=', $id)
-        ->where('subject_lecturers.has_filled_form','=',1)
-        ->whereRaw('forms.period = subject_lecturers.period')
-        ->get();
 
         return view('home', [
             'forms' => $forms,
