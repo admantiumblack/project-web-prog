@@ -19,6 +19,15 @@ class AuthenticationAPIController extends Controller
                 // ->get()[0];
                 // ->where('password', Hash::make($request->password))
                 ->with(['position', 'clusterScc'])->first();
+
+        if($user === null){
+            return redirect()->back()
+            ->withErrors([
+                'errors' => [
+                    'user not found'
+                ]
+            ])->withInput($request->input());
+        }
         error_log($user->position->position);
         error_log(Hash::make($request->password));
         if(!Hash::check($request->password, $user->password)){
