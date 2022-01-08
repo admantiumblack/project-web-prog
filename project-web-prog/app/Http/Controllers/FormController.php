@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class FormController extends Controller
 {
     //
-    public function viewForm(Request $request, $formid){
+    public function viewInputForm(Request $request, $formid){
         
         $id = explode('_', $request->cookie('user_auth'))[0];
         $data = DB::table('forms')
