@@ -21,12 +21,13 @@ class FormAPIController extends Controller
             'answer' => 'required|array',
             'subject_id' => 'required',
         ];
-        for($i = 1; $i <= 24; $i++){
+        for($i = 1; $i <= 25; $i++){
             $rules['Ans_'.$i] = 'required';
         }
-        
+        error_log(implode('-', $rules));
+        error_log(implode('-', $request->input()));
         $request->validate($rules);
-
+        error_log('rule success');
         $subject = $request->subject_id;
         $period = $request->period;
         $lecturerId = explode($request->cookie('user_auth'))[0];
@@ -38,6 +39,7 @@ class FormAPIController extends Controller
                 ->whereRelation('forms', 'deadline', '>', date('Y-m-d H:i:s', time()))
                 ->first();
         if($subjectLecturer->subject->forms === null){
+            error_log('form error');
             return redirect()->back()->withErrors([
                 'errors' => [
                     'selected form is not found'
@@ -45,6 +47,7 @@ class FormAPIController extends Controller
             ])->withInput($request->input());
         }
         if($subjectLecturer->has_filled_form){
+            error_log('form has been filled');
             return redirect()->back()->withErrors([
                 'errors' => [
                     'user has filled form'
@@ -57,7 +60,7 @@ class FormAPIController extends Controller
         $answers = [];
         $answers[] = '"'.$lecturerId.'"';
         $answers[] = '"'.$lecturerName.'"';
-        for($i = 1; $i <= 24; $i++){
+        for($i = 1; $i <= 25; $i++){
             $answers[] = $request['Ans_'.$i];
         }
         $answerString = implode(',', $answers);
@@ -69,7 +72,7 @@ class FormAPIController extends Controller
         $subjectLecturer->save();
 
         // change route
-        return redirect()->back();
+        return redirect()->route('home');
     }
 
     public function createForm(Request $request){
