@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('title', 'View Complaint Ticket')
+@section('title', 'Form Result')
 
 @section('content')
 
