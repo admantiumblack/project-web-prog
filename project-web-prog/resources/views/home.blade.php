@@ -11,7 +11,7 @@
                 <div class="card-body">
                     <div class="list-group">
                         @forelse($forms as $form)
-                            <a class="list-group-item list-group-item-action" href="/form">
+                            <a class="list-group-item list-group-item-action" href="/form/{{$form->id}}">
                                 <h6 class="h5">{{ $form->subject }}</h5>
                                     Deadline: {{ $form->deadline }}
                             </a>

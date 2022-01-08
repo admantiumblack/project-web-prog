@@ -6,13 +6,13 @@
 
     <div class="container border bg-primary" style="Margin-top: 80px">
         <br>
-        <h4>(Query class)'s Peer Review</h4>
+        <h4>{{$datalec->subject_id}} - {{$datalec->subject}}'s Peer Review</h4>
         <br>
     </div>
     <div class="container border p-1 d-flex justify-content-center">
         <form>
             <input type="hidden" name="lecturer_name" value="{{$datalec->name}}">
-            <input type="hidden" name="lecturer_id" value="{{$datalec->id}}">
+            <input type="hidden" name="lecturer_id" value="{{$datalec->lecturer_id}}">
             <input type="hidden" name="subject_id" value="{{$datalec->subject_id}}">
             <input type="hidden" name="period" value="{{$datalec->period}}">
             <div class="mb-3">
