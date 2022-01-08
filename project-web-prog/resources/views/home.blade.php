@@ -53,14 +53,14 @@
                                             </div>
                                             <label for="selectCourses">Select Courses:</label>
                                             <div>
-                                                {{-- <select class="container custom-select custom-select-lg p-3 mt-0">
+                                                <select class="container custom-select custom-select-lg p-3 mt-0">
                                                     @forelse ($lecturerSubjects as $lecturerSubject)
                                                     <option selected value="{{$lecturerSubject->subject->id}}">{{$lecturerSubject->subject->id}} - {{$lecturerSubject->subject->subject}}</option>
                                                     @empty
                                                     <option selected>No Course Available
                                                     </option>
                                                     @endforelse
-                                                </select> --}}
+                                                </select>
                                             </div>
                                             <div>
                                                 <label for="complaintMessage">Message:</label>
@@ -102,7 +102,7 @@
                                             <div>
                                                 <label for="complaintMessage">Period:</label>
                                                 <input type="text" class="form-control" name="period"
-                                                    placeholder="Insert period here">
+                                                    placeholder="Insert period here (example: 221)">
                                             </div>
                                             <div>
                                                 <label for="formDeadline">Deadline:</label>
