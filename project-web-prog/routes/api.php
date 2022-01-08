@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationAPIController;
 use App\Http\Controllers\FormAPIController;
 use App\Http\Controllers\ComplaintAPIController;
+use APp\Http\Controllers\SubjectLecturerAPIController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -41,3 +42,7 @@ Route::post('/form/create',
 Route::post('/complaint', 
     [ComplaintAPIController::class, 'insertNewComplaint'])
     ->name('api.complaint.insert')->middleware('validateLoggedIn');
+
+Route::post('/upload/subject-lecturer', 
+[SubjectLecturerAPIController::class, 'insertSubjectLecturers'])
+->name('api.subject.upload')->middleware('validateDean');
