@@ -14,17 +14,18 @@ class FormAPIController extends Controller
     public function insertAnswer(Request $request){
         
         $rules = [
-            'period' => 'required|string|min:3|max:3',
-            'answer' => 'required|array',
-            'subject_id' => 'required',
+            'period' => 'required',
+            'subject_id' => 'required'
         ];
         for($i = 1; $i <= 25; $i++){
             $rules['Ans_'.$i] = 'required';
         }
-        // error_log(implode('-', $rules));
-        // error_log(implode('-', $request->input()));
+        foreach($request->input() as $key => $value) {
+            error_log("$key is at $value");
+          }
+        error_log(implode('-', $request->input()));
         $request->validate($rules);
-        error_log('rule success');
+        // error_log('rule success');
         $subject = $request->subject_id;
         $period = $request->period;
         $lecturerId = explode('_', $request->cookie('user_auth'))[0];

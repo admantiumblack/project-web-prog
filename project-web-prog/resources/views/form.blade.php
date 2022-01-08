@@ -29,16 +29,20 @@
 @section('title', 'Review Form')
 
 @section('content')
-
-    <div class="card bg-light">
-
-        <div class="card-header bg-primary">
-            <br>
-            <h4>{{ $datalec->subject_id }} - {{ $datalec->subject }}'s Peer Review</h4>
-            <br>
-        </div>
-        <div class="card-body bg-white d-flex justify-content-center">
-            <form class="border border-dark px-5" method="POST" action="{{route('api.form.insert')}}">
+<div class="card bg-light">
+    
+    <div class="card-header bg-primary">
+        <br>
+        <h4>{{ $datalec->subject_id }} - {{ $datalec->subject }}'s Peer Review</h4>
+        <br>
+    </div>
+    <div class="card-body bg-white d-flex justify-content-center">
+        @if ($errors->any())
+        @foreach ($errors as $error)
+            <div>{{$error}}</div>
+        @endforeach
+        @endif
+        <form class="border border-dark px-5" method="POST" action="{{route('api.form.insert')}}">
                 @csrf
                 <input type="hidden" name="subject_id" value="{{ $datalec->subject_id }}">
                 <input type="hidden" name="period" value="{{ $datalec->period }}">
