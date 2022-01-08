@@ -44,11 +44,11 @@
                         @if (strcmp(explode('_', Cookie::get('user_auth'))[1], 'SCC'))
                         <li class="nav-item mx-auto">
                             {{-- SCC --}}
-                            <a class="nav-link active" aria-current="page" href="#">View All Form</a>
+                            <a class="nav-link active" aria-current="page" href="{{ route('viewAllForm') }}">View All Form</a>
                         </li>
                         <li class="nav-item mx-auto">
                             {{-- SCC --}}
-                            <a class="nav-link active" aria-current="page" href="#">View All Feedback Ticket</a>
+                            <a class="nav-link active" aria-current="page" href="{{ route('viewAllFeed') }}">View All Feedback Ticket</a>
                         </li>
                         @endif
 
