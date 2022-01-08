@@ -16,6 +16,7 @@
                             <a class="list-group-item list-group-item-action" href="/form/{{$form->id}}">
                                 <h6 class="h5">{{ $form->subject }}</h5>
                                     Deadline: {{ $form->deadline }}
+                                    Period: {{$form->period}}
                             </a>
                             @endif
                         @empty
@@ -54,7 +55,7 @@
                                             <div>
                                                 {{-- <select class="container custom-select custom-select-lg p-3 mt-0">
                                                     @forelse ($lecturerSubjects as $lecturerSubject)
-                                                    <option selected value="{{{{$lecturerSubject->subject->id}}}}">{{$lecturerSubject->subject->id}} - {{$lecturerSubject->subject->subject}}</option>
+                                                    <option selected value="{{$lecturerSubject->subject->id}}">{{$lecturerSubject->subject->id}} - {{$lecturerSubject->subject->subject}}</option>
                                                     @empty
                                                     <option selected>No Course Available
                                                     </option>
