@@ -24,7 +24,7 @@ class SubjectLecturerSeeder extends Seeder
             for($i = 0; $i < $n; $i++){
                 $lecturer_id = $faker->unique()
                 ->randomElement($lecturers)->id;
-                $period = $faker->regexify('2[1-2]{1}1');
+                $period = $faker->regexify('22[1-2]{1}');
                 DB::table('subject_lecturers')->insert([
                     'id'=> $subject->id.$period.$lecturer_id,
                     'subject_id' => $subject->id,
