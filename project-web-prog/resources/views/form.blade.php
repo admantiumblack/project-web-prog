@@ -11,8 +11,6 @@
     </div>
     <div class="container border p-1 d-flex justify-content-center">
         <form>
-            <input type="hidden" name="lecturer_name" value="{{$datalec->name}}">
-            <input type="hidden" name="lecturer_id" value="{{$datalec->lecturer_id}}">
             <input type="hidden" name="subject_id" value="{{$datalec->subject_id}}">
             <input type="hidden" name="period" value="{{$datalec->period}}">
             <div class="mb-3">

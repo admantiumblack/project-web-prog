@@ -20,14 +20,13 @@ class FormAPIController extends Controller
         $request->validate([
             'period' => 'required|string|min:3|max:3',
             'answer' => 'required|array',
-            'lecturer_name' => 'required',
             'subject_id' => 'required',
-            'lecturer_id' => 'required'
         ]);
 
         $subject = $request->subject_id;
         $period = $request->period;
-        $lecturerId = $request->lecturer_id;
+        $lecturerId = explode($request->cookie('user_auth'))[0];
+        $lecturerName = explode($request->cookie('user_auth'))[2];
         $id = $subject.$period.$lecturerId;
         $subjectLecturer = SubjectLecturer::with('subject.forms')
                 ->where('id', $id)
@@ -48,10 +47,12 @@ class FormAPIController extends Controller
         }
 
         $form_path = $subjectLecturer->subject->forms[0]->result_path;
-        $public_path = pubic_path($form_path);
+        $public_path = public_path($form_path);
         $answers = [];
-        foreach($request->answer as $answer){
-            $answers[] = '"'.$answer.'"';
+        $answers[] = '"'.$lecturerId.'"';
+        $answers[] = '"'.$lecturerName.'"';
+        for($i = 1; $i <= 24; $i++){
+            $answers[] = $request['Ans_'.$id];
         }
         $answerString = implode(',', $answers);
         $file = fopen($form_path, 'a');
@@ -62,14 +63,6 @@ class FormAPIController extends Controller
     }
 
     public function createForm(Request $request){
-        if(!$request->hasCookie('user_auth')){
-            return redirect()->back();
-        }
-
-        $role = explode('_', $request->cookie('user_auth'))[1];
-        if(!strcmp('SCC', $role)){
-            return redirect()->back();
-        }
 
         $request->validate([
             'period' => 'required|min:3|max:3',
@@ -84,7 +77,7 @@ class FormAPIController extends Controller
         $scc = ClusterScc::where('lecturer_id', $sccId)
                 ->with('cluster.subjects.forms')
                 ->whereRelation('forms', 'period', '=', $request->period)
-                ->get();
+                ->first();
 
         $nForms = 0;
         foreach($request->cluster->subjects as $subject){
@@ -99,9 +92,9 @@ class FormAPIController extends Controller
             ])->withInput();
         }
 
-        $clusterScc = ClusterScc::where('lecturer_id', $sccId)
-                ->with('cluster.subjects')->get();
-        $subjects = $clusterScc->cluster->subjects;
+        // $clusterScc = ClusterScc::where('lecturer_id', $sccId)
+        //         ->with('cluster.subjects')->get();
+        $subjects = $scc->cluster->subjects;
 
         $path = public_path('storage/form_results');
         $template = storage_path('template.csv');
@@ -120,7 +113,14 @@ class FormAPIController extends Controller
             $form->result_path = 'storage/form_results/'.$filename;
             $form->save();
         }
+        $this->sendEmail($request, $scc, $request->period);
+
+
         return redirect()->route('home');
+    }
+
+    private function sendEmail(Request $request, $clusterId, $period){
+
     }
 
 }
