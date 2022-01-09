@@ -30,7 +30,7 @@ class SubjectLecturerController extends Controller
 
         $lecturers = null;
 
-        if($period_choice != -1 and $cluster_choice != -1){
+        if($period_choice != -1){
             $lecturers = Lecturer::with(['subjectLecturers'=> function($q) use($period_choice, $cluster_choice){
                 if($period_choice != -1){
                     $q->with('subject.cluster')->whereHas('subject', function ($q) use ($cluster_choice){

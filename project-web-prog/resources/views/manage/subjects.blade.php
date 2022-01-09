@@ -5,7 +5,7 @@
 @section('content')
     <div class="row row-cols-1 row-cols-lg-2 p-3 m-2">
         <div class="col-lg-9">
-            <div class="px-2 mb-3"><h1>Manage stuff idk man</h1></div>
+            <div class="px-2 mb-3"><h1>Manage subject lecturers</h1></div>
             <div class="card">
                 <div class="card-body">
                     <form action="{{route('manage')}}" method="GET" id="searchLecture">
@@ -57,7 +57,7 @@
                                         <h5 class="modal-title" id="exampleModalLabel">Assign Subject</h5>
                                     </div>
                                     {{-- <form action="API URL" method="POST"> --}}
-                                    <form action="{{route('api.complaint.insert')}}" method="POST" id="uploadForm">
+                                    <form action="{{route('api.subject.upload')}}" method="POST" id="uploadForm" enctype="multipart/form-data">
                                         @csrf
                                         <div class="modal-body row m-0 gy-2">
                                             <label for="selectCourses">Periode:</label>
@@ -67,7 +67,7 @@
                                             </div>
                                             <div class="form-control">
                                                 <label for="username">Upload files</label>
-                                                <input type="file" name="csv" id="insert_data" placeholder="must be csv">
+                                                <input type="file" name="file" id="insert_data" placeholder="must be csv">
                                             </div>
                                         </div>
                                     </form>

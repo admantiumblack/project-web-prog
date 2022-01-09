@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationAPIController;
 use App\Http\Controllers\FormAPIController;
 use App\Http\Controllers\ComplaintAPIController;
-use APp\Http\Controllers\SubjectLecturerAPIController;
+use App\Http\Controllers\SubjectLecturerAPIController;
 /*
 |--------------------------------------------------------------------------
 | API Routes

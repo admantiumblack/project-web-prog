@@ -12,7 +12,7 @@ class SubjectLecturerAPIController extends Controller
     public function insertSubjectLecturers(Request $request){
         $request->validate([
             'file' => 'required|mimes:csv',
-            'period' => 'required'
+            'period' => 'required|string|min:3|max:3'
         ]);
 
         $file = $request->file('file');
@@ -21,10 +21,10 @@ class SubjectLecturerAPIController extends Controller
         $records = [];
         foreach($reader->getRecords() as $offset => $record){
             $records[] = [
-                'lecturer_id' => $record['lecturer id'],
-                'subject_id' => $record['subject id'],
+                'lecturer_id' => $record['lecturer_id'],
+                'subject_id' => $record['subject_id'],
                 'period' => $request->period,
-                'id' => $record['subject id'].$request->period.$record['lecturer id']
+                'id' => $record['subject_id'].$request->period.$record['lecturer_id']
             ];
         }
         SubjectLecturer::insert($records);
