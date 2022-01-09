@@ -32,12 +32,12 @@ class FormSeeder extends Seeder
                 $filename = Str::uuid().'.csv';
                 $filepath = $path.'/'.$filename;
                 File::copy($template, $filepath);
+                $datetime = $faker->dateTimeBetween('-3 day', '+1 week');
                 DB::table('forms')->insert([
                     'id' => '221'.$subject->id,
                     'subject_id' => $subject->id,
                     'period' => '221',
-                    'deadline' =>$faker->
-                            dateTimeBetween('-3 day', '+1 week'),
+                    'deadline' => $datetime->format('Y-m-d').' 23:59:59',
                     'result_path' => 'storage/form_results/'.$filename
                 ]);
             }
