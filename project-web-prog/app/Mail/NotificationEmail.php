@@ -11,6 +11,8 @@ class NotificationEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $details;
+
     /**
      * Create a new message instance.
      *
@@ -29,6 +31,6 @@ class NotificationEmail extends Mailable
     public function build()
     {
         return $this->subject('form reminder')
-                ->view('email.template', ['details' => $this->details]);
+                ->view('email.template');
     }
 }
