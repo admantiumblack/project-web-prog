@@ -53,7 +53,7 @@
                     <label for="Belum1" class="form-check-label">Belum</label><br>
                     <input type="radio" class="form-check-input" name="Ans_1" id="Sudah1" value="Sudah">
                     <label for="Sudah1" class="form-check-label">Sudah</label><br>
-                    <input type="radio" class="form-check-input" name="Ans_1" id="radiobutton1" onclick="getElements1()">
+                    <input type="radio" class="form-check-input" name="Ans_1" id="radiobutton1" onclick="getElements1()" value="others">
                     <textarea style="height: 26px; width: 184px; resize:none;" id="textbox1" type="text" placeholder="Other" onclick="this.value=''"></textarea><br>
 
                 </div>
@@ -64,7 +64,7 @@
                     <label for="Belum2" class="form-check-label">Belum</label><br>
                     <input type="radio" class="form-check-input" name="Ans_2" id="Sudah2" value="Sudah">
                     <label for="Sudah2" class="form-check-label">Sudah</label><br>
-                    <input type="radio" class="form-check-input" name="Ans_2" id="radiobutton2" onclick="getElements2()">
+                    <input type="radio" class="form-check-input" name="Ans_2" id="radiobutton2" onclick="getElements2()" value="others">
                     <textarea style="height: 26px; width: 184px; resize:none;" id="textbox2" type="text" placeholder="Other" onclick="this.value=''"></textarea><br>
                 </div>
                 <br>
@@ -74,7 +74,7 @@
                     <label for="Belum3" class="form-check-label">Belum</label><br>
                     <input type="radio" class="form-check-input" name="Ans_3" id="Sudah3" value="Sudah">
                     <label for="Sudah3" class="form-check-label">Sudah</label><br>
-                    <input type="radio" class="form-check-input" name="Ans_3" id="radiobutton3" onclick="getElements3()">
+                    <input type="radio" class="form-check-input" name="Ans_3" id="radiobutton3" onclick="getElements3()" value="others">
                     <textarea style="height: 26px; width: 184px; resize:none;" id="textbox3" type="text" placeholder="Other" onclick="this.value=''"></textarea><br>
                 </div>
                 <br>
