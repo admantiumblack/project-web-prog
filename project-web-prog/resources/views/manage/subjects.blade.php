@@ -32,9 +32,9 @@
                                 <select class="form-select" onchange="this.form.submit()" name="period">
                                     @forelse ($periods as $item)
                                     @if ($item == $period)
-                                    <option selected value="{{$item}}">{{$item}}</option> 
+                                    <option selected value="{{$item}}">{{$item}}</option>
                                     @else
-                                    <option value="{{$item}}">{{$item}}</option>   
+                                    <option value="{{$item}}">{{$item}}</option>
                                     @endif
                                     @empty
                                     <option selected>No Period Available
@@ -61,7 +61,7 @@
                             <div class="modal-dialog modal-dialog-scrollable modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Manage Fuck</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Assign Subject</h5>
                                     </div>
                                     {{-- <form action="API URL" method="POST"> --}}
                                     <form action="{{route('api.complaint.insert')}}" method="POST" id="uploadForm">
@@ -115,9 +115,9 @@
                 @empty
                 <tr>
                     <td>No Dosens Available</td>
-                </tr> 
+                </tr>
                 @endforelse
-                
+
             </tbody>
         </table>
 @endsection
