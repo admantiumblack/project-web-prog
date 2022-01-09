@@ -11,6 +11,11 @@
             <div class="card">
                 <div class="card-body">
                     <div class="list-group">
+                        @forelse ($complaints as $complaint)
+                            
+                        @empty
+                            
+                        @endforelse
                         {{-- Looping forelse ticket --}}
                     </div>
                 </div>
