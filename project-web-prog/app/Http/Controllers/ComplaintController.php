@@ -13,7 +13,9 @@ class ComplaintController extends Controller
 
         $ssc_id = explode('_', $request->cookie('user_auth'))[0];
         $cluster_id = ClusterScc::where('lecturer_id','=',$ssc_id)->first()->cluster_id;
-        $complaints = Complaint::join('subjects', 'subjects.id', '=', 'complaints.subject_id')->where('subjects.cluster_id','=',$cluster_id)->get();
+        $complaints = Complaint::join('subjects', 'subjects.id', '=', 'complaints.subject_id')
+            ->where('subjects.cluster_id','=',$cluster_id)
+            ->get();
         return view('view.feedbackticket', ['complaints'=>$complaints]);
     }
 }
