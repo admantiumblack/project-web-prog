@@ -111,9 +111,18 @@
                                 <td class="text-center">{{ $lecturer->id }}</td>
                                 <td>
                                     @foreach ($lecturer->subjectLecturers as $subjectLecturer)
-                                        ({{ $subjectLecturer->subject->cluster->cluster }})
+                                    @if ($cluster_choice != -1 and $period_choice != -1)
                                         {{ $subjectLecturer->subject->id }} - {{ $subjectLecturer->subject->subject }}
-                                        ({{ $subjectLecturer->period }}) <br>
+                                        <br>
+                                    @elseif ($cluster_choice == -1 and $period_choice == -1)
+                                        ({{$cluster_choice == -1? $subjectLecturer->subject->cluster->cluster:'' }} - {{ $period_choice == -1? $subjectLecturer->period:''}})
+                                        {{ $subjectLecturer->subject->id }} - {{ $subjectLecturer->subject->subject }}
+                                        <br>
+                                    @else
+                                        ({{$cluster_choice == -1? $subjectLecturer->subject->cluster->cluster:'' }}{{ $period_choice == -1? $subjectLecturer->period:''}})
+                                        {{ $subjectLecturer->subject->id }} - {{ $subjectLecturer->subject->subject }}
+                                        <br>
+                                    @endif
                                     @endforeach
                                 </td>
                             </tr>
