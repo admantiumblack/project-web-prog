@@ -27,8 +27,6 @@ class AuthenticationAPIController extends Controller
                 ]
             ])->withInput($request->input());
         }
-        error_log($user->position->position);
-        error_log(Hash::make($request->password));
         if(!Hash::check($request->password, $user->password)){
             return redirect()->back()
             ->withErrors([
@@ -41,12 +39,13 @@ class AuthenticationAPIController extends Controller
         $role = $user->position->position;
         $id = $user->id;
         $name = $user->name;
-        if($user->cluster_scc !== null){
-            $clusterScc = ClusterScc::select('lecturer_id')
-                            ->where('cluster_id', $user->cluster_scc->id)
+        error_log($user);
+        if($user->clusterScc !== null){
+            $clusterScc = ClusterScc::where('cluster_id', $user->clusterScc->id)
                             ->orderBy('date_appointed', 'Desc')
                             ->first();
-            if($clusterScc){
+            error_log($clusterScc);
+            if(strcmp($clusterScc->lecturer_id, $id) == 0){
                 $role = 'SCC';
             }
 
