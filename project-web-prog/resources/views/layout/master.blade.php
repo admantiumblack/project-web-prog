@@ -55,11 +55,7 @@
                             @if (strcmp(explode('_', Cookie::get('user_auth'))[1], 'Dean') == 0)
                             <li class="nav-item mx-auto">
                                 {{-- Kajur / Admin --}}
-                                <a class="nav-link active" aria-current="page" href="#">Manage Lecturers</a>
-                            </li>
-                            <li class="nav-item mx-auto">
-                                {{-- Kajur / Admin --}}
-                                <a class="nav-link active" aria-current="page" href="#">Manage Courses</a>
+                                <a class="nav-link active" aria-current="page" href="#">Manage Lecturer and Courses</a>
                             </li>
                             @endif
                         <li class="nav-item mt-1 mx-auto">
