@@ -21,8 +21,5 @@ class SCCController extends Controller
         return view('view.feedbackticket', ['complaints'=>$complaints]);
     }
 
-    public function viewFeedbackbyPeriod(){
-
-    }
 
 }
