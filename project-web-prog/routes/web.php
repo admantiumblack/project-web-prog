@@ -35,9 +35,6 @@ Route::get('/feedbacks', [ComplaintController::class, 'viewAllFeedback'])->name(
 
 Route::get('/form/{id}', [FormController::class, 'viewInputForm'])->name('form')->middleware('validateLoggedIn');
 
-// Route::get('/manage', [SubjectController::class, 'ManageSubject'])->name('manage.subjects')->middleware('validateDean');
-
-// Route::get('/manage', [SubjectController::class, 'ManageSubjectbyClusandPe']);
 
 Route::get('/forms/{formId}', 
     [FormController::class, 'viewFormDetail'])
