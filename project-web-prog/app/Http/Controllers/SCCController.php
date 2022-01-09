@@ -10,11 +10,8 @@ use Illuminate\Support\Facades\DB;
 class SCCController extends Controller
 {
     //
-    public function viewAllForm(Request $request){
-        
-        $ssc_id = explode('_', $request->cookie('user_auth'))[0];
-        $cluster_id = ClusterScc::where('lecturer_id','=',$ssc_id)->first()->cluster_id;
 
+<<<<<<< Updated upstream
         $forms = DB::table('forms')
         ->join('subjects', 'forms.subject_id', '=', 'subjects.id')
         ->select('forms.*', 'subjects.subject')
@@ -33,6 +30,9 @@ class SCCController extends Controller
                 ->where('subjects.cluster_id','=',$cluster_id)->get();
         return view('view.feedbackticket', ['complaints'=>$complaints]);
     }
+=======
+    
+>>>>>>> Stashed changes
 
 
 }
