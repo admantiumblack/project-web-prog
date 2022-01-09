@@ -28,7 +28,7 @@ class LecturerSeeder extends Seeder
             DB::table('lecturers')->insert([
                 'id' => $lecturerId,
                 'name' => $name,
-                'password' => Hash::make($password),
+                'password' => Hash::make('password'),
                 'phone_number' => $faker->phoneNumber,
                 'email' => $email,
                 'position_id' => $position
