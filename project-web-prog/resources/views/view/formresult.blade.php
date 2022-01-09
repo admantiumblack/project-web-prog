@@ -27,7 +27,7 @@
                                 <td class="text-center">{{ $form->period }}</td>
                                 <td class="text-center">{{ $form->deadline }}</td>
                                 <td class="text-center">
-                                    <a class="btn btn-primary" href="#">View Details</a>
+                                    <a class="btn btn-primary" href="{{route('view.form.detail', ['formId' => $form->id])}}">View Details</a>
                                 </td>
                             </tr>
                         @empty
