@@ -44,7 +44,7 @@
                         @if (strcmp(explode('_', Cookie::get('user_auth'))[1], 'SCC') == 0)
                         <li class="nav-item mx-auto">
                             {{-- SCC --}}
-                            <a class="nav-link active" aria-current="page" href="{{ route('view.form') }}">View All Form</a>
+                            <a class="nav-link active" aria-current="page" href="{{ route('view.forms') }}">View All Form</a>
                         </li>
                         <li class="nav-item mx-auto">
                             {{-- SCC --}}

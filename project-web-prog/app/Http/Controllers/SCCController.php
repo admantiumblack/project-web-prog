@@ -21,6 +21,7 @@ class SCCController extends Controller
         ->select('forms.*', 'subjects.subject', 'subject_lecturers.lecturer_id', 'subject_lecturers.period as lecture_period', 'subject_lecturers.has_Filled_form as has_filled_form')
         ->where('subjects.cluster_id', '=', $cluster_id)
         ->whereRaw('forms.period = subject_lecturers.period')
+        ->orderBy('forms.period', 'Desc')
         ->get();
         
         return view('view.formresult', ['forms'=>$forms]);
