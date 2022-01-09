@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Lecturer;
+use App\Models\ClusterScc;
 use Illuminate\Support\Facades\Cookie;
 
 class AuthenticationAPIController extends Controller
@@ -16,8 +17,6 @@ class AuthenticationAPIController extends Controller
         ]);
 
         $user = Lecturer::where('email', $request->email)
-                // ->get()[0];
-                // ->where('password', Hash::make($request->password))
                 ->with(['position', 'clusterScc'])->first();
 
         if($user === null){
@@ -42,9 +41,15 @@ class AuthenticationAPIController extends Controller
         $role = $user->position->position;
         $id = $user->id;
         $name = $user->name;
-        error_log($user);
-        if($user->clusterScc !== null){
-            $role = 'SCC';
+        if($user->cluster_scc !== null){
+            $clusterScc = ClusterScc::select('lecturer_id')
+                            ->where('cluster_id', $user->cluster_scc->id)
+                            ->orderBy('date_appointed', 'Desc')
+                            ->first();
+            if($clusterScc){
+                $role = 'SCC';
+            }
+
         }
         $userAuth = $id.'_'.$role.'_'.$name;
 
