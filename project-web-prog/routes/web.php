@@ -37,7 +37,7 @@ Route::get('/form/{id}', [FormController::class, 'viewInputForm'])->name('form')
 
 Route::get('/manage', [SubjectController::class, 'ManageSubject'])->name('manage.subjects')->middleware('validateDean');
 
-Route::post('/manage', [SubjectController::class, 'ManageSubjectbyClusandPe']);
+Route::get('/manage', [SubjectController::class, 'ManageSubjectbyClusandPe']);
 
 Route::get('/forms/{formId}', 
     [FormController::class, 'viewFormDetail'])
