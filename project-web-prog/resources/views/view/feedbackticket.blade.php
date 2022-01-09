@@ -17,21 +17,6 @@
                             <th class="col-1 text-center">Course Name</th>
                             <th class="col-2 text-center">Issue</th>
                             <th class="col-5 text-center">Content</th>
-                            <th>
-                                {{ $key+1 }}
-                            </th>
-                            <th>
-                                {{ $complaint->subject }}
-                            </th>
-                            <th>
-                                {{ $complaint->subject }}
-                            </th>
-                            <th>
-                                {{ $complaint->title }}
-                            </th>
-                            <th>
-                                {{ $complaint->content }}
-                            </th>
                         </tr>
                     </thead>
                     <tbody>
