@@ -17,7 +17,7 @@ class LecturerSeeder extends Seeder
     {
         $faker = Faker::create('id_ID');
         $myfile = fopen("../.passwords", "w");
-        for($i = 0; $i < 50; $i++){
+        for($i = 0; $i < 60; $i++){
             $password = $faker->password(10, 20);
             $name = $faker->unique()->name;
             $lecturerId = 'D'.$faker->unique()->regexify('[0-5]{1}[0-9]{3}');

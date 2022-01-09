@@ -18,19 +18,24 @@ class ClusterSCCSeeder extends Seeder
         $faker = Faker::create('id_ID');
         $clusters = DB::table('clusters')->select('id')->get();
         $lecturers = DB::table('lecturers')
-            ->where('position_id', 1)->get();
+            ->where('position_id', 1)->select('id')->get();
         $nClusters = count($clusters);
         for($i = 0; $i < $nClusters; $i++){
             $cluster = $faker->unique()
             ->randomElement($clusters)->id;
-            $lecturer = $faker->unique()
-            ->randomElement($lecturers)->id;
-            DB::table('cluster_sccs')->insert([
-                'id' => $cluster.$lecturer,
-                'cluster_id' => $cluster,
-                'lecturer_id' => $lecturer,
-                'date_appointed' => date("Y-m-d")
-            ]);
+            for($j = 0; $j < 2; $j++){
+                $lecturer = $faker->unique()
+                ->randomElement($lecturers)->id;
+                $date = $faker->unique()
+                    ->dateTimeThisDecade($max = 'now');
+                // $dateTimestamp = strtotime($date);
+                DB::table('cluster_sccs')->insert([
+                    'id' => $cluster.$lecturer,
+                    'cluster_id' => $cluster,
+                    'lecturer_id' => $lecturer,
+                    'date_appointed' => $date->format('Y-m-d')
+                ]);
+            }
         }
         // echo $clusters;
         // echo $lecturers;
