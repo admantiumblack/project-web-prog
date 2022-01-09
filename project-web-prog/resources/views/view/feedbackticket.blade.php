@@ -19,16 +19,17 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {{ $i = 0 }}
                     @forelse ($complaints as $complaint)
                         <tr>
                             <th>
-                                {{ $complaint->id + 1 }}
-                            </th>
-                            <th>
-                                {{ $complaint->subject->subject }}
+                                {{ $i += 1}}
                             </th>
                             <th>
                                 {{ $complaint->subject_id }}
+                            </th>
+                            <th>
+                                {{ $complaint->subject }}
                             </th>
                             <th>
                                 {{ $complaint->title }}
