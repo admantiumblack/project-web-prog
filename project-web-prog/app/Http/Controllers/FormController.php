@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Form;
 use League\Csv\Reader;
+use League\Csv\Statement;
 
 class FormController extends Controller
 {
@@ -43,7 +44,193 @@ class FormController extends Controller
         $form = Form::find($formId);
 
         $formPath = public_path($form->result_path);
-        $data = Reader::createFromPath($formPath, 'r');
+        $reader = Reader::createFromPath($formPath, 'r');
+
+        // $reader = Reader::createFromPath('storage/form_results/ff25d02e-afce-4053-b483-4bbb6ca8288f.csv', 'r');
+        $reader->setHeaderOffset(0);
+        $records = Statement::create()->process($reader);
+
+        
+        
+        $forms = [];
+        $answers = [];
+        
+        
+        foreach ($records as $record) {
+            // print_r($record);
+            array_push($forms, $record);
+        }
+
+        // foreach ($records->fetchColumnByOffset(4) as $value) {
+        //     // array_push($answers, $value);
+        //     print_r($value);
+        // }
+
+        // print_r($answers);
+        
+        // print_r($answers);
+        
+        // THIS ONLY WORKS WITH INTEGER ARRAY KEYS
+
+        // print_r(array_column($answers, 1));
+        // print_r(array_count_values(array_column($answers, 1)));
+
+        $columns = count(current($forms)); 
+        $q_types = [0, 0, 0, 1, 2,
+                    1, 2, 1, 2, 1,
+                    2, 1, 2, 1, 2,
+                    1, 2, 1, 2, 1,
+                    2, 1, 2, 1, 2
+                    ];
+
+        for ($i = 0; $i < $columns - 2; $i++){
+            switch ($q_types[$i]){
+                case 0: {
+                    
+                    $responses = array_column($forms, $i+1);
+
+                    $freq = array_count_values($responses);
+
+                    $chartname = 'chart_q';
+                    $chartname .= $i;
+
+                    $charttype = 'bar';
+
+                    $labelx = 'Sudah';
+                    $labely = 'Belum';                    
+
+                    $chart = app()->chartjs
+                        ->name($chartname)
+                        ->type($charttype)
+                        ->size(['width' => 500, 'height' => 400])
+                        ->labels([$labelx, $labely])
+                        ->datasets([
+                            [
+                                'labels' => null,
+                                'backgroundColor' => ['rgba(255, 99, 132, 0.2)', 'rgba(99, 132, 255, 0.2)'],
+                                'data' => [$freq[$labelx] ?? 0, $freq[$labely] ?? 0]
+                            ]
+                        ])
+                        ->options([
+                            'scales' => ['yAxes' => [['ticks' => ['beginAtZero' => true]]]],
+                            'maintainAspectRatio' => false,
+                            'legend' => ['display' => false]
+                        ]);
+
+                    // print_r($answers);
+
+                    $answer = [
+                        'responses' => $responses,
+                        'chart' => $chart
+                    ];
+
+                    array_push($answers, $answer);
+
+                    break;
+                }
+                case 1: {
+
+                    $responses = array_column($forms, $i+1);
+
+                    $freq = array_count_values($responses);
+
+                    $chartname = 'chart_q';
+                    $chartname .= $i;
+
+                    $charttype = 'bar';
+
+                    $labelx = 'Good';
+                    $labely = 'Needs Improvement';                    
+
+                    $chart = app()->chartjs
+                        ->name($chartname)
+                        ->type($charttype)
+                        ->size(['width' => 500, 'height' => 400])
+                        ->labels([$labelx, $labely])
+                        ->datasets([
+                            [
+                                'labels' => null,
+                                'backgroundColor' => ['rgba(255, 99, 132, 0.2)', 'rgba(99, 132, 255, 0.2)'],
+                                'data' => [$freq[$labelx] ?? 0, $freq[$labely] ?? 0]
+                            ]
+                        ])
+                        ->options([
+                            'scales' => ['yAxes' => [['ticks' => ['beginAtZero' => true]]]],
+                            'maintainAspectRatio' => false,
+                            'legend' => ['display' => false]
+                        ]);
+
+                    $answer = [
+                        'chart' => $chart
+                    ];
+                    
+                    array_push($answers, $answer);
+                    
+                    break;
+                }
+                case 2: {
+
+                    $responses = array_column($forms, $i+1);
+
+                    $answer = [
+                        'responses' => $responses
+                    ];
+
+                    $answers[$i-1] = $answers[$i-1] + $answer;
+                    
+                    // print_r($answers[$i-1]['content']);
+                    // echo "\n";
+                    
+                    array_push($answers, 0);
+                    
+                    break;
+                }
+            }
+        }
+
+
+        
+        $chartjstest1 = app()->chartjs
+             ->name('barChartTest')
+             ->type('pie')
+            //  ->size(['width' => 400, 'height' => 200])
+             ->labels(['Label x', 'Label y'])
+             ->datasets([
+                 [
+                     "label" => "My First dataset",
+                     'backgroundColor' => ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+                     'data' => [69, 59]
+                 ],
+                 [
+                     "label" => "My First dataset",
+                     'backgroundColor' => ['rgba(255, 99, 132, 0.3)', 'rgba(54, 162, 235, 0.3)'],
+                     'data' => [65, 12]
+                 ]
+             ])
+             ->options(['maintainAspectRatio' => false]);
+
+        $chartjstest2 = app()->chartjs
+             ->name('barChartTest2')
+             ->type('bar')
+            //  ->size(['width' => 400, 'height' => 200])
+             ->labels(['Edited label', 'Edited label2'])
+             ->datasets([
+                 [
+                     "label" => "My First dataset",
+                     'backgroundColor' => ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+                     'data' => [69, 59]
+                 ],
+                 [
+                     "label" => "My First dataset",
+                     'backgroundColor' => ['rgba(255, 99, 132, 0.3)', 'rgba(54, 162, 235, 0.3)'],
+                     'data' => [65, 12]
+                 ]
+             ])
+             ->options(['maintainAspectRatio' => false]);
+
+        $charttest = [$chartjstest1, $chartjstest2];
+    
+        return view('view.formdetail', compact('answers', 'forms'));
 
     }
 
