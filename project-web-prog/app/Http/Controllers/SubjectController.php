@@ -32,14 +32,14 @@ class SubjectController extends Controller
 
     public function ManageSubjectbyClusandPe(Request $request){
         $request->validate([
-            'cluster' => 'required',
+            'cluster_id' => 'required',
             'period' => 'required'
         ]);
 
         $clusters = Cluster::get();
         $periods = SubjectLecturer::distinct()->pluck('period');
         
-        $cluster = $request->cluster;
+        $cluster = $request->cluster_id;
         $period = $request->period;
 
         $dosens = DB::table('lecturers')
