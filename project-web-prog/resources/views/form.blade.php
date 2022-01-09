@@ -54,7 +54,7 @@
                     <input type="radio" class="form-check-input" name="Ans_1" id="Sudah1" value="Sudah">
                     <label for="Sudah1" class="form-check-label">Sudah</label><br>
                     <input type="radio" class="form-check-input" name="Ans_1" id="radiobutton1" onclick="getElements1()">
-                    <textarea style="height: 26px; width: 184px; resize:none;" id="textbox1" type="text" placeholder="Other" onclick="this.value=''"></textarea><br>
+                    <textarea style="resize:none;" rows="1" id="textbox1" type="text" placeholder="Other" onclick="this.value=''"></textarea><br>
 
                 </div>
                 <br>
@@ -65,7 +65,7 @@
                     <input type="radio" class="form-check-input" name="Ans_2" id="Sudah2" value="Sudah">
                     <label for="Sudah2" class="form-check-label">Sudah</label><br>
                     <input type="radio" class="form-check-input" name="Ans_2" id="radiobutton2" onclick="getElements2()">
-                    <textarea style="height: 26px; width: 184px; resize:none;" id="textbox2" type="text" placeholder="Other" onclick="this.value=''"></textarea><br>
+                    <textarea style="resize:none;" rows="1" id="textbox2" type="text" placeholder="Other" onclick="this.value=''"></textarea><br>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -75,7 +75,7 @@
                     <input type="radio" class="form-check-input" name="Ans_3" id="Sudah3" value="Sudah">
                     <label for="Sudah3" class="form-check-label">Sudah</label><br>
                     <input type="radio" class="form-check-input" name="Ans_3" id="radiobutton3" onclick="getElements3()">
-                    <textarea style="height: 26px; width: 184px; resize:none;" id="textbox3" type="text" placeholder="Other" onclick="this.value=''"></textarea><br>
+                    <textarea style="resize:none;" rows="1" id="textbox3" type="text" placeholder="Other" onclick="this.value=''"></textarea><br>
                 </div>
                 <br>
                 <div class="mb-3">
