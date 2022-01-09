@@ -16,11 +16,11 @@ class HomeController extends Controller
         ->join('subjects', 'forms.subject_id', '=', 'subjects.id')
         ->select('forms.*', 'subjects.subject', 'subject_lecturers.lecturer_id', 'subject_lecturers.period as lecture_period', 'subject_lecturers.has_Filled_form as has_filled_form')
         ->where('subject_lecturers.lecturer_id', '=', $id)
+        ->whereRaw('forms.period = subject_lecturers.period')
+        ->get();
         // Validation done by front-end
         // ->where('subject_lecturers.has_filled_form','=',0)
         // ->where('forms.deadline', '>', date('Y-m-d H:i:s', time()))
-        ->whereRaw('forms.period = subject_lecturers.period')
-        ->get();
 
         $subjectLecturers = SubjectLecturer::where('lecturer_id', $id)
                             ->with('subject')
