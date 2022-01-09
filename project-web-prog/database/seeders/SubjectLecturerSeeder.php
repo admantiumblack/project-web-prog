@@ -20,6 +20,7 @@ class SubjectLecturerSeeder extends Seeder
         $lecturers = DB::table('lecturers')->select('id')->get();
         foreach($subjects as $subject){
             $faker = Faker::create('id_ID');
+            $faker->seed(69);
             $n = $faker->numberBetween(5, 15);
             for($i = 0; $i < $n; $i++){
                 $lecturer_id = $faker->unique()

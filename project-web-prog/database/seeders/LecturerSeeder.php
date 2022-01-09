@@ -16,6 +16,7 @@ class LecturerSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create('id_ID');
+        $faker->seed(666);
         $myfile = fopen("../.passwords", "w");
         for($i = 0; $i < 60; $i++){
             $password = $faker->password(10, 20);

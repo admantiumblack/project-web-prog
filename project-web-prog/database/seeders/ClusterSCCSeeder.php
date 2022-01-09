@@ -16,6 +16,7 @@ class ClusterSCCSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create('id_ID');
+        $faker->seed(34);
         $clusters = DB::table('clusters')->select('id')->get();
         $lecturers = DB::table('lecturers')
             ->where('position_id', 1)->select('id')->get();
