@@ -34,7 +34,7 @@
                                     @if ($item == $period)
                                     <option selected value="{{$item}}">{{$item}}</option> 
                                     @else
-                                    <option selected value="{{$item}}">{{$item}}</option>   
+                                    <option value="{{$item}}">{{$item}}</option>   
                                     @endif
                                     @empty
                                     <option selected>No Period Available
