@@ -62,7 +62,8 @@
                                         <div class="modal-body row m-0 gy-2">
                                             <label for="selectCourses">Periode:</label>
                                             <div>
-                                                <input type="text" name="period" id="" placeholder="example: 221">
+                                                <textarea class="form-control" name="period" id="" style="resize:none" rows="1" placeholder="example: 221" required></textarea>
+                                                {{-- <input  type="text" name="period" id="" placeholder=""> --}}
                                             </div>
                                             <div class="form-control">
                                                 <label for="username">Upload files</label>
