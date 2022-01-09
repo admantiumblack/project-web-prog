@@ -53,8 +53,8 @@
                     <label for="Belum1" class="form-check-label">Belum</label><br>
                     <input type="radio" class="form-check-input" name="Ans_1" id="Sudah1" value="Sudah">
                     <label for="Sudah1" class="form-check-label">Sudah</label><br>
-                    <input type="radio" class="form-check-input">
-                    <textarea for="Other1" style="height: 26px; width: 184px; resize:none;"  name="Ans_1" type="text" placeholder="Other" value=""></textarea><br>
+                    <input type="radio" class="form-check-input" name="Ans_1" id="radiobutton" onclick="getElements()">
+                    <textarea style="height: 26px; width: 184px; resize:none;" id="textbox" type="text" placeholder="Other"></textarea><br>
 
                 </div>
                 <br>
@@ -64,8 +64,8 @@
                     <label for="Belum2" class="form-check-label">Belum</label><br>
                     <input type="radio" class="form-check-input" name="Ans_2" id="Sudah2" value="Sudah">
                     <label for="Sudah2" class="form-check-label">Sudah</label><br>
-                    <input type="radio" class="form-check-input">
-                    <textarea for="Other2" style="height: 26px; width: 184px; resize:none;" name="Ans_2" type="text" placeholder="Other" value=""></textarea><br>
+                    <input type="radio" class="form-check-input" name="Ans_2" id="radiobutton" onclick="getElements()">
+                    <textarea style="height: 26px; width: 184px; resize:none;" id="textbox" type="text" placeholder="Other"></textarea><br>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -74,8 +74,8 @@
                     <label for="Belum3" class="form-check-label">Belum</label><br>
                     <input type="radio" class="form-check-input" name="Ans_3" id="Sudah3" value="Sudah">
                     <label for="Sudah3" class="form-check-label">Sudah</label><br>
-                    <input type="radio" class="form-check-input">
-                    <textarea for="Other3" style="height: 26px; width: 184px; resize:none;" name="Ans_3" type="text" placeholder="Other" value=""></textarea><br>
+                    <input type="radio" class="form-check-input" name="Ans_3" id="radiobutton" onclick="getElements()">
+                    <textarea style="height: 26px; width: 184px; resize:none;" id="textbox" type="text" placeholder="Other"></textarea><br>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -238,11 +238,14 @@
             </form>
         </div>
     </div>
-    {{-- <script>
-        $(document).ready(function() {
-            $('#Other1').click(function() {
-                $('#UnitPrice2').trigger('click');
-            });
-        });
-    </script> --}}
+    <script>
+        function getElements(){
+            document.getElementById("textbox").value = document.getElementById("radiobutton").value;
+        }
+        // $(document).ready(function() {
+        //     $('#Other1').click(function() {
+        //         $('#UnitPrice2').trigger('click');
+        //     });
+        // });
+    </script>
 @endsection
