@@ -9,7 +9,7 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <table class="table border border-3 border-dark align-middle">
+                <table class="table table-bordered border border-3 border-dark align-middle">
                     <thead class="table-dark">
                         <tr>
                             <th class="col-1 text-center">No</th>
