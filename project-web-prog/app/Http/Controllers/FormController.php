@@ -6,6 +6,7 @@ use App\Models\ClusterScc;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Form;
+use App\Models\SubjectLecturer;
 use League\Csv\Reader;
 use League\Csv\Statement;
 
@@ -41,10 +42,21 @@ class FormController extends Controller
     }
 
     public function viewFormDetail($formId){
-        $form = Form::find($formId);
+        $form = Form::with('subject')->find($formId);
 
         $formPath = public_path($form->result_path);
         $reader = Reader::createFromPath($formPath, 'r');
+
+        $subjectLecturers = SubjectLecturer::where('subject_id', $form->subject_id)
+                        ->where('period', $form->period)->get();
+        
+        $hasFilled = 0;
+        $rCount = count($subjectLecturers);
+        foreach($subjectLecturers as $subjectLecturer){
+            if($subjectLecturer->has_filled_form){
+                $hasFilled++;
+            }
+        }
 
         // $reader = Reader::createFromPath('storage/form_results/ff25d02e-afce-4053-b483-4bbb6ca8288f.csv', 'r');
         $reader->setHeaderOffset(0);
@@ -228,8 +240,12 @@ class FormController extends Controller
              ->options(['maintainAspectRatio' => false]);
 
         $charttest = [$chartjstest1, $chartjstest2];
-    
-        return view('view.formdetail', compact('answers', 'forms'));
+                    
+        return view('view.formdetail', compact('answers', 'forms'))
+            ->with('filled', $hasFilled)
+            ->with('rCount', $rCount)
+            ->with('id', $formId)
+            ->with('form', $form);
 
     }
 
