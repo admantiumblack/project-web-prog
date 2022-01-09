@@ -108,7 +108,10 @@ class FormController extends Controller
                     $charttype = 'bar';
 
                     $labelx = 'Sudah';
-                    $labely = 'Belum';                    
+                    $labely = 'Belum';
+                    
+                    $colorx = 'rgba(99, 132, 255, 0.2)';
+                    $colory = 'rgba(255, 99, 132, 0.2)';                    
 
                     $chart = app()->chartjs
                         ->name($chartname)
@@ -118,7 +121,7 @@ class FormController extends Controller
                         ->datasets([
                             [
                                 'labels' => null,
-                                'backgroundColor' => ['rgba(255, 99, 132, 0.2)', 'rgba(99, 132, 255, 0.2)'],
+                                'backgroundColor' => [$colorx, $colory],
                                 'data' => [$freq[$labelx] ?? 0, $freq[$labely] ?? 0]
                             ]
                         ])
@@ -151,7 +154,10 @@ class FormController extends Controller
                     $charttype = 'bar';
 
                     $labelx = 'Good';
-                    $labely = 'Needs Improvement';                    
+                    $labely = 'Needs Improvement';
+                    
+                    $colorx = 'rgba(99, 132, 255, 0.2)';
+                    $colory = 'rgba(255, 99, 132, 0.2)';
 
                     $chart = app()->chartjs
                         ->name($chartname)
@@ -161,7 +167,7 @@ class FormController extends Controller
                         ->datasets([
                             [
                                 'labels' => null,
-                                'backgroundColor' => ['rgba(255, 99, 132, 0.2)', 'rgba(99, 132, 255, 0.2)'],
+                                'backgroundColor' => [$colorx, $colory],
                                 'data' => [$freq[$labelx] ?? 0, $freq[$labely] ?? 0]
                             ]
                         ])
