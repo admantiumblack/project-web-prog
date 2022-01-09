@@ -5,7 +5,9 @@ use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SCCController;
+use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
+use Monolog\Handler\RotatingFileHandler;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +33,10 @@ Route::get('/forms', [FormController::class, 'viewAllForm'])->name('view.forms')
 Route::get('/feedbacks', [ComplaintController::class, 'viewAllFeedback'])->name('view.complaints')->middleware('validateSCC');
 
 Route::get('/form/{id}', [FormController::class, 'viewInputForm'])->name('form')->middleware('validateLoggedIn');
+
+Route::get('/manage', [SubjectController::class, 'ManageSubject'])->name('manage.subjects')->middleware('validateDean');
+
+Route::post('/manage', [SubjectController::class, 'ManageSubjectbyClusandPe']);
 
 Route::get('/forms/{formId}', 
     [FormController::class, 'viewFormDetail'])
