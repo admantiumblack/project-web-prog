@@ -3,23 +3,41 @@
 @section('title', 'Feedback Ticket')
 
 @section('content')
-    <div class="row row-cols-1 row-cols-lg-2 p-3 m-2">
-        <div class="col-lg-9">
-            <div class="px-2 mb-3">
-                <h1>Active Forms</h1>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="list-group">
-                        @forelse ($complaints as $complaint)
-                            
-                        @empty
-                            
-                        @endforelse
-                        {{-- Looping forelse ticket --}}
-                    </div>
-                </div>
-            </div>
+    <div class="card">
+        <div class="card-header">
+            <h1 class="text-center">Feedback Ticket</h1>
+        </div>
+        <div class="card-body">
+            @forelse ($complaints as $complaint)
+                <table class="table table-light align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Course Id</th>
+                            <th scope="col">Issue</th>
+                            <th scope="col">Content</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                {{ $complaint->id + 1 }}
+                            </th>
+                            <th>
+                                {{ $complaint->subject_id }}
+                            </th>
+                            <th>
+                                {{ $complaint->title }}
+                            </th>
+                            <th>
+                                {{ $complaint->content }}
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            @empty
+                <h2 class="text-center">No Feedback Recently</h2>
+            @endforelse
         </div>
     </div>
 @endsection
