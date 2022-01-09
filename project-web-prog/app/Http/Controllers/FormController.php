@@ -51,16 +51,14 @@ class FormController extends Controller
         $records = Statement::create()->process($reader);
 
         
-        
         $forms = [];
         $answers = [];
         
         
         foreach ($records as $record) {
-            // print_r($record);
-            array_push($forms, $record);
+            $forms[] = $record;
         }
-
+        // print_r($forms);
         // foreach ($records->fetchColumnByOffset(4) as $value) {
         //     // array_push($answers, $value);
         //     print_r($value);
@@ -75,7 +73,8 @@ class FormController extends Controller
         // print_r(array_column($answers, 1));
         // print_r(array_count_values(array_column($answers, 1)));
 
-        $columns = count(current($forms)); 
+        $columns = count($records->getHeader()); 
+        error_log($columns);
         $q_types = [0, 0, 0, 1, 2,
                     1, 2, 1, 2, 1,
                     2, 1, 2, 1, 2,
