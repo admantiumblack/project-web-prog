@@ -53,9 +53,15 @@
                     <label for="Belum1" class="form-check-label">Belum</label><br>
                     <input type="radio" class="form-check-input" name="Ans_1" id="Sudah1" value="Sudah">
                     <label for="Sudah1" class="form-check-label">Sudah</label><br>
-                    <input type="radio" class="form-check-input" name="Ans_1" id="radiobutton1" onclick="getElements1()">
-                    <textarea style="resize:none;" rows="1" id="textbox1" type="text" placeholder="Other" onclick="this.value=''"></textarea><br>
-
+                    <input type="radio" class="form-check-input" name="Ans_1" id="radiobutton1">
+                    <textarea style="resize:none;" rows="1" id="textbox1" type="text" placeholder="Other" oninput="changeHandler()"></textarea><br>
+                    <script>
+                        
+                        function changeHandler(){
+                            document.getElementById("radiobutton1").value = document.getElementById("textbox1").value;
+                            document.getElementById("radiobutton1").checked = true;
+                        }
+                    </script>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -88,8 +94,7 @@
                 <br>
                 <div class="mb-3">
                     <p>5. Masukan terhadap Content secara general</p>
-                    <textarea name="Ans_5" id="message" style="height: 150px; width: 500px; resize:none"
-                        onclick="this.value=''" required>Enter text here...</textarea>
+                    <textarea class="form-control" name="Ans_5" id="message" style="resize:none" rows="5" placeholder="Enter text here..." required></textarea>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -239,9 +244,9 @@
         </div>
     </div>
     <script>
-        function getElements1(){
-            document.getElementById("textbox1").value = document.getElementById("radiobutton1").value;
-        }
+        // function getElements1(){
+        //     document.getElementById("textbox1").value = document.getElementById("radiobutton1").value;
+        // }
         function getElements2(){
             document.getElementById("textbox2").value = document.getElementById("radiobutton2").value;
         }
