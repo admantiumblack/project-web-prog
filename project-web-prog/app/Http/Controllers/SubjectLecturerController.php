@@ -38,9 +38,9 @@ class SubjectLecturerController extends Controller
                             $q->where('cluster_id', $cluster_choice);
                         }
                         else{
-                            $q;
+                            $q->orderBy('subject', 'Asc');
                         }
-                    })->where('period', $period_choice)->orderBy('period', 'Desc');
+                    })->where('period', $period_choice);
                 }
                 else{
                     $q->with('subject')->whereHas('subject', function ($q) use ($cluster_choice){
@@ -50,8 +50,7 @@ class SubjectLecturerController extends Controller
                         else{
                             $q;
                         }
-                    })
-                    ->orderBy('period', 'Desc');
+                    });
                 }
             }]);
             
@@ -65,8 +64,7 @@ class SubjectLecturerController extends Controller
                         else{
                             $q;
                         }
-                    })
-                    ->orderBy('period', 'Desc');
+                    });
                 }
                 else{
                     $q->with('subject')
@@ -77,18 +75,25 @@ class SubjectLecturerController extends Controller
                         else{
                             $q;
                         }
-                    })
-                    ->orderBy('period', 'Desc');
+                    });
                 }
             });
 
         }
         else{
             $lecturers = Lecturer::with([
-                'subjectLecturers' => function ($q){
-                    $q->orderBy('period');
-                }
-            , 'subjectLecturers.subject']);
+                'subjectLecturers' => function ($q) use ($period_choice, $cluster_choice){
+                    $q->with('subject')
+                    ->whereHas('subject', function ($q) use ($cluster_choice){
+                        if($cluster_choice != -1){
+                            $q->where('cluster_id', $cluster_choice);
+                        }
+                        else{
+                            $q;
+                        }
+                    })
+                    ->orderBy('period', 'Desc');
+                }]);
         }
 
 

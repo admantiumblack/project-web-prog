@@ -84,12 +84,12 @@
         </div>
     </div>
     <div class="card-body">
-        <table class="table align-middle">
+        <table class="table align-left">
             <thead>
                 <tr>
-                    <th class="col-3">Nama Dosen</th>
-                    <th class="col-2">Kode Dosen</th>
-                    <th class="col-3">Subjects</th>
+                    <th class="col-3" style="width: 20%">Nama Dosen</th>
+                    <th class="col-2" style="width: 10%">Kode Dosen</th>
+                    <th class="col-3" style="60%">Subjects</th>
                 </tr>
             </thead>
             <tbody>
@@ -99,7 +99,15 @@
                         <td>{{$lecturer->id}}</td>
                         <td>
                             @foreach ($lecturer->subjectLecturers as $subjectLecturer)
-                                ({{$subjectLecturer->subject->cluster->cluster}}) {{$subjectLecturer->subject->id}} - {{$subjectLecturer->subject->subject}} ({{$subjectLecturer->period}}) <br>
+                            @if ($cluster_choice == -1 and $period_choice == -1)
+                                ({{$subjectLecturer->subject->cluster->cluster}} - {{$subjectLecturer->period}}) {{$subjectLecturer->subject->id}} - {{$subjectLecturer->subject->subject}} <br>
+                            @elseif ($cluster_choice != -1 and $period_choice == -1)
+                                ({{$subjectLecturer->period}}) {{$subjectLecturer->subject->id}} - {{$subjectLecturer->subject->subject}} <br>
+                            @elseif ($cluster_choice == -1 and $period_choice != -1)
+                                ({{$subjectLecturer->subject->cluster->cluster}}) {{$subjectLecturer->subject->id}} - {{$subjectLecturer->subject->subject}} <br>
+                            @else
+                                {{$subjectLecturer->subject->id}} - {{$subjectLecturer->subject->subject}} <br>
+                            @endif
                             @endforeach
                         </td>
                     </tr>
