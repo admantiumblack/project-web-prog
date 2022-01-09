@@ -10,9 +10,8 @@
             {{$answer}}
         @endforeach --}}
         <div class="col">
-            <div class="px-2 mb-3"><h1>Form ({{$id}} - {{$form->period}})</h1></div>
-            <div class="px-2 mb-3"><p>{{$form->subject->id}} - {{$form->subject->subject}}</p></div>
-            <div class="px-2 mb-3"><h5>({{$filled}}/{{$rCount}} filled)</h5></div>
+            <h1 class="px-2 mb-3">Form ({{$id}} - {{$form->period}})</h1>
+            <h5 class="px-2 mb-3">{{$form->subject->id}} - {{$form->subject->subject}} ({{$filled}}/{{$rCount}} filled)</h5>
             <div class="card">
                 <div class="card-body">
                     <div class="row row-cols-1 row-cols-xxl-3 mb-4">
