@@ -20,33 +20,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @forelse()
+                            @forelse($forms as $form)
                                 <tr>
-                                    <td>COMP177014 - Advanced Micro Devices</td>
-                                    <td>Yesterday</td>
-                                    <td>None</td>
+                                    <td>{{$form->subject}}</td>
+                                    <td>{{$form->period}}</td>
+                                    <td>{{$form->deadline}}</td>
                                     <td>
                                         <a class="btn btn-primary" href="#">View</a>
                                     </td>
                                 </tr>
                             @empty
-                            @endforelse --}}
-                            <tr>
-                                <td>COMP177014 - Advanced Micro Devices</td>
-                                <td>Yesterday</td>
-                                <td>2022年02月30日</td>
-                                <td>
-                                    <a class="btn btn-primary" href="#">View</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>COMP105 - Superconductors</td>
-                                <td>Missed</td>
-                                <td>Around 8 months</td>
-                                <td>
-                                    <a class="btn btn-primary" href="#">View</a>
-                                </td>
-                            </tr>
+                            @endforelse
                         </tbody>
                         
                     </table>
