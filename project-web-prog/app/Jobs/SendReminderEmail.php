@@ -11,21 +11,23 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NotificationEmail;
 
+
 class SendReminderEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $lecturerContents;
+    public $emails;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($lecturerContents)
+    public function __construct($emails)
     {
         //
-        $this->lecturerContents = $lecturerContents;
+        $this->emails = $emails;
+        // error_log($lecturerContents);
     }
 
     /**
@@ -35,16 +37,8 @@ class SendReminderEmail implements ShouldQueue
      */
     public function handle()
     {
-        $contents = $this->lecturerContents;
-        foreach($contents as $content){
-            $details = [
-                'title' => $content->subject.' form for '.$content->period.'.',
-                'header' => 'Dear Mr/Ms. '.$content->name.'.',
-                'content' => 'Please fill '.
-                        $content->subject.' form for '.$content->period."\n".
-                        'Deadline for the form is: '.$deadline.'.'
-            ];
-            Mail::to($content->email)->send(new NotificationEmail($details));
+        foreach($this->emails as $email){
+            Mail::to($email['destination'])->send($email['email']);
         }
     }
 }

@@ -10,6 +10,7 @@ use App\Models\ClusterScc;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use App\Jobs\SendReminderEmail;
+use App\Mail\NotificationEmail;
 
 class FormAPIController extends Controller
 {
@@ -139,12 +140,12 @@ class FormAPIController extends Controller
             $form = new Form();
             $form->id = $request->period.$subject->id;
             $form->subject_id = $subject->id;
-            $form->deadline = $request->deadline.' 00:00:00';
+            $form->deadline = $request->deadline.' 23:59:59';
             $form->period = $request->period;
             $form->result_path = 'storage/form_results/'.$filename;
             $form->save();
         }
-        $this->sendEmail($request, $id, $request->period, $request->deadline.' 00:00:00');
+        $this->sendEmail($request, $id, $request->period, $request->deadline.' 23:59:59');
 
 
         return redirect()->route('home');
@@ -160,7 +161,24 @@ class FormAPIController extends Controller
                     'subject_lecturers.period', 'lecturers.name',
                     'subjects.subject')
                     ->get();
-        SendReminderEmail::dispatch($lecturerContents);
+        // error_log($lecturerContents);
+        $emails = [];
+        foreach($lecturerContents as $content){
+            $details = [
+                'title' => $content->subject.' form for '.$content->period.'.',
+                'header' => 'Dear Mr/Ms. '.$content->name.'.',
+                'content' => 'Please fill '.
+                        $content->subject.' form for '.$content->period."\n".
+                        'Deadline for the form is: '.$deadline.'.'
+            ];
+            $emails[] =[
+                'email' => new NotificationEmail($details),
+                'destination' => $content->email
+            ];
+            
+        }
+        $reminder = new SendReminderEmail($emails);
+        $this->dispatch($reminder);
 
     }
 
