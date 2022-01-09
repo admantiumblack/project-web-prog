@@ -25,7 +25,7 @@
                                 {{ $key+1 }}
                             </th>
                             <th>
-                                {{ $complaint->subject_id }}
+                                {{ $complaint->subject }}
                             </th>
                             <th>
                                 {{ $complaint->subject }}

@@ -3,26 +3,22 @@
 @section('title', 'Manage Courses')
 
 @section('content')
-    {{-- <h1>{{$cluster}} and {{$period}}</h1> --}}
     <div class="row row-cols-1 row-cols-lg-2 p-3 m-2">
         <div class="col-lg-9">
-            <div class="px-2 mb-3"><h1>Manage Courses for Dean</h1></div>
+            <div class="px-2 mb-3"><h1>Manage stuff idk man</h1></div>
             <div class="card">
                 <div class="card-body">
-                    <form action="/manage" method="POST" id="searchLecture">
+                    <form action="{{route('manage')}}" method="GET" id="searchLecture">
                         @csrf
                         <div class="row m-0 gy-2">
                             <div class="col">
                             <label for="selectRumpunan">Select Rumpunan:</label>
-                                <select class="form-select" onchange="this.form.submit()" name="cluster">
-                                    @forelse ($clusters as $item)
-                                    @if ($item->id == $cluster)
-                                    <option selected value="{{$item->id}}">{{$item->cluster}}</option>
-                                    @else
-                                    <option value="{{$item->id}}">{{$item->cluster}}</option>
-                                    @endif
+                                <select class="form-select" onchange="this.form.submit()" name="cluster_id">
+                                    <option {{$cluster_choice == -1? 'selected':''}} value="-1">All</option>
+                                    @forelse ($clusters as $cluster)
+                                    <option {{$cluster_choice == $cluster->id? 'selected':''}} value="{{$cluster->id}}">{{$cluster->id}} - {{$cluster->cluster}}</option>
                                     @empty
-                                    <option selected>No Rumpunan Available
+                                    <option selected>No Cluster Available
                                     </option>
                                     @endforelse
                                 </select>
@@ -30,12 +26,9 @@
                             <div class="col">
                                 <label for="selectPeriod">Select Period:</label>
                                 <select class="form-select" onchange="this.form.submit()" name="period">
-                                    @forelse ($periods as $item)
-                                    @if ($item == $period)
-                                    <option selected value="{{$item}}">{{$item}}</option> 
-                                    @else
-                                    <option selected value="{{$item}}">{{$item}}</option>   
-                                    @endif
+                                    <option {{$period_choice == -1? 'selected':''}} value="-1">All</option>
+                                    @forelse ($periods as $period)
+                                    <option {{$period_choice == $period->period? 'selected':''}} value="{{$period->period}}">{{$period->period}}</option>
                                     @empty
                                     <option selected>No Period Available
                                     </option>
@@ -67,20 +60,13 @@
                                     <form action="{{route('api.complaint.insert')}}" method="POST" id="uploadForm">
                                         @csrf
                                         <div class="modal-body row m-0 gy-2">
-                                            <label for="selectCourses">Select Periode:</label>
+                                            <label for="selectCourses">Periode:</label>
                                             <div>
-                                                <select class="form-select" name="subject_id">
-                                                    @forelse ($periods as $period)
-                                                    <option selected value="{{$period}}">{{$period}}</option>
-                                                    @empty
-                                                    <option selected>No Period Available
-                                                    </option>
-                                                    @endforelse
-                                                </select>
+                                                <input type="text" name="period" id="" placeholder="example: 221">
                                             </div>
                                             <div class="form-control">
                                                 <label for="username">Upload files</label>
-                                                <input type="file" name="insert_data" id="insert_data">
+                                                <input type="file" name="csv" id="insert_data" placeholder="must be csv">
                                             </div>
                                         </div>
                                     </form>
@@ -106,18 +92,29 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($dosens as $dosen)
-                <tr>
-                    <td>{{$dosen->name}}</td>
-                    <td>{{$dosen->id}}</td>
-                    <td>{{$dosen->subject}}</td>
-                </tr>
+                @forelse ($lecturers as $lecturer)
+                    <tr>
+                        <td>{{$lecturer->name}}</td>
+                        <td>{{$lecturer->id}}</td>
+                        <td>
+                            @foreach ($lecturer->subjectLecturers as $subjectLecturer)
+                                ({{$subjectLecturer->subject->cluster->cluster}}) {{$subjectLecturer->subject->id}} - {{$subjectLecturer->subject->subject}} ({{$subjectLecturer->period}}) <br>
+                            @endforeach
+                        </td>
+                    </tr>
                 @empty
-                <tr>
-                    <td>No Dosens Available</td>
-                </tr> 
+                    
+                    <tr>
+                        <td>Roland</td>
+                        <td>D0001</td>
+                        <td>(Query Subjects)</td>
+                    </tr>
+                    <tr>
+                        <td>Samuel Yang</td>
+                        <td>D0420</td>
+                        <td>(Query Subjects)</td>
+                    </tr>
                 @endforelse
-                
             </tbody>
         </table>
 @endsection

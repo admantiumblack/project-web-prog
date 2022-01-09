@@ -5,6 +5,7 @@ use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SCCController;
+use App\Http\Controllers\SubjectLecturerController;
 use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
 use Monolog\Handler\RotatingFileHandler;
@@ -42,6 +43,11 @@ Route::get('/forms/{formId}',
     [FormController::class, 'viewFormDetail'])
     ->name('view.form.detail')
     ->middleware('validateSCC');
+
+Route::get('/manage', 
+    [SubjectLecturerController::class, 'viewManageSubjectLecturer'])
+    ->name('manage')
+    ->middleware('validateDean');
 
 // Route::get('/urlhere', function () {return view('manage.subjects');});
 // ^ Testing untuk View manage Subjects
