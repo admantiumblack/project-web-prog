@@ -3,48 +3,43 @@
 @section('title', 'Manage Courses')
 
 @section('content')
+    {{-- <h1>{{$cluster}} and {{$period}}</h1> --}}
     <div class="row row-cols-1 row-cols-lg-2 p-3 m-2">
         <div class="col-lg-9">
-            <div class="px-2 mb-3"><h1>Manage stuff idk man</h1></div>
+            <div class="px-2 mb-3"><h1>Manage Courses for Dean</h1></div>
             <div class="card">
                 <div class="card-body">
-                    <form action="" method="POST" id="searchLecture">
+                    <form action="/manage" method="POST" id="searchLecture">
                         @csrf
                         <div class="row m-0 gy-2">
                             <div class="col">
                             <label for="selectRumpunan">Select Rumpunan:</label>
-                                <select class="form-select" onchange="this.form.submit()">
-                                    {{-- @forelse (Query Rumpunan)
-                                    <option selected value="{{}}">(Query Rumpunan)</option>
-                                    @empty --}}
+                                <select class="form-select" onchange="this.form.submit()" name="cluster">
+                                    @forelse ($clusters as $item)
+                                    @if ($item->id == $cluster)
+                                    <option selected value="{{$item->id}}">{{$item->cluster}}</option>
+                                    @else
+                                    <option value="{{$item->id}}">{{$item->cluster}}</option>
+                                    @endif
+                                    @empty
                                     <option selected>No Rumpunan Available
                                     </option>
-                                    <option selected>No Rumpunan Available
-                                    </option>
-                                    <option selected>No Rumpunan Available
-                                    </option>
-                                    <option selected>No Rumpunan Available
-                                    </option>
-                                    {{-- @endforelse --}}
+                                    @endforelse
                                 </select>
                             </div>
                             <div class="col">
                                 <label for="selectPeriod">Select Period:</label>
-                                <select class="form-select" onchange="this.form.submit()">
-                                    {{-- @forelse (Query Period)
-                                    <option selected value="{{}}">(Query Period)</option>
-                                    @empty --}}
+                                <select class="form-select" onchange="this.form.submit()" name="period">
+                                    @forelse ($periods as $item)
+                                    @if ($item == $period)
+                                    <option selected value="{{$item}}">{{$item}}</option> 
+                                    @else
+                                    <option selected value="{{$item}}">{{$item}}</option>   
+                                    @endif
+                                    @empty
                                     <option selected>No Period Available
                                     </option>
-                                    <option selected>No Period Available
-                                    </option>
-                                    <option selected>No Period Available
-                                    </option>
-                                    <option selected>No Period Available
-                                    </option>
-                                    <option selected>No Period Available
-                                    </option>
-                                    {{-- @endforelse --}}
+                                    @endforelse
                                 </select>
                             </div>
                         </div>
@@ -75,20 +70,12 @@
                                             <label for="selectCourses">Select Periode:</label>
                                             <div>
                                                 <select class="form-select" name="subject_id">
-                                                    {{-- @forelse (Query Period)
-                                                    <option selected value=""></option>
-                                                    @empty --}}
+                                                    @forelse ($periods as $period)
+                                                    <option selected value="{{$period}}">{{$period}}</option>
+                                                    @empty
                                                     <option selected>No Period Available
                                                     </option>
-                                                    <option selected>No Period Available
-                                                    </option>
-                                                    <option selected>No Period Available
-                                                    </option>
-                                                    <option selected>No Period Available
-                                                    </option>
-                                                    <option selected>No Period Available
-                                                    </option>
-                                                    {{-- @endforelse --}}
+                                                    @endforelse
                                                 </select>
                                             </div>
                                             <div class="form-control">
@@ -119,21 +106,18 @@
                 </tr>
             </thead>
             <tbody>
+                @forelse ($dosens as $dosen)
                 <tr>
-                    <td>Sean Oswald Ramli</td>
-                    <td>D6900</td>
-                    <td>(Query Subjects)</td>
+                    <td>{{$dosen->name}}</td>
+                    <td>{{$dosen->id}}</td>
+                    <td>{{$dosen->subject}}</td>
                 </tr>
+                @empty
                 <tr>
-                    <td>Roland</td>
-                    <td>D0001</td>
-                    <td>(Query Subjects)</td>
-                </tr>
-                <tr>
-                    <td>Samuel Yang</td>
-                    <td>D0420</td>
-                    <td>(Query Subjects)</td>
-                </tr>
+                    <td>No Dosens Available</td>
+                </tr> 
+                @endforelse
+                
             </tbody>
         </table>
 @endsection
