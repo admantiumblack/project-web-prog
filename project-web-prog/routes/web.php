@@ -25,11 +25,16 @@ Route::get('/', [HomeController::class, 'viewHome'])
 Route::get('/login', [AuthenticationController::class, 'viewLogin'])->name('login')
 ->middleware(['validateGuest']);
 
-Route::get('/viewallform', [SCCController::class, 'viewAllForm'])->name('viewAllForm')->middleware('validateSCC');
+Route::get('/forms', [SCCController::class, 'viewAllForm'])->name('view.forms')->middleware('validateSCC');
 
-Route::get('/viewallfeedback', [SCCController::class, 'viewAllFeedback'])->name('viewAllFeed')->middleware('validateSCC');
+Route::get('/feedbacks', [SCCController::class, 'viewAllFeedback'])->name('view.complaints')->middleware('validateSCC');
 
 Route::get('/form/{id}', [FormController::class, 'viewInputForm'])->name('form')->middleware('validateLoggedIn');
+
+Route::get('/forms/{formId}', 
+    [FormController::class, 'viewFormDetail'])
+    ->name('view.form.detail')
+    ->middleware('validateSCC');
 
 // Route::get('/urlhere', function () {return view('manage.subjects');});
 // ^ Testing untuk View manage Subjects
