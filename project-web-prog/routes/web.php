@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SCCController;
@@ -25,9 +26,9 @@ Route::get('/', [HomeController::class, 'viewHome'])
 Route::get('/login', [AuthenticationController::class, 'viewLogin'])->name('login')
 ->middleware(['validateGuest']);
 
-Route::get('/forms', [SCCController::class, 'viewAllForm'])->name('view.forms')->middleware('validateSCC');
+Route::get('/forms', [FormController::class, 'viewAllForm'])->name('view.forms')->middleware('validateSCC');
 
-Route::get('/feedbacks', [SCCController::class, 'viewAllFeedback'])->name('view.complaints')->middleware('validateSCC');
+Route::get('/feedbacks', [ComplaintController::class, 'viewAllFeedback'])->name('view.complaints')->middleware('validateSCC');
 
 Route::get('/form/{id}', [FormController::class, 'viewInputForm'])->name('form')->middleware('validateLoggedIn');
 

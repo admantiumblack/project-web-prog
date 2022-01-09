@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ClusterScc;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Form;
@@ -10,6 +11,20 @@ use League\Csv\Reader;
 class FormController extends Controller
 {
     //
+    public function viewAllForm(Request $request){
+        
+        $ssc_id = explode('_', $request->cookie('user_auth'))[0];
+        $cluster_id = ClusterScc::where('lecturer_id','=',$ssc_id)->first()->cluster_id;
+
+        $forms = DB::table('forms')
+        ->join('subjects', 'forms.subject_id', '=', 'subjects.id')
+        ->select('forms.*', 'subjects.subject')
+        ->where('subjects.cluster_id', '=', $cluster_id)
+        ->get();
+        
+        return view('view.formresult', ['forms'=>$forms]);
+    }
+    
     public function viewInputForm(Request $request, $id){
         
         $lecturerId = explode('_', $request->cookie('user_auth'))[0];
