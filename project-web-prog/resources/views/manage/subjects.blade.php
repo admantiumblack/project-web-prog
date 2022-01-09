@@ -54,7 +54,7 @@
                             <div class="modal-dialog modal-dialog-scrollable modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Manage Fuck</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Assign Subject</h5>
                                     </div>
                                     {{-- <form action="API URL" method="POST"> --}}
                                     <form action="{{route('api.complaint.insert')}}" method="POST" id="uploadForm">
@@ -103,18 +103,11 @@
                         </td>
                     </tr>
                 @empty
-                    
-                    <tr>
-                        <td>Roland</td>
-                        <td>D0001</td>
-                        <td>(Query Subjects)</td>
-                    </tr>
-                    <tr>
-                        <td>Samuel Yang</td>
-                        <td>D0420</td>
-                        <td>(Query Subjects)</td>
-                    </tr>
+                <tr>
+                    <td>No Dosens Available</td>
+                </tr>
                 @endforelse
+
             </tbody>
         </table>
 @endsection
