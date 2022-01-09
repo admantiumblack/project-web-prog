@@ -234,7 +234,7 @@
                 </div>
                 <br>
                 <div class="mb-3">
-                    <p>25. Masukan terhadap Final Exams</p>
+                    <p>25. Masukan terhadap Overall Evaluation, Feedback, Dll</p>
                     <textarea class="form-control" name="Ans_25" id="message" style="resize:none" rows="5" placeholder="Enter text here..."required></textarea>
                 </div>
                 <br>
