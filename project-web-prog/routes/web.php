@@ -31,4 +31,7 @@ Route::get('/viewallfeedback', [SCCController::class, 'viewAllFeedback'])->name(
 
 Route::get('/form/{id}', [FormController::class, 'viewInputForm'])->name('form')->middleware('validateLoggedIn');
 
+// Route::get('/urlhere', function () {return view('manage.subjects');});
+// ^ Testing untuk View manage Subjects
+
 // Route::get('/', [HomeController::class, 'viewHome']);
