@@ -56,7 +56,6 @@
                     <input type="radio" class="form-check-input" name="Ans_1" id="radiobutton1">
                     <textarea style="resize:none;" rows="1" id="textbox1" type="text" placeholder="Other" oninput="changeHandler()"></textarea><br>
                     <script>
-                        
                         function changeHandler(){
                             document.getElementById("radiobutton1").value = document.getElementById("textbox1").value;
                             document.getElementById("radiobutton1").checked = true;
@@ -70,18 +69,30 @@
                     <label for="Belum2" class="form-check-label">Belum</label><br>
                     <input type="radio" class="form-check-input" name="Ans_2" id="Sudah2" value="Sudah">
                     <label for="Sudah2" class="form-check-label">Sudah</label><br>
-                    <input type="radio" class="form-check-input" name="Ans_2" id="radiobutton2" onclick="getElements2()">
-                    <textarea style="resize:none;" rows="1" id="textbox2" type="text" placeholder="Other" onclick="this.value=''"></textarea><br>
+                    <input type="radio" class="form-check-input" name="Ans_2" id="radiobutton2">
+                    <textarea style="resize:none;" rows="1" id="textbox2" type="text" placeholder="Other" oninput="changeHandler2()"></textarea><br>
+                    <script>
+                        function changeHandler2(){
+                            document.getElementById("radiobutton2").value = document.getElementById("textbox2").value;
+                            document.getElementById("radiobutton2").checked = true;
+                        }
+                    </script>
                 </div>
                 <br>
                 <div class="mb-3">
-                    <p>3. Apakah Bpk/Ibu sudah mengikuti Pengembangan Diri Minimal 1 kali di Semester ini?</p>
+                    <p>3. Apakah Bpk/Ibu sudah mengikuti Pengembangan Diri Minimal 1 kali di Semester ini?</p>s
                     <input type="radio" class="form-check-input" name="Ans_3" id="Belum3" value="Belum" required>
                     <label for="Belum3" class="form-check-label">Belum</label><br>
                     <input type="radio" class="form-check-input" name="Ans_3" id="Sudah3" value="Sudah">
                     <label for="Sudah3" class="form-check-label">Sudah</label><br>
-                    <input type="radio" class="form-check-input" name="Ans_3" id="radiobutton3" onclick="getElements3()">
-                    <textarea style="resize:none;" rows="1" id="textbox3" type="text" placeholder="Other" onclick="this.value=''"></textarea><br>
+                    <input type="radio" class="form-check-input" name="Ans_3" id="radiobutton3">
+                    <textarea style="resize:none;" rows="1" id="textbox3" type="text" placeholder="Other" oninput="changeHandler3()"></textarea><br>
+                    <script>
+                        function changeHandler3(){
+                            document.getElementById("radiobutton3").value = document.getElementById("textbox3").value;
+                            document.getElementById("radiobutton3").checked = true;
+                        }
+                    </script>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -107,8 +118,7 @@
                 <br>
                 <div class="mb-3">
                     <p>7. Masukan terhadap materi dalam Textbook</p>
-                    <textarea name="Ans_7" id="message" style="height: 150px; width: 500px; resize:none"
-                        onclick="this.value=''" required>Enter text here...</textarea>
+                    <textarea name="Ans_7" id="message" style="resize:none" rows="5" placeholder="Enter text here..." required></textarea>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -121,8 +131,7 @@
                 <br>
                 <div class="mb-3">
                     <p>9. Masukan terhadap presentasi dan supporting material?</p>
-                    <textarea name="Ans_9" id="message" style="height: 150px; width: 500px; resize:none"
-                        onclick="this.value=''" required>Enter text here...</textarea>
+                    <textarea name="Ans_9" id="message" style="resize:none" rows="5" placeholder="Enter text here..." required></textarea>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -135,8 +144,7 @@
                 <br>
                 <div class="mb-3">
                     <p>11. Masukan terhadap Multimedia/Digital content?</p>
-                    <textarea name="Ans_11" id="message" style="height: 150px; width: 500px; resize:none"
-                        onclick="this.value=''" required>Enter text here...</textarea>
+                    <textarea name="Ans_11" id="message" style="resize:none" rows="5" placeholder="Enter text here..." required></textarea>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -149,8 +157,7 @@
                 <br>
                 <div class="mb-3">
                     <p>13. Masukan terhadap Classroom management di kelas?</p>
-                    <textarea name="Ans_13" id="message" style="height: 150px; width: 500px; resize:none"
-                        onclick="this.value=''" required>Enter text here...</textarea>
+                    <textarea name="Ans_13" id="message" style="resize:none" rows="5" placeholder="Enter text here..." required></textarea>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -163,8 +170,7 @@
                 <br>
                 <div class="mb-3">
                     <p>15. Masukan terhadap Learning Methodology sekarang?</p>
-                    <textarea name="Ans_15" id="message" style="height: 150px; width: 500px; resize:none"
-                        onclick="this.value=''" required>Enter text here...</textarea>
+                    <textarea name="Ans_15" id="message" style="resize:none" rows="5" placeholder="Enter text here..." required></textarea>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -177,8 +183,7 @@
                 <br>
                 <div class="mb-3">
                     <p>17. Masukan terhadap Other Language?(Ex. English)</p>
-                    <textarea name="Ans_17" id="message" style="height: 150px; width: 500px; resize:none"
-                        onclick="this.value=''" required>Enter text here...</textarea>
+                    <textarea name="Ans_17" id="message" style="resize:none" rows="5" placeholder="Enter text here..." required></textarea>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -191,8 +196,7 @@
                 <br>
                 <div class="mb-3">
                     <p>19. Masukan terhadap Individual Assignment/Project/Quiz/Presentation</p>
-                    <textarea name="Ans_19" id="message" style="height: 150px; width: 500px; resize:none"
-                        onclick="this.value=''" required>Enter text here...</textarea>
+                    <textarea name="Ans_19" id="message" style="resize:none" rows="5" placeholder="Enter text here..." required></textarea>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -205,8 +209,7 @@
                 <br>
                 <div class="mb-3">
                     <p>21. Masukan terhadap Midterm Exams</p>
-                    <textarea name="Ans_21" id="message" style="height: 150px; width: 500px; resize:none"
-                        onclick="this.value=''" required>Enter text here...</textarea>
+                    <textarea name="Ans_21" id="message" style="resize:none" rows="5" placeholder="Enter text here..." required></textarea>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -219,8 +222,7 @@
                 <br>
                 <div class="mb-3">
                     <p>23. Masukan terhadap Final Exams</p>
-                    <textarea name="Ans_23" id="message" style="height: 150px; width: 500px; resize:none"
-                        onclick="this.value=''" required>Enter text here...</textarea>
+                    <textarea name="Ans_23" id="message" style="resize:none" rows="5" placeholder="Enter text here..." required></textarea>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -233,8 +235,7 @@
                 <br>
                 <div class="mb-3">
                     <p>25. Masukan terhadap Final Exams</p>
-                    <textarea name="Ans_25" id="message" style="height: 150px; width: 500px; resize:none"
-                        onclick="this.value=''" required>Enter text here...</textarea>
+                    <textarea name="Ans_25" id="message" style="resize:none" rows="5" placeholder="Enter text here..."required></textarea>
                 </div>
                 <br>
                 <div class="mb-3">
@@ -247,12 +248,12 @@
         // function getElements1(){
         //     document.getElementById("textbox1").value = document.getElementById("radiobutton1").value;
         // }
-        function getElements2(){
-            document.getElementById("textbox2").value = document.getElementById("radiobutton2").value;
-        }
-        function getElements3{
-            document.getElementById("textbox3").value = document.getElementById("radiobutton3").value;
-        }
+        // function getElements2(){
+        //     document.getElementById("textbox2").value = document.getElementById("radiobutton2").value;
+        // }
+        // function getElements3{
+        //     document.getElementById("textbox3").value = document.getElementById("radiobutton3").value;
+        // }
         // $(document).ready(function() {
         //     $('#Other1').click(function() {
         //         $('#UnitPrice2').trigger('click');
