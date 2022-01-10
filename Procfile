@@ -1,2 +1,4 @@
 web: vendor/bin/heroku-php-apache2 public/
-worker: php artisan migrate:fresh --seed
+worker: composer install
+worker: php artisan migrate:fresh
+worker: php db:seed
