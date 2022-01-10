@@ -105,7 +105,7 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-header text-left fw-bold">
-                                    2. Apakah Bpk/Ibu Dosen sudah memiliki Minimal 1 Paper Scopus di Tahun ini?
+                                    2.  Apakah Bpk/Ibu sudah melakukan Pengabdian Pada Masyarakat Minimal 1 kali di Semester ini?
                                 </div>
                                 <div class="card-body row row-cols-1 row-cols-md-2 row-cols-xxl-1">
                                     <div class="col mh-100">
@@ -191,7 +191,7 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-header text-left fw-bold">
-                                    3. Apakah Bpk/Ibu Dosen sudah memiliki Minimal 1 Paper Scopus di Tahun ini?
+                                    3. Apakah Bpk/Ibu sudah mengikuti Pengembangan Diri Minimal 1 kali di Semester ini?
                                 </div>
                                 <div class="card-body row row-cols-1 row-cols-md-2 row-cols-xxl-1">
                                     <div class="col mh-100">
@@ -275,7 +275,7 @@
                         </div>                        
                         {{-- @endforeach --}}
                     </div>
-                    <div class="row row-cols-1 row-cols-lg-2 gy-4">
+                    <div class="row row-cols-1 row-cols-xxl-2 gy-4">
                         <div class="col">
                             <div class="card">
                                 <div class="card-header text-left fw-bold">
@@ -370,7 +370,7 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-header text-left fw-bold">
-                                    6. Bagaimana Content pembelajaran secara general?
+                                    6. Bagaimana materi dalam Textbook pembelajaran?
                                 </div>
                                 <div class="card-body">
                                     <div class="card-body row row-cols-1 row-cols-md-2">
@@ -380,7 +380,7 @@
                                         </div>
                                         <div class="col">
                                             <div class="fw-bold mb-3">
-                                                7. Masukan terhadap Content secara general
+                                                7. Masukan terhadap materi dalam Textbook
                                             </div>
                                             <div class="accordion" id="accordion_q4">
                                                 <div class="accordion-item">
@@ -461,7 +461,7 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-header text-left fw-bold">
-                                    8. Bagaimana Content pembelajaran secara general?
+                                    8. Bagaimana isi dari presentasi dan supporting material?
                                 </div>
                                 <div class="card-body">
                                     <div class="card-body row row-cols-1 row-cols-md-2">
@@ -471,7 +471,7 @@
                                         </div>
                                         <div class="col">
                                             <div class="fw-bold mb-3">
-                                                9. Masukan terhadap Content secara general
+                                                9. Masukan terhadap presentasi dan supporting material?
                                             </div>
                                             <div class="accordion" id="accordion_q8">
                                                 <div class="accordion-item">
@@ -552,7 +552,7 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-header text-left fw-bold">
-                                    10. Bagaimana Content pembelajaran secara general?
+                                    10. Bagaimana isi dari Multimedia/Digital content?
                                 </div>
                                 <div class="card-body">
                                     <div class="card-body row row-cols-1 row-cols-md-2">
@@ -562,7 +562,7 @@
                                         </div>
                                         <div class="col">
                                             <div class="fw-bold mb-3">
-                                                11. Masukan terhadap Content secara general
+                                                11. Masukan terhadap Multimedia/Digital content?
                                             </div>
                                             <div class="accordion" id="accordion_q10">
                                                 <div class="accordion-item">
@@ -643,7 +643,7 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-header text-left fw-bold">
-                                    12. Bagaimana Content pembelajaran secara general?
+                                    12. Bagaimana Classroom Management di kelas?
                                 </div>
                                 <div class="card-body">
                                     <div class="card-body row row-cols-1 row-cols-md-2">
@@ -653,7 +653,7 @@
                                         </div>
                                         <div class="col">
                                             <div class="fw-bold mb-3">
-                                                13. Masukan terhadap Content secara general
+                                                13. Masukan terhadap Classroom management di kelas?
                                             </div>
                                             <div class="accordion" id="accordion_q12">
                                                 <div class="accordion-item">
@@ -734,7 +734,7 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-header text-left fw-bold">
-                                    14. Bagaimana Content pembelajaran secara general?
+                                    14. Bagaimana dengan Learning Methodology sekarang
                                 </div>
                                 <div class="card-body">
                                     <div class="card-body row row-cols-1 row-cols-md-2">
@@ -744,7 +744,7 @@
                                         </div>
                                         <div class="col">
                                             <div class="fw-bold mb-3">
-                                                15. Masukan terhadap Content secara general
+                                                15. Masukan terhadap Learning Methodology sekarang?
                                             </div>
                                             <div class="accordion" id="accordion_q14">
                                                 <div class="accordion-item">
@@ -825,7 +825,7 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-header text-left fw-bold">
-                                    16. Bagaimana Content pembelajaran secara general?
+                                    16. Bagaimana dengan Other Language?(Ex. English)
                                 </div>
                                 <div class="card-body">
                                     <div class="card-body row row-cols-1 row-cols-md-2">
@@ -835,7 +835,7 @@
                                         </div>
                                         <div class="col">
                                             <div class="fw-bold mb-3">
-                                                17. Masukan terhadap Content secara general
+                                                17. Masukan terhadap Other Language?(Ex. English)
                                             </div>
                                             <div class="accordion" id="accordion_q16">
                                                 <div class="accordion-item">
@@ -916,7 +916,7 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-header text-left fw-bold">
-                                    18. Bagaimana Content pembelajaran secara general?
+                                    18. Bagaimana dengan Individual Assignment/Project/Quiz/Presentation?
                                 </div>
                                 <div class="card-body">
                                     <div class="card-body row row-cols-1 row-cols-md-2">
@@ -926,7 +926,7 @@
                                         </div>
                                         <div class="col">
                                             <div class="fw-bold mb-3">
-                                                19. Masukan terhadap Content secara general
+                                                19. Masukan terhadap Individual Assignment/Project/Quiz/Presentation
                                             </div>
                                             <div class="accordion" id="accordion_q18">
                                                 <div class="accordion-item">
@@ -1007,7 +1007,7 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-header text-left fw-bold">
-                                    20. Bagaimana Content pembelajaran secara general?
+                                    20. Bagaimana menurut Bpk/Ibu dengan Midterm Exams?
                                 </div>
                                 <div class="card-body">
                                     <div class="card-body row row-cols-1 row-cols-md-2">
@@ -1017,7 +1017,7 @@
                                         </div>
                                         <div class="col">
                                             <div class="fw-bold mb-3">
-                                                21. Masukan terhadap Content secara general
+                                                21. Masukan terhadap Midterm Exams
                                             </div>
                                             <div class="accordion" id="accordion_q20">
                                                 <div class="accordion-item">
@@ -1098,7 +1098,7 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-header text-left fw-bold">
-                                    22. Bagaimana Content pembelajaran secara general?
+                                    22. Bagaimana menurut Bpk/Ibu dengan Final Exams?
                                 </div>
                                 <div class="card-body">
                                     <div class="card-body row row-cols-1 row-cols-md-2">
@@ -1108,7 +1108,7 @@
                                         </div>
                                         <div class="col">
                                             <div class="fw-bold mb-3">
-                                                23. Masukan terhadap Content secara general
+                                                23. Masukan terhadap Final Exams
                                             </div>
                                             <div class="accordion" id="accordion_q22">
                                                 <div class="accordion-item">
@@ -1189,7 +1189,7 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-header text-left fw-bold">
-                                    24. Bagaimana Content pembelajaran secara general?
+                                    24. Bagaimana menurut Bpk/Ibu dengan Overall Evaluation, Feedback, Dll?
                                 </div>
                                 <div class="card-body">
                                     <div class="card-body row row-cols-1 row-cols-md-2">
@@ -1199,7 +1199,7 @@
                                         </div>
                                         <div class="col">
                                             <div class="fw-bold mb-3">
-                                                25. Masukan terhadap Content secara general
+                                                25. Masukan terhadap Overall Evaluation, Feedback, Dll
                                             </div>
                                             <div class="accordion" id="accordion_q24">
                                                 <div class="accordion-item">
@@ -1273,13 +1273,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="card" style="height: 300px">
-                                <div class="card-body">
                                 </div>
                             </div>
                         </div>
