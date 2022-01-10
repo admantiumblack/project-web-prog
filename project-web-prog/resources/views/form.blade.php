@@ -31,9 +31,9 @@
 @section('content')
 <div class="card bg-light">
 
-    <div class="card-header bg-primary">
+    <div class="card-header bg-primary text-white">
         <br>
-        <h4>{{ $datalec->subject_id }} - {{ $datalec->subject }}'s Peer Review</h4>
+            <h4>{{ $datalec->subject_id }} - {{ $datalec->subject }}'s Peer Review</h4>
         <br>
     </div>
     <div class="card-body bg-white d-flex justify-content-center">
@@ -42,7 +42,7 @@
             <div>{{$error}}</div>
         @endforeach
         @endif
-        <form class="border border-dark px-5" method="POST" action="{{route('api.form.insert')}}">
+        <form class="card px-5" method="POST" action="{{route('api.form.insert')}}">
                 @csrf
                 <input type="hidden" name="subject_id" value="{{ $datalec->subject_id }}">
                 <input type="hidden" name="period" value="{{ $datalec->period }}">
@@ -54,7 +54,7 @@
                     <input type="radio" class="form-check-input" name="Ans_1" id="Sudah1" value="Sudah">
                     <label for="Sudah1" class="form-check-label">Sudah</label><br>
                     <input type="radio" class="form-check-input" name="Ans_1" id="radiobutton1">
-                    <textarea style="resize:none;" rows="1" id="textbox1" type="text" placeholder="Other" oninput="changeHandler()"></textarea><br>
+                    <textarea class="w-75 border" style="resize:none;" rows="1" id="textbox1" type="text" placeholder="Other" oninput="changeHandler()"></textarea><br>
                     <script>
                         function changeHandler(){
                             document.getElementById("radiobutton1").value = document.getElementById("textbox1").value;
@@ -70,7 +70,7 @@
                     <input type="radio" class="form-check-input" name="Ans_2" id="Sudah2" value="Sudah">
                     <label for="Sudah2" class="form-check-label">Sudah</label><br>
                     <input type="radio" class="form-check-input" name="Ans_2" id="radiobutton2">
-                    <textarea style="resize:none;" rows="1" id="textbox2" type="text" placeholder="Other" oninput="changeHandler2()"></textarea><br>
+                    <textarea class="w-75 border" style="resize:none;" rows="1" id="textbox2" type="text" placeholder="Other" oninput="changeHandler2()"></textarea><br>
                     <script>
                         function changeHandler2(){
                             document.getElementById("radiobutton2").value = document.getElementById("textbox2").value;
@@ -86,7 +86,7 @@
                     <input type="radio" class="form-check-input" name="Ans_3" id="Sudah3" value="Sudah">
                     <label for="Sudah3" class="form-check-label">Sudah</label><br>
                     <input type="radio" class="form-check-input" name="Ans_3" id="radiobutton3">
-                    <textarea style="resize:none;" rows="1" id="textbox3" type="text" placeholder="Other" oninput="changeHandler3()"></textarea><br>
+                    <textarea class="w-75 border" style="resize:none;" rows="1" id="textbox3" type="text" placeholder="Other" oninput="changeHandler3()"></textarea><br>
                     <script>
                         function changeHandler3(){
                             document.getElementById("radiobutton3").value = document.getElementById("textbox3").value;
