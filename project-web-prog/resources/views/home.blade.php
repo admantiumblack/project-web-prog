@@ -144,11 +144,11 @@
                                             <div>
                                                 <label for="complaintMessage">Period:</label>
                                                 <input type="text" class="form-control" name="period"
-                                                    placeholder="Insert period here (example: 221)">
+                                                    placeholder="Insert period here (example: 221)" required>
                                             </div>
                                             <div>
                                                 <label for="formDeadline">Deadline:</label>
-                                                <input type="date" class="form-control" name="deadline">
+                                                <input type="date" class="form-control" name="deadline" required>
                                             </div>
                                         </div>
                                     </form>
