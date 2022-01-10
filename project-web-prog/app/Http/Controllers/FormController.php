@@ -58,7 +58,6 @@ class FormController extends Controller
             }
         }
 
-        // $reader = Reader::createFromPath('storage/form_results/ff25d02e-afce-4053-b483-4bbb6ca8288f.csv', 'r');
         $reader->setHeaderOffset(0);
         $records = Statement::create()->process($reader);
 
@@ -70,21 +69,9 @@ class FormController extends Controller
         foreach ($records as $record) {
             $forms[] = $record;
         }
-        // print_r($forms);
-        // foreach ($records->fetchColumnByOffset(4) as $value) {
-        //     // array_push($answers, $value);
-        //     print_r($value);
-        // }
-
-        // print_r($answers);
-        
-        // print_r($answers);
         
         // THIS ONLY WORKS WITH INTEGER ARRAY KEYS
-
-        // print_r(array_column($answers, 1));
-        // print_r(array_count_values(array_column($answers, 1)));
-
+        
         $columns = count($records->getHeader()); 
         error_log($columns);
         $q_types = [0, 0, 0, 1, 2,
@@ -93,6 +80,14 @@ class FormController extends Controller
                     1, 2, 1, 2, 1,
                     2, 1, 2, 1, 2
                     ];
+
+        // CHART COLORS
+
+        $opacity = 0.2;
+
+        $global_colorx = 'rgba(99, 132, 255, ' . (string)$opacity . ')';
+        $global_colory = 'rgba(255, 99, 132, ' . (string)$opacity . ')';
+        $global_coloro = 'rgba(40, 40, 40, ' . (string)$opacity . ')';
 
         for ($i = 0; $i < $columns - 2; $i++){
             switch ($q_types[$i]){
@@ -109,24 +104,30 @@ class FormController extends Controller
 
                     $labelx = 'Sudah';
                     $labely = 'Belum';
+                    $labelother = 'Other';
                     
-                    $colorx = 'rgba(99, 132, 255, 0.2)';
-                    $colory = 'rgba(255, 99, 132, 0.2)';                    
+                    $colorx = $global_colorx;
+                    $colory = $global_colory;
+                    $coloro = $global_coloro;
+
+                    $max = $rCount;
+
+                    $freq_other = array_sum($freq) - ($freq[$labelx] ?? 0) - ($freq[$labely] ?? 0);
 
                     $chart = app()->chartjs
                         ->name($chartname)
                         ->type($charttype)
                         ->size(['width' => 500, 'height' => 400])
-                        ->labels([$labelx, $labely])
+                        ->labels([$labelx, $labely, $labelother])
                         ->datasets([
                             [
                                 'labels' => null,
-                                'backgroundColor' => [$colorx, $colory],
-                                'data' => [$freq[$labelx] ?? 0, $freq[$labely] ?? 0]
+                                'backgroundColor' => [$colorx, $colory, $coloro],
+                                'data' => [$freq[$labelx] ?? 0, $freq[$labely] ?? 0, $freq_other]
                             ]
                         ])
                         ->options([
-                            'scales' => ['yAxes' => [['ticks' => ['beginAtZero' => true]]]],
+                            'scales' => ['yAxes' => [['ticks' => ['beginAtZero' => true, 'suggestedMax' => $max]]]],
                             'maintainAspectRatio' => false,
                             'legend' => ['display' => false]
                         ]);
@@ -156,8 +157,10 @@ class FormController extends Controller
                     $labelx = 'Good';
                     $labely = 'Needs Improvement';
                     
-                    $colorx = 'rgba(99, 132, 255, 0.2)';
-                    $colory = 'rgba(255, 99, 132, 0.2)';
+                    $colorx = $global_colorx;
+                    $colory = $global_colory;
+
+                    $max = $rCount;
 
                     $chart = app()->chartjs
                         ->name($chartname)
@@ -172,7 +175,7 @@ class FormController extends Controller
                             ]
                         ])
                         ->options([
-                            'scales' => ['yAxes' => [['ticks' => ['beginAtZero' => true]]]],
+                            'scales' => ['yAxes' => [['ticks' => ['beginAtZero' => true, 'suggestedMax' => $max]]]],
                             'maintainAspectRatio' => false,
                             'legend' => ['display' => false]
                         ]);
