@@ -18,19 +18,9 @@ class PositionSeeder extends Seeder
             'Lecturer',
             'Dean'
         ];
-        $ids = [
-            1,
-            2
-        ];
-
         foreach($positions as $position){
             DB::table('positions')->insert([
                 'position' => $position
-            ]);
-        }
-        foreach($ids as $id){
-            DB::table('positions')->insert([
-                'id' => $id
             ]);
         }
     }
