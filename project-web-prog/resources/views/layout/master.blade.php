@@ -15,52 +15,49 @@
 <body>
     <nav class="navbar navbar-light bg-light sticky-top">
         <div class="container-fluid">
-            <a data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
-                aria-controls="offcanvasWithBothOptions">
-                <div class="row">
-                    <div class="col">
-                        <img src="https://bm5cdn.azureedge.net/asset/images/logo.png" alt="Binus University">
-                    </div>
-                    <div class="col p-3 mt-3">
-                        <p>@yield('title')</p>
-                    </div>
+            <div class="row">
+                <div class="col">
+                    <img src="https://bm5cdn.azureedge.net/asset/images/logo.png" alt="Binus University" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" role="button">
                 </div>
-            </a>
+                <div class="col p-3 mt-3">
+                    <p>@yield('title')</p>
+                </div>
+            </div>
             <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
                 aria-labelledby="offcanvasWithBothOptionsLabel">
                 <div class="offcanvas-header">
-                    <button type="button" class="btn btn-outline-none" data-bs-dismiss="offcanvas" aria-label="Close">
-                        <img src="https://bm5cdn.azureedge.net/asset/images/logo.png" alt="Binus University">
-                    </button>
+                    {{-- <button type="button" class="btn btn-outline-none" data-bs-dismiss="offcanvas" aria-label="Close"> --}}
+                        <img src="https://bm5cdn.azureedge.net/asset/images/logo.png" alt="Binus University" data-bs-dismiss="offcanvas" role="button">
+                    {{-- </button> --}}
                 </div>
                 <div class="offcanvas-body">
-                    <ul class="navbar-nav flex-grow-1 pe-3">
+                    <ul class="navbar-nav flex-grow-1 pe-3 h5">
                         @if (Cookie::get('user_auth') !== null)
                             
                         <li class="nav-item mx-auto">
                             {{-- Semua --}}
-                            <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
+                            <a class="nav-link" aria-current="page" href="{{ route('home') }}">Home</a>
                         </li>
                         @if (strcmp(explode('_', Cookie::get('user_auth'))[1], 'SCC') == 0)
                         <li class="nav-item mx-auto">
                             {{-- SCC --}}
-                            <a class="nav-link active" aria-current="page" href="{{ route('view.forms') }}">View All Form</a>
+                            <a class="nav-link" aria-current="page" href="{{ route('view.forms') }}">View All Form</a>
                         </li>
                         <li class="nav-item mx-auto">
                             {{-- SCC --}}
-                            <a class="nav-link active" aria-current="page" href="{{ route('view.complaints') }}">View All Feedback Ticket</a>
+                            <a class="nav-link" aria-current="page" href="{{ route('view.complaints') }}">View All Feedback Ticket</a>
                         </li>
                         @endif
 
                             @if (strcmp(explode('_', Cookie::get('user_auth'))[1], 'Dean') == 0)
                             <li class="nav-item mx-auto">
                                 {{-- Kajur / Admin --}}
-                                <a class="nav-link active" aria-current="page" href="{{ route('manage') }}">Manage Lecturer and Courses</a>
+                                <a class="nav-link" aria-current="page" href="{{ route('manage') }}">Manage Lecturer and Courses</a>
                             </li>
                             @endif
                         <li class="nav-item mt-1 mx-auto">
                             {{-- Semua --}}
-                            <a class="nav-link active" aria-current="page" href="{{ route('api.logout') }}">Logout</a>
+                            <a class="nav-link" aria-current="page" href="{{ route('api.logout') }}">Logout</a>
                         </li>
                         @endif
                     </div>
