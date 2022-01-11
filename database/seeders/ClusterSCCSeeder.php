@@ -19,7 +19,7 @@ class ClusterSCCSeeder extends Seeder
         $faker->seed(34);
         $clusters = DB::table('clusters')->select('id')->get();
         $lecturers = DB::table('lecturers')
-            ->where('position_id', 1)->select('id')->get();
+            ->where('position_id', DB::table('positions')->first()->id)->select('id')->get();
         $nClusters = count($clusters);
         for($i = 0; $i < $nClusters; $i++){
             $cluster = $faker->unique()
