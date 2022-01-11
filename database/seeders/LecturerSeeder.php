@@ -17,14 +17,14 @@ class LecturerSeeder extends Seeder
     {
         $faker = Faker::create('id_ID');
         $faker->seed(666);
-        $myfile = fopen("../.passwords", "w");
+        // $myfile = fopen("../.passwords", "w");
         for($i = 0; $i < 60; $i++){
             $password = 'password';
             $name = $faker->unique()->name;
             $lecturerId = 'D'.$faker->unique()->regexify('[0-5]{1}[0-9]{3}');
             $email = 'blackadam123455+'.$lecturerId.'_'.explode(' ',trim($name))[0].'@gmail.com';
-            $position = ($i == 0)? 2:1;
-            fwrite($myfile, $position.'_'.$lecturerId.'_'.$email.'_'.$password."\n");
+            $position = DB::table('positions')->where('position', $i == 0? 'Dean':'Lecturer')->first()->id;
+            // fwrite($myfile, $position.'_'.$lecturerId.'_'.$email.'_'.$password."\n");
             DB::table('lecturers')->insert([
                 'id' => $lecturerId,
                 'name' => $name,

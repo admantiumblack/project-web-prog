@@ -9,6 +9,7 @@ use App\Models\Form;
 use App\Models\SubjectLecturer;
 use League\Csv\Reader;
 use League\Csv\Statement;
+use Illuminate\Support\Facades\Storage;
 
 class FormController extends Controller
 {
@@ -22,6 +23,7 @@ class FormController extends Controller
         ->join('subjects', 'forms.subject_id', '=', 'subjects.id')
         ->select('forms.*', 'subjects.subject')
         ->where('subjects.cluster_id', '=', $cluster_id)
+        ->orderBy('period', 'Desc')
         ->get();
         
         return view('view.formresult', ['forms'=>$forms]);
@@ -44,8 +46,7 @@ class FormController extends Controller
     public function viewFormDetail($formId){
         $form = Form::with('subject')->find($formId);
 
-        $formPath = public_path($form->result_path);
-        $reader = Reader::createFromPath($formPath, 'r');
+        $reader = Reader::createFromString(Storage::cloud()->get($form->result_path));
 
         $subjectLecturers = SubjectLecturer::where('subject_id', $form->subject_id)
                         ->where('period', $form->period)->get();

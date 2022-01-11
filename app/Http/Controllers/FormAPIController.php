@@ -10,7 +10,9 @@ use App\Models\ClusterScc;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use App\Jobs\SendReminderEmail;
+use App\Jobs\CreateForms;
 use App\Mail\NotificationEmail;
+use Illuminate\Support\Facades\Storage;
 
 class FormAPIController extends Controller
 {
@@ -65,7 +67,6 @@ class FormAPIController extends Controller
         }
 
         $form_path = $subjectLecturer->result_path;
-        $public_path = public_path($form_path);
         $answers = [];
         $answers[] = '"'.$lecturerId.'"';
         $answers[] = '"'.$lecturerName.'"';
@@ -73,9 +74,8 @@ class FormAPIController extends Controller
             $answers[] = '"'.$request['Ans_'.$i].'"';
         }
         $answerString = implode(',', $answers);
-        $file = fopen($form_path, 'a');
-        fwrite($file, $answerString."\n");
-        fclose($file);
+        // $file = fopen($form_path, 'a');
+        Storage::disk('google')->append($form_path, $answerString."\n");
 
         $subjectLecturer = SubjectLecturer::find($id);
 
@@ -109,7 +109,6 @@ class FormAPIController extends Controller
                 ->join('forms', 'forms.subject_id', '=', 'subjects.id')
                 ->where('forms.period', $request->period)
                 ->count();
-        error_log($nForms);
         // $nForms = 0;
         // foreach($request->cluster->subjects as $subject){
         //     foreach($subject->forms as $form){
@@ -127,31 +126,21 @@ class FormAPIController extends Controller
         //         ->with('cluster.subjects')->get();
         $subjects = Subject::where('subjects.cluster_id', $id)->get();
 
-        $path = public_path('storage/form_results');
-        $template = storage_path('template.csv');
-        if(!file_exists($path)){
-            File::makeDirectory($path);
-        }
 
+        $subjectIds = [];
         foreach($subjects as $subject){
-            $filename = Str::uuid().'.csv';
-            $filepath = $path.'/'.$filename;
-            File::copy($template, $filepath);
-            $form = new Form();
-            $form->id = $request->period.$subject->id;
-            $form->subject_id = $subject->id;
-            $form->deadline = $request->deadline.' 23:59:59';
-            $form->period = $request->period;
-            $form->result_path = 'storage/form_results/'.$filename;
-            $form->save();
+            $subjectIds[] = $subject->id;
         }
-        $this->sendEmail($request, $id, $request->period, $request->deadline.' 23:59:59');
 
+        $formCreator = new CreateForms($subjectIds, $request->deadline, $request->period);
+        $this->dispatch($formCreator);
+
+        $this->sendEmail($id, $request->period, $request->deadline.' 23:59:59');
 
         return redirect()->route('home');
     }
 
-    private function sendEmail(Request $request, $clusterId, $period, $deadline){
+    private function sendEmail($clusterId, $period, $deadline){
 
         $lecturerContents = Subject::where('subjects.cluster_id', $clusterId)
                     ->join('subject_lecturers', 'subject_lecturers.subject_id', '=', 'subjects.id')
@@ -161,14 +150,14 @@ class FormAPIController extends Controller
                     'subject_lecturers.period', 'lecturers.name',
                     'subjects.subject')
                     ->get();
-        // error_log($lecturerContents);
+
         $emails = [];
         foreach($lecturerContents as $content){
             $details = [
                 'title' => $content->subject.' form for '.$content->period.'.',
                 'header' => 'Dear Mr/Ms. '.$content->name.'.',
                 'content' => 'Please fill '.
-                        $content->subject.' form for '.$content->period."\n".
+                        $content->subject.' form for '.$content->period."\n\n\n".
                         'Deadline for the form is: '.$deadline.'.'
             ];
             $emails[] =[
