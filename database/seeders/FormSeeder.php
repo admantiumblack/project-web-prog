@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 // use Log;
 
 class FormSeeder extends Seeder
@@ -20,25 +21,32 @@ class FormSeeder extends Seeder
     {
         // 2[1-2]{1}1
         $faker = Faker::create('id_ID');
-        $path = public_path('storage/form_results');
-        $template = storage_path('template.csv');
-        error_log($template);
-        if(!file_exists($path)){
-            File::makeDirectory($path);
-        }
         if(empty(DB::table('forms')->count())){
+            $path = 'form_results';
+            $template = 'template.csv';
+            error_log($template);
+            $dirs = Storage::disk('google')->directories();
+            if(count($dirs) < 1){
+                Storage::disk('google')->makeDirectory($path);
+                $dirs = Storage::disk('google')->directories();
+            }
             $subjects = DB::table('subjects')->get();
             foreach($subjects as $subject){
                 $filename = Str::uuid().'.csv';
-                $filepath = $path.'/'.$filename;
-                File::copy($template, $filepath);
+                $filepath = $dirs[0].'/'.$filename;
+                Storage::disk('google')->put($filepath, Storage::get($template));
+                $fileMetadata = collect(Storage::cloud()->listContents($dirs[0], false))
+                ->where('type', '=', 'file')
+                ->where('filename', '=', pathinfo($filename, PATHINFO_FILENAME))
+                ->where('extension', '=', pathinfo($filename, PATHINFO_EXTENSION))
+                ->first();
                 $datetime = $faker->dateTimeBetween('-3 day', '+1 week');
                 DB::table('forms')->insert([
                     'id' => '221'.$subject->id,
                     'subject_id' => $subject->id,
                     'period' => '221',
                     'deadline' => $datetime->format('Y-m-d').' 23:59:59',
-                    'result_path' => 'storage/form_results/'.$filename
+                    'result_path' => $fileMetadata['path']
                 ]);
             }
         }

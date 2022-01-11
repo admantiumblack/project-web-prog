@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 class CreateFormsTable extends Migration
 {
     /**
@@ -13,9 +14,10 @@ class CreateFormsTable extends Migration
      */
     public function up()
     {
-        $path = public_path('storage/form_results');
-        if(file_exists($path)){
-            File::deleteDirectory($path);
+        $path = 'form_results';
+        $dirs = Storage::disk('google')->directories();
+        if(count($dirs) > 0){
+            Storage::disk('google')->deleteDirectory($dirs[0]);
         }
         Schema::create('forms', function (Blueprint $table) {
             $table->String('id', 11);
