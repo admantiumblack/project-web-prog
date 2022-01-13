@@ -24,7 +24,7 @@ class FormController extends Controller
         ->select('forms.*', 'subjects.subject')
         ->where('subjects.cluster_id', '=', $cluster_id)
         ->orderBy('period', 'Desc')
-        ->paginate(15);
+        ->paginate(5);
         
         return view('view.formresult', ['forms'=>$forms]);
     }
