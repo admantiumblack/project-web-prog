@@ -26,6 +26,8 @@ use Monolog\Handler\RotatingFileHandler;
 Route::get('/', [HomeController::class, 'viewHome'])
 ->name('home')->middleware('validateLoggedIn');
 
+Route::get('/register', [AuthenticationController::class, 'viewRegister'])->name('register')->middleware(['validateGuest']);
+
 Route::get('/login', [AuthenticationController::class, 'viewLogin'])->name('login')
 ->middleware(['validateGuest']);
 
