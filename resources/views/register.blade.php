@@ -43,6 +43,9 @@
             <div class="text-danger mt-2"><i class="fas fa-times"></i> {{ ucfirst($error) }}</div>
         @empty
         @endforelse
+        <div class="mt-3 text-center text-sm">
+            <a href="/login">Already have an account? Log in</a>
+        </div>
         <button type="submit" class="btn btn-primary mt-3 w-100"><i class="fas fa-sign-in-alt"></i>
             Register</button>
     </form>
