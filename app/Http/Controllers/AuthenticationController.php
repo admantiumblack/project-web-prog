@@ -12,4 +12,8 @@ class AuthenticationController extends Controller
     public function viewLogin(){
         return view('login');
     }
+
+    public function viewRegister(){
+        return view('register');
+    }
 }
