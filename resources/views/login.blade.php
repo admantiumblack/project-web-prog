@@ -25,7 +25,7 @@
         @empty
         @endforelse
         <div class="mt-3 text-center">
-            <a href="/register">Don't have an account? Register here</a>
+            <a href="{{route('register')}}">Don't have an account? Register here</a>
         </div>
         <button type="submit" class="btn btn-primary mt-3 w-100"><i class="fas fa-sign-in-alt"></i>
             Login</button>
