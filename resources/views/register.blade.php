@@ -27,6 +27,13 @@
                 name="confirm_password" placeholder="Confirm Password" value="{{ old('confirm_password') }}" aria-label="Confirm Password"
                 required autocomplete="confirm_password">
         </div>
+        <hr>
+        <div class="input-group mt-3">
+            <span class="input-group-text c-addon-42"><i class="fas fa-lock"></i></span>
+            <input type="text" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
+                name="name" placeholder="Name" value="{{ old('name') }}" aria-label="Name"
+                required autocomplete="name">
+        </div>
         <div class="input-group mt-3">
             <span class="input-group-text c-addon-42"><i class="fas fa-lock"></i></span>
             <input type="text" class="form-control {{ $errors->has('lecturer_id') ? 'is-invalid' : '' }}"
@@ -44,7 +51,7 @@
         @empty
         @endforelse
         <div class="mt-3 text-center text-sm">
-            <a href="/login">Already have an account? Log in</a>
+            <a href="{{route('login')}}">Already have an account? Log in</a>
         </div>
         <button type="submit" class="btn btn-primary mt-3 w-100"><i class="fas fa-sign-in-alt"></i>
             Register</button>
